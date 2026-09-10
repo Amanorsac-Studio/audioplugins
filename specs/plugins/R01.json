@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "plugin_id": "R01",
+  "display_name": "ANALOG MIX RACK",
+  "series": "Analog",
+  "primary_role": "Modular Analog Processor Rack",
+  "feature_set": [
+    "All ten analog processors in one host",
+    "Drag to reorder the chain",
+    "Series or split parallel lanes with independent level and polarity",
+    "Per-module enable and solo",
+    "Latency aligned parallel lanes",
+    "Whole-rack presets, A/B and global wet/dry"
+  ],
+  "parameters": [
+    {"id":"input","label":"Input","type":"float","range_or_values":"-24 to 24 dB","default":"0 dB","automatable":true},
+    {"id":"output","label":"Output","type":"float","range_or_values":"-24 to 24 dB","default":"0 dB","automatable":true},
+    {"id":"mix","label":"Mix","type":"float","range_or_values":"0 to 100 %","default":"100 %","automatable":true},
+    {"id":"bypass","label":"Bypass","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+
+    {"id":"split","label":"Split","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"lane_a_level","label":"Lane A Level","type":"float","range_or_values":"-24 to 24 dB","default":"0 dB","automatable":true},
+    {"id":"lane_b_level","label":"Lane B Level","type":"float","range_or_values":"-24 to 24 dB","default":"0 dB","automatable":true},
+    {"id":"lane_b_phase","label":"Lane B Polarity","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+
+    {"id":"slot.A01.enabled","label":"Heritage EQ In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A01.solo","label":"Heritage EQ Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A01.order","label":"Heritage EQ Position","type":"int","range_or_values":"1 to 10","default":"1","automatable":false},
+    {"id":"slot.A01.lane","label":"Heritage EQ Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A02.enabled","label":"Iron Pre In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A02.solo","label":"Iron Pre Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A02.order","label":"Iron Pre Position","type":"int","range_or_values":"1 to 10","default":"2","automatable":false},
+    {"id":"slot.A02.lane","label":"Iron Pre Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A03.enabled","label":"Console One In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A03.solo","label":"Console One Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A03.order","label":"Console One Position","type":"int","range_or_values":"1 to 10","default":"3","automatable":false},
+    {"id":"slot.A03.lane","label":"Console One Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A04.enabled","label":"Reelsat In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A04.solo","label":"Reelsat Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A04.order","label":"Reelsat Position","type":"int","range_or_values":"1 to 10","default":"4","automatable":false},
+    {"id":"slot.A04.lane","label":"Reelsat Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A05.enabled","label":"Valve Drive In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A05.solo","label":"Valve Drive Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A05.order","label":"Valve Drive Position","type":"int","range_or_values":"1 to 10","default":"5","automatable":false},
+    {"id":"slot.A05.lane","label":"Valve Drive Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A06.enabled","label":"Strike FET In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A06.solo","label":"Strike FET Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A06.order","label":"Strike FET Position","type":"int","range_or_values":"1 to 10","default":"6","automatable":false},
+    {"id":"slot.A06.lane","label":"Strike FET Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A07.enabled","label":"Lumen Opto In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A07.solo","label":"Lumen Opto Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A07.order","label":"Lumen Opto Position","type":"int","range_or_values":"1 to 10","default":"7","automatable":false},
+    {"id":"slot.A07.lane","label":"Lumen Opto Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A08.enabled","label":"Busforge VCA In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A08.solo","label":"Busforge VCA Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A08.order","label":"Busforge VCA Position","type":"int","range_or_values":"1 to 10","default":"8","automatable":false},
+    {"id":"slot.A08.lane","label":"Busforge VCA Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A09.enabled","label":"Silk Passive EQ In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A09.solo","label":"Silk Passive EQ Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A09.order","label":"Silk Passive EQ Position","type":"int","range_or_values":"1 to 10","default":"9","automatable":false},
+    {"id":"slot.A09.lane","label":"Silk Passive EQ Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false},
+
+    {"id":"slot.A10.enabled","label":"Plate Four In","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A10.solo","label":"Plate Four Solo","type":"bool","range_or_values":"Off / On","default":"False","automatable":true},
+    {"id":"slot.A10.order","label":"Plate Four Position","type":"int","range_or_values":"1 to 10","default":"10","automatable":false},
+    {"id":"slot.A10.lane","label":"Plate Four Lane","type":"enum","range_or_values":"a / b","default":"a","automatable":false}
+  ],
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

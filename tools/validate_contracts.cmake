@@ -1,0 +1,56 @@
+if(NOT DEFINED SOURCE_ROOT)
+    message(FATAL_ERROR "SOURCE_ROOT is required")
+endif()
+
+set(expected_ids
+    D01 D02 D03 D04 D05 D06 D07 D08 D09 D10
+    A01 A02 A03 A04 A05 A06 A07 A08 A09 A10
+)
+
+set(found_count 0)
+foreach(id IN LISTS expected_ids)
+    set(path "${SOURCE_ROOT}/specs/plugins/${id}.json")
+    if(NOT EXISTS "${path}")
+        message(FATAL_ERROR "Missing contract ${path}")
+    endif()
+    file(READ "${path}" json)
+    string(JSON actual_id GET "${json}" plugin_id)
+    string(JSON standalone GET "${json}" standalone_plugin_required)
+    string(JSON series GET "${json}" series)
+    if(NOT actual_id STREQUAL id)
+        message(FATAL_ERROR "Contract identity mismatch in ${path}: ${actual_id}")
+    endif()
+    if(NOT standalone)
+        message(FATAL_ERROR "${id} is not marked as a standalone plugin")
+    endif()
+    if(id MATCHES "^D" AND NOT series STREQUAL "Digital")
+        message(FATAL_ERROR "${id} must be Digital")
+    endif()
+    if(id MATCHES "^A" AND NOT series STREQUAL "Analog")
+        message(FATAL_ERROR "${id} must be Analog")
+    endif()
+    math(EXPR found_count "${found_count} + 1")
+endforeach()
+
+if(NOT found_count EQUAL 20)
+    message(FATAL_ERROR "Expected 20 standalone contracts, found ${found_count}")
+endif()
+
+file(READ "${SOURCE_ROOT}/specs/suite_manifest.json" manifest)
+string(JSON individual_count GET "${manifest}" product_rules individual_plugins)
+string(JSON rack_analog_only GET "${manifest}" product_rules rack_is_analog_only)
+string(JSON digital_in_rack GET "${manifest}" product_rules digital_plugins_in_rack)
+string(JSON rack_count LENGTH "${manifest}" rack allowed_modules)
+if(NOT individual_count EQUAL 20 OR NOT rack_analog_only OR digital_in_rack OR NOT rack_count EQUAL 10)
+    message(FATAL_ERROR "Suite/rack invariant failed")
+endif()
+
+foreach(index RANGE 0 9)
+    string(JSON rack_id GET "${manifest}" rack allowed_modules ${index})
+    if(NOT rack_id MATCHES "^A(0[1-9]|10)$")
+        message(FATAL_ERROR "Digital or invalid module in rack allow-list: ${rack_id}")
+    endif()
+endforeach()
+
+message(STATUS "Validated 20 standalone contracts and analog-only A01-A10 rack boundary")
+

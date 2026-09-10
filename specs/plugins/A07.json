@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A07",
+  "display_name": "LUMEN OPTO",
+  "series": "Analog",
+  "primary_role": "Optical Leveler",
+  "feature_set": [
+    "Smooth optical detector",
+    "Fast/slow response",
+    "SC HPF",
+    "Stereo link",
+    "Tube output color",
+    "GR VU"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "peak_reduction\nPeak Reduction",
+      "label": "peak_reduction\nPeak Reduction",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "35 %",
+      "automatable": true
+    },
+    {
+      "id": "gain\nGain",
+      "label": "gain\nGain",
+      "type": "float",
+      "range_or_values": "-12 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "response\nResponse",
+      "label": "response\nResponse",
+      "type": "enum",
+      "range_or_values": "fast / slow",
+      "default": "slow",
+      "automatable": true
+    },
+    {
+      "id": "release\nRelease",
+      "label": "release\nRelease",
+      "type": "float",
+      "range_or_values": "0.05 to 5 s",
+      "default": "0.6 s",
+      "automatable": true
+    },
+    {
+      "id": "sc_hpf\nSC HPF",
+      "label": "sc_hpf\nSC HPF",
+      "type": "float",
+      "range_or_values": "20 to 500 Hz",
+      "default": "80 Hz",
+      "automatable": true
+    },
+    {
+      "id": "saturation\nTube Color",
+      "label": "saturation\nTube Color",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "15 %",
+      "automatable": true
+    },
+    {
+      "id": "stereo_link\nStereo Link",
+      "label": "stereo_link\nStereo Link",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A07_LUMEN_OPTO.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

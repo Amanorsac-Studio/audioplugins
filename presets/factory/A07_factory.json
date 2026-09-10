@@ -1,0 +1,369 @@
+{
+  "plugin_id": "A07",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Air Chain",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Air",
+        "Genre": "Pop",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 26,
+        "gain": 3,
+        "response": "slow",
+        "release": 0.7,
+        "sc_hpf": 150,
+        "saturation": 28,
+        "mix": 90
+      }
+    },
+    {
+      "name": "Candlelight Vocal",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Smooth",
+        "Genre": "Ballad",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 38,
+        "gain": 5,
+        "response": "slow",
+        "release": 0.8,
+        "sc_hpf": 90,
+        "saturation": 16,
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Sibilance Tamer",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Control",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 48,
+        "gain": 5,
+        "response": "fast",
+        "release": 0.25,
+        "sc_hpf": 320,
+        "saturation": 10
+      }
+    },
+    {
+      "name": "Velvet Leveller",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Control",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 55,
+        "gain": 7,
+        "response": "slow",
+        "release": 1.2,
+        "sc_hpf": 110,
+        "saturation": 22
+      }
+    },
+    {
+      "name": "Drum Group Hold",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 42,
+        "gain": 5,
+        "response": "fast",
+        "release": 0.35,
+        "sc_hpf": 120,
+        "saturation": 20,
+        "stereo_link": 90
+      }
+    },
+    {
+      "name": "Hard Squeeze",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Extreme",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 88,
+        "gain": 12,
+        "response": "fast",
+        "release": 0.15,
+        "sc_hpf": 140,
+        "saturation": 45,
+        "mix": 55
+      }
+    },
+    {
+      "name": "Room Opto",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Room",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 62,
+        "gain": 8,
+        "response": "fast",
+        "release": 0.5,
+        "sc_hpf": 120,
+        "saturation": 30,
+        "stereo_link": 90
+      }
+    },
+    {
+      "name": "Bass Cradle",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Sustain",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 45,
+        "gain": 6,
+        "response": "slow",
+        "release": 1.5,
+        "sc_hpf": 60,
+        "saturation": 18
+      }
+    },
+    {
+      "name": "Synth Bass Opto",
+      "category": "Bass",
+      "tags": {
+        "Source": "Synth Bass",
+        "Intent": "Sustain",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 52,
+        "gain": 6,
+        "response": "slow",
+        "release": 1,
+        "sc_hpf": 45,
+        "saturation": 18
+      }
+    },
+    {
+      "name": "Acoustic Breath",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Smooth",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 30,
+        "gain": 3,
+        "response": "slow",
+        "release": 0.9,
+        "sc_hpf": 100,
+        "saturation": 12
+      }
+    },
+    {
+      "name": "Electric Sustain",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Sustain",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 58,
+        "gain": 7,
+        "response": "fast",
+        "release": 0.5,
+        "sc_hpf": 95,
+        "saturation": 25
+      }
+    },
+    {
+      "name": "Piano Even",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Control",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 32,
+        "gain": 4,
+        "response": "slow",
+        "release": 1,
+        "sc_hpf": 55,
+        "saturation": 8
+      }
+    },
+    {
+      "name": "Synth Pad Opto",
+      "category": "Keys",
+      "tags": {
+        "Source": "Synth Pad",
+        "Intent": "Control",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 28,
+        "gain": 3,
+        "response": "slow",
+        "release": 2.2,
+        "sc_hpf": 70,
+        "saturation": 12
+      }
+    },
+    {
+      "name": "Horns Opto",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Horns",
+        "Intent": "Smooth",
+        "Genre": "Cinematic",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 44,
+        "gain": 5,
+        "response": "fast",
+        "release": 0.45,
+        "sc_hpf": 110,
+        "saturation": 18,
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "String Section",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Smooth",
+        "Genre": "Cinematic",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 34,
+        "gain": 4,
+        "response": "slow",
+        "release": 2,
+        "sc_hpf": 70,
+        "saturation": 10,
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Mix Bus Opto",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 30,
+        "gain": 3,
+        "response": "slow",
+        "release": 1.2,
+        "sc_hpf": 60,
+        "saturation": 12,
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Unlinked Movement",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Stereo Bus",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 40,
+        "gain": 4,
+        "response": "slow",
+        "release": 0.9,
+        "sc_hpf": 80,
+        "saturation": 14,
+        "stereo_link": 25
+      }
+    },
+    {
+      "name": "Master Rider",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Opto"
+      },
+      "values": {
+        "peak_reduction": 22,
+        "gain": 2,
+        "response": "slow",
+        "release": 1.8,
+        "sc_hpf": 60,
+        "saturation": 6,
+        "stereo_link": 100
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master"
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "plugin_id": "A05",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Vocal Bite",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Presence",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 9,
+        "bias": 10,
+        "density": 45,
+        "harmonic_balance": -35,
+        "tone": 22,
+        "pre_emphasis": 30,
+        "post_emphasis": 15,
+        "hpf": 85,
+        "soft_clip": true
+      }
+    },
+    {
+      "name": "Vocal Warm Valve",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Presence",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 6,
+        "bias": 10,
+        "density": 45,
+        "harmonic_balance": -60,
+        "tone": 8,
+        "pre_emphasis": 15,
+        "post_emphasis": 10,
+        "hpf": 85,
+        "soft_clip": true
+      }
+    },
+    {
+      "name": "Drum Bus Heat",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 7,
+        "bias": 8,
+        "density": 45,
+        "harmonic_balance": -30,
+        "tone": 8,
+        "hpf": 40,
+        "soft_clip": true,
+        "mix": 85
+      }
+    },
+    {
+      "name": "Kick Thump",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Punch",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 10,
+        "bias": 12,
+        "density": 55,
+        "harmonic_balance": -45,
+        "tone": -8,
+        "hpf": 25,
+        "soft_clip": true,
+        "output": -2
+      }
+    },
+    {
+      "name": "Snare Sizzle",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Attack",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Pentode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 13,
+        "bias": 0,
+        "density": 60,
+        "harmonic_balance": 40,
+        "tone": 30,
+        "pre_emphasis": 40,
+        "post_emphasis": 20,
+        "hpf": 95,
+        "soft_clip": true
+      }
+    },
+    {
+      "name": "Bass Furnace",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Weight",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Pentode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 14,
+        "bias": -15,
+        "density": 65,
+        "harmonic_balance": -60,
+        "tone": -18,
+        "hpf": 30,
+        "soft_clip": true,
+        "output": -3
+      }
+    },
+    {
+      "name": "Synth Bass Valve",
+      "category": "Bass",
+      "tags": {
+        "Source": "Synth Bass",
+        "Intent": "Weight",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Pentode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 11,
+        "bias": -15,
+        "density": 58,
+        "harmonic_balance": -70,
+        "tone": -10,
+        "hpf": 22,
+        "soft_clip": true,
+        "output": -3
+      }
+    },
+    {
+      "name": "Amp In A Box",
+      "category": "Guitars",
+      "tags": {
+        "Source": "DI Guitar",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Extreme",
+        "Character": "Cascade"
+      },
+      "values": {
+        "topology": "cascade",
+        "drive": 30,
+        "bias": -45,
+        "density": 90,
+        "harmonic_balance": 70,
+        "tone": -20,
+        "pre_emphasis": 55,
+        "post_emphasis": 60,
+        "hpf": 120,
+        "soft_clip": true,
+        "output": -8
+      }
+    },
+    {
+      "name": "Guitar Stack",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Saturation",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Cascade"
+      },
+      "values": {
+        "topology": "cascade",
+        "drive": 20,
+        "bias": -20,
+        "density": 75,
+        "harmonic_balance": 20,
+        "tone": 12,
+        "hpf": 110,
+        "soft_clip": true,
+        "output": -5
+      }
+    },
+    {
+      "name": "Keys Thickener",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Body",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 6,
+        "bias": 5,
+        "density": 42,
+        "harmonic_balance": -25,
+        "tone": -5,
+        "hpf": 50,
+        "soft_clip": true,
+        "mix": 90
+      }
+    },
+    {
+      "name": "Synth Lead Heat",
+      "category": "Keys",
+      "tags": {
+        "Source": "Synth Lead",
+        "Intent": "Body",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 15,
+        "bias": 5,
+        "density": 68,
+        "harmonic_balance": 45,
+        "tone": 20,
+        "hpf": 50,
+        "soft_clip": true,
+        "mix": 100
+      }
+    },
+    {
+      "name": "Strings Valve",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Body",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 5,
+        "bias": 5,
+        "density": 38,
+        "harmonic_balance": -40,
+        "tone": -5,
+        "hpf": 70,
+        "soft_clip": true,
+        "mix": 80
+      }
+    },
+    {
+      "name": "Mix Bus Valve",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Saturation",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "Cascade"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 4.5,
+        "bias": 0,
+        "density": 38,
+        "harmonic_balance": -20,
+        "tone": 10,
+        "mix": 100,
+        "output": -1
+      }
+    },
+    {
+      "name": "Parallel Fire",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Saturation",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "Cascade"
+      },
+      "values": {
+        "topology": "cascade",
+        "drive": 28,
+        "bias": -30,
+        "density": 85,
+        "harmonic_balance": 55,
+        "tone": 10,
+        "mix": 30,
+        "output": -6
+      }
+    },
+    {
+      "name": "Master Valve",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 3.5,
+        "bias": 0,
+        "density": 35,
+        "harmonic_balance": -15,
+        "tone": 3,
+        "hpf": 22,
+        "soft_clip": true,
+        "output": -1
+      }
+    },
+    {
+      "name": "Melted Circuit",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Effect",
+        "Genre": "Electronic",
+        "Intensity": "Extreme",
+        "Character": "Pentode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 36,
+        "bias": 80,
+        "density": 100,
+        "harmonic_balance": 100,
+        "tone": 45,
+        "soft_clip": false,
+        "input": 6,
+        "output": -10
+      }
+    },
+    {
+      "name": "Even Order Honey",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Colour",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 8,
+        "bias": 25,
+        "density": 50,
+        "harmonic_balance": -90,
+        "tone": 0,
+        "soft_clip": true
+      }
+    },
+    {
+      "name": "Filament Glow",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Warmth",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Triode"
+      },
+      "values": {
+        "topology": "triode",
+        "drive": 5,
+        "bias": 0,
+        "density": 40,
+        "harmonic_balance": -20,
+        "tone": 5,
+        "soft_clip": true,
+        "mix": 100
+      }
+    },
+    {
+      "name": "Odd Order Edge",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Aggression",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Pentode"
+      },
+      "values": {
+        "topology": "pentode",
+        "drive": 16,
+        "bias": 0,
+        "density": 70,
+        "harmonic_balance": 95,
+        "tone": 18,
+        "soft_clip": false,
+        "output": -4
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative",
+    "Utility"
+  ]
+}

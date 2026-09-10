@@ -1,0 +1,231 @@
+{
+  "schema_version": 2,
+  "brand": "Amanorsac Studio",
+  "source_of_truth": [
+    "01_Documentation/Amanorsac_Studio_Mixing_Suite_Codex_Build_Specification.docx",
+    "04_Machine_Spec/suite_manifest.json",
+    "04_Machine_Spec/plugins/*.json",
+    "02_Designs",
+    "logged decisions"
+  ],
+  "product_rules": {
+    "individual_plugins": 20,
+    "analog_mix_rack_is_optional": true,
+    "rack_is_analog_only": true,
+    "digital_plugins_in_rack": false,
+    "preset_authoring_after_dsp_freeze": true
+  },
+  "canvas": {
+    "digital": [
+      1536,
+      960
+    ],
+    "analog": [
+      1536,
+      960
+    ],
+    "rack": [
+      2048,
+      960
+    ]
+  },
+  "plugins": [
+    {
+      "id": "D01",
+      "name": "PRISM EQ",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D01_PRISM_EQ.png",
+      "spec": "04_Machine_Spec/plugins/D01.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D02",
+      "name": "FLUX DYNAMIC EQ",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D02_FLUX_DYNAMIC_EQ.png",
+      "spec": "04_Machine_Spec/plugins/D02.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D03",
+      "name": "SPECTRA MULTIBAND",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D03_SPECTRA_MULTIBAND.png",
+      "spec": "04_Machine_Spec/plugins/D03.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D04",
+      "name": "PULSE LIMITER",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D04_PULSE_LIMITER.png",
+      "spec": "04_Machine_Spec/plugins/D04.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D05",
+      "name": "AIR DE-ESSER",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D05_AIR_DE-ESSER.png",
+      "spec": "04_Machine_Spec/plugins/D05.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D06",
+      "name": "RESONANCE CTRL",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D06_RESONANCE_CTRL.png",
+      "spec": "04_Machine_Spec/plugins/D06.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D07",
+      "name": "FREQ SHAPER",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D07_FREQ_SHAPER.png",
+      "spec": "04_Machine_Spec/plugins/D07.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D08",
+      "name": "ORBIT DELAY",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D08_ORBIT_DELAY.png",
+      "spec": "04_Machine_Spec/plugins/D08.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D09",
+      "name": "SPACEVERB PRO",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D09_SPACEVERB_PRO.png",
+      "spec": "04_Machine_Spec/plugins/D09.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "D10",
+      "name": "WIDE IMAGER",
+      "series": "digital",
+      "image": "02_Designs/01_Digital/D10_WIDE_IMAGER.png",
+      "spec": "04_Machine_Spec/plugins/D10.json",
+      "standalone": true,
+      "rack_eligible": false
+    },
+    {
+      "id": "A01",
+      "name": "HERITAGE EQ",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A01_HERITAGE_EQ.png",
+      "spec": "04_Machine_Spec/plugins/A01.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A02",
+      "name": "IRON PRE",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A02_IRON_PRE.png",
+      "spec": "04_Machine_Spec/plugins/A02.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A03",
+      "name": "CONSOLE ONE",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A03_CONSOLE_ONE.png",
+      "spec": "04_Machine_Spec/plugins/A03.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A04",
+      "name": "REELSAT",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A04_REELSAT.png",
+      "spec": "04_Machine_Spec/plugins/A04.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A05",
+      "name": "VALVE DRIVE",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A05_VALVE_DRIVE.png",
+      "spec": "04_Machine_Spec/plugins/A05.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A06",
+      "name": "STRIKE FET",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A06_STRIKE_FET.png",
+      "spec": "04_Machine_Spec/plugins/A06.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A07",
+      "name": "LUMEN OPTO",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A07_LUMEN_OPTO.png",
+      "spec": "04_Machine_Spec/plugins/A07.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A08",
+      "name": "BUSFORGE VCA",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A08_BUSFORGE_VCA.png",
+      "spec": "04_Machine_Spec/plugins/A08.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A09",
+      "name": "SILK PASSIVE EQ",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A09_SILK_PASSIVE_EQ.png",
+      "spec": "04_Machine_Spec/plugins/A09.json",
+      "standalone": true,
+      "rack_eligible": true
+    },
+    {
+      "id": "A10",
+      "name": "PLATE FOUR",
+      "series": "analog",
+      "image": "02_Designs/02_Analog/A10_PLATE_FOUR.png",
+      "spec": "04_Machine_Spec/plugins/A10.json",
+      "standalone": true,
+      "rack_eligible": true
+    }
+  ],
+  "rack": {
+    "id": "R01",
+    "name": "Analog Mix Rack",
+    "image": "02_Designs/03_Rack/R01_Analog_Mix_Rack.png",
+    "allowed_modules": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  }
+}

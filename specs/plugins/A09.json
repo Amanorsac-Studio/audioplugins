@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A09",
+  "display_name": "SILK PASSIVE EQ",
+  "series": "Analog",
+  "primary_role": "Passive Program Equalizer",
+  "feature_set": [
+    "Broad passive curves",
+    "Selectable frequencies",
+    "Tube/solid output",
+    "Input drive",
+    "Stereo/MS",
+    "Auto gain"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "low_freq\nLow Frequency",
+      "label": "low_freq\nLow Frequency",
+      "type": "float",
+      "range_or_values": "20 to 160 Hz",
+      "default": "60 Hz",
+      "automatable": true
+    },
+    {
+      "id": "low_boost\nLow Boost",
+      "label": "low_boost\nLow Boost",
+      "type": "float",
+      "range_or_values": "0 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "low_cut\nLow Cut",
+      "label": "low_cut\nLow Cut",
+      "type": "float",
+      "range_or_values": "0 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "mid_freq\nMid Presence Frequency",
+      "label": "mid_freq\nMid Presence Frequency",
+      "type": "float",
+      "range_or_values": "200 to 5000 Hz",
+      "default": "1200 Hz",
+      "automatable": true
+    },
+    {
+      "id": "mid_gain\nMid Presence",
+      "label": "mid_gain\nMid Presence",
+      "type": "float",
+      "range_or_values": "-10 to 10 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "high_freq\nHigh Frequency",
+      "label": "high_freq\nHigh Frequency",
+      "type": "float",
+      "range_or_values": "3000 to 20000 Hz",
+      "default": "10000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "high_boost\nHigh Boost",
+      "label": "high_boost\nHigh Boost",
+      "type": "float",
+      "range_or_values": "0 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "high_cut\nHigh Cut",
+      "label": "high_cut\nHigh Cut",
+      "type": "float",
+      "range_or_values": "0 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "output_stage\nOutput Stage",
+      "label": "output_stage\nOutput Stage",
+      "type": "enum",
+      "range_or_values": "tube / solid",
+      "default": "tube",
+      "automatable": true
+    },
+    {
+      "id": "drive\nDrive",
+      "label": "drive\nDrive",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "10 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-18 to 18 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "float",
+      "range_or_values": "20 to 300 Hz",
+      "default": "20 Hz",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A09_SILK_PASSIVE_EQ.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

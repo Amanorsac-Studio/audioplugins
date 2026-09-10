@@ -1,0 +1,594 @@
+{
+  "plugin_id": "A01",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "note": "Starting points, not destinations. Every value is authored for this engine; nothing here is copied from another maker's plug-in.",
+  "presets": [
+    {
+      "name": "Chest And Clarity",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Male Vocal",
+        "Intent": "Body",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 80,
+        "filter_in": true,
+        "band.low.freq": 115,
+        "band.low.gain": 1.5,
+        "band.low.q": 0.9,
+        "band.lowmid.freq": 420,
+        "band.lowmid.gain": -3,
+        "band.lowmid.q": 1.3,
+        "band.highmid.freq": 3600,
+        "band.highmid.gain": 2.5,
+        "band.highmid.q": 0.9,
+        "band.high.freq": 10000,
+        "band.high.gain": 2,
+        "character": "console",
+        "drive": 2.5
+      }
+    },
+    {
+      "name": "Opening Statement",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Presence",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 90,
+        "filter_in": true,
+        "band.low.gain": -1.5,
+        "band.low.freq": 120,
+        "band.low.q": 0.8,
+        "band.lowmid.freq": 340,
+        "band.lowmid.gain": -2.5,
+        "band.lowmid.q": 1.1,
+        "band.mid.freq": 1100,
+        "band.mid.gain": 0.5,
+        "band.highmid.freq": 4200,
+        "band.highmid.gain": 3,
+        "band.highmid.q": 0.8,
+        "band.high.freq": 12000,
+        "band.high.gain": 3,
+        "band.high.slope": 0.6,
+        "character": "console",
+        "drive": 2
+      }
+    },
+    {
+      "name": "Silk Ribbon",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Female Vocal",
+        "Intent": "Air",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 105,
+        "filter_in": true,
+        "band.low.gain": -1,
+        "band.low.freq": 130,
+        "band.lowmid.freq": 400,
+        "band.lowmid.gain": -1.5,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 3000,
+        "band.highmid.gain": 1.5,
+        "band.highmid.q": 0.7,
+        "band.high.freq": 14000,
+        "band.high.gain": 4,
+        "band.high.slope": 0.5,
+        "character": "tube",
+        "drive": 3
+      }
+    },
+    {
+      "name": "Concrete Kick",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Punch",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 28,
+        "filter_in": true,
+        "band.low.freq": 55,
+        "band.low.gain": 4,
+        "band.low.q": 1.1,
+        "band.lowmid.freq": 360,
+        "band.lowmid.gain": -4.5,
+        "band.lowmid.q": 1.4,
+        "band.mid.freq": 900,
+        "band.mid.gain": -1,
+        "band.highmid.freq": 3600,
+        "band.highmid.gain": 3.5,
+        "band.highmid.q": 1,
+        "band.high.freq": 9000,
+        "band.high.gain": 1,
+        "character": "console",
+        "drive": 3
+      }
+    },
+    {
+      "name": "Crack Of Dawn",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Attack",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Tape"
+      },
+      "values": {
+        "hpf": 60,
+        "filter_in": true,
+        "band.low.freq": 180,
+        "band.low.gain": 2.5,
+        "band.low.q": 1,
+        "band.lowmid.freq": 520,
+        "band.lowmid.gain": -3,
+        "band.lowmid.q": 1.2,
+        "band.highmid.freq": 4600,
+        "band.highmid.gain": 4,
+        "band.highmid.q": 0.9,
+        "band.high.freq": 10500,
+        "band.high.gain": 2.5,
+        "character": "tape",
+        "drive": 4
+      }
+    },
+    {
+      "name": "Room With A View",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Room",
+        "Intent": "Colour",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Tape"
+      },
+      "values": {
+        "hpf": 130,
+        "filter_in": true,
+        "lpf": 14000,
+        "band.lowmid.freq": 420,
+        "band.lowmid.gain": -4,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 2800,
+        "band.highmid.gain": 2,
+        "band.high.freq": 9000,
+        "band.high.gain": 3,
+        "character": "tape",
+        "drive": 6,
+        "mix": 85
+      }
+    },
+    {
+      "name": "Ironwood Bass",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass Guitar",
+        "Intent": "Focus",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 38,
+        "filter_in": true,
+        "lpf": 9000,
+        "band.low.freq": 75,
+        "band.low.gain": 3,
+        "band.low.q": 0.9,
+        "band.lowmid.freq": 260,
+        "band.lowmid.gain": -2.5,
+        "band.lowmid.q": 1.2,
+        "band.mid.freq": 850,
+        "band.mid.gain": 2,
+        "band.mid.q": 1,
+        "band.highmid.freq": 2400,
+        "band.highmid.gain": 1,
+        "character": "console",
+        "drive": 3
+      }
+    },
+    {
+      "name": "Sub Contract",
+      "category": "Bass",
+      "tags": {
+        "Source": "808",
+        "Intent": "Weight",
+        "Genre": "Hip Hop",
+        "Intensity": "Strong",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 22,
+        "filter_in": true,
+        "lpf": 6500,
+        "band.low.freq": 45,
+        "band.low.gain": 5,
+        "band.low.q": 1.2,
+        "band.lowmid.freq": 320,
+        "band.lowmid.gain": -3.5,
+        "band.lowmid.q": 1.3,
+        "band.mid.gain": -1,
+        "character": "tube",
+        "drive": 2.5
+      }
+    },
+    {
+      "name": "Amp In The Hall",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Focus",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 110,
+        "filter_in": true,
+        "lpf": 8000,
+        "band.low.gain": -2,
+        "band.low.freq": 140,
+        "band.lowmid.freq": 480,
+        "band.lowmid.gain": -1.5,
+        "band.mid.freq": 1300,
+        "band.mid.gain": 2.5,
+        "band.mid.q": 1.2,
+        "band.highmid.freq": 3200,
+        "band.highmid.gain": -2,
+        "band.highmid.q": 1.4,
+        "character": "tube",
+        "drive": 3.5
+      }
+    },
+    {
+      "name": "Nylon And Steel",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Sparkle",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "Clean"
+      },
+      "values": {
+        "hpf": 95,
+        "filter_in": true,
+        "band.lowmid.freq": 270,
+        "band.lowmid.gain": -3,
+        "band.lowmid.q": 1.1,
+        "band.mid.freq": 900,
+        "band.mid.gain": -1,
+        "band.highmid.freq": 3200,
+        "band.highmid.gain": 2,
+        "band.highmid.q": 0.8,
+        "band.high.freq": 12500,
+        "band.high.gain": 3.5,
+        "band.high.slope": 0.6,
+        "character": "clean"
+      }
+    },
+    {
+      "name": "Glass Piano",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Clarity",
+        "Genre": "Ballad",
+        "Intensity": "Gentle",
+        "Character": "Clean"
+      },
+      "values": {
+        "hpf": 45,
+        "filter_in": true,
+        "band.lowmid.freq": 300,
+        "band.lowmid.gain": -2,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 3500,
+        "band.highmid.gain": 1.5,
+        "band.highmid.q": 0.7,
+        "band.high.freq": 13000,
+        "band.high.gain": 3,
+        "band.high.slope": 0.5,
+        "character": "clean",
+        "stereo_mode": "ms"
+      }
+    },
+    {
+      "name": "Rhodes And Wurli",
+      "category": "Keys",
+      "tags": {
+        "Source": "Electric Piano",
+        "Intent": "Clarity",
+        "Genre": "Ballad",
+        "Intensity": "Gentle",
+        "Character": "Clean"
+      },
+      "values": {
+        "hpf": 70,
+        "filter_in": true,
+        "band.lowmid.freq": 300,
+        "band.lowmid.gain": -2,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 3500,
+        "band.highmid.gain": 1.5,
+        "band.highmid.q": 0.7,
+        "band.high.freq": 13000,
+        "band.high.gain": 2,
+        "band.high.slope": 0.5,
+        "character": "tube",
+        "stereo_mode": "ms",
+        "band.mid.freq": 800,
+        "band.mid.gain": 1.5,
+        "drive": 3
+      }
+    },
+    {
+      "name": "Brass And Breath",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Horns",
+        "Intent": "Presence",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 115,
+        "filter_in": true,
+        "band.lowmid.freq": 380,
+        "band.lowmid.gain": -2.5,
+        "band.lowmid.q": 1.1,
+        "band.mid.freq": 1600,
+        "band.mid.gain": 1,
+        "band.highmid.freq": 2600,
+        "band.highmid.gain": 2,
+        "band.highmid.q": 0.9,
+        "band.high.freq": 9500,
+        "band.high.gain": 2,
+        "character": "console",
+        "drive": 2
+      }
+    },
+    {
+      "name": "Sax And Breath",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Saxophone",
+        "Intent": "Presence",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 115,
+        "filter_in": true,
+        "band.lowmid.freq": 380,
+        "band.lowmid.gain": -2.5,
+        "band.lowmid.q": 1.1,
+        "band.mid.freq": 1600,
+        "band.mid.gain": 1,
+        "band.highmid.freq": 3000,
+        "band.highmid.gain": 1.5,
+        "band.highmid.q": 0.9,
+        "band.high.freq": 9500,
+        "band.high.gain": 3,
+        "character": "console",
+        "drive": 2
+      }
+    },
+    {
+      "name": "Strings In Silk",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Air",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 60,
+        "filter_in": true,
+        "band.low.gain": -1,
+        "band.low.freq": 130,
+        "band.lowmid.freq": 400,
+        "band.lowmid.gain": -2.5,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 3000,
+        "band.highmid.gain": 1.5,
+        "band.highmid.q": 0.7,
+        "band.high.freq": 14000,
+        "band.high.gain": 3,
+        "band.high.slope": 0.5,
+        "character": "tube",
+        "drive": 3
+      }
+    },
+    {
+      "name": "Live Room Bus",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Colour",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Tape"
+      },
+      "values": {
+        "hpf": 40,
+        "filter_in": true,
+        "lpf": 14000,
+        "band.lowmid.freq": 420,
+        "band.lowmid.gain": -2,
+        "band.lowmid.q": 1,
+        "band.highmid.freq": 2800,
+        "band.highmid.gain": 2,
+        "band.high.freq": 9000,
+        "band.high.gain": 3,
+        "character": "tape",
+        "drive": 3,
+        "mix": 100
+      }
+    },
+    {
+      "name": "Wide Open Spaces",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Stereo Bus",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Clean"
+      },
+      "values": {
+        "stereo_mode": "ms",
+        "hpf": 26,
+        "filter_in": true,
+        "band.low.freq": 70,
+        "band.low.gain": 1,
+        "band.low.q": 0.6,
+        "band.mid.freq": 1000,
+        "band.mid.gain": -0.5,
+        "band.high.freq": 12000,
+        "band.high.gain": 2.5,
+        "band.high.slope": 0.5,
+        "character": "clean",
+        "oversampling": "4x"
+      }
+    },
+    {
+      "name": "Final Polish",
+      "category": "Master",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "hpf": 24,
+        "filter_in": true,
+        "band.low.freq": 60,
+        "band.low.gain": 1,
+        "band.low.q": 0.6,
+        "band.lowmid.freq": 300,
+        "band.lowmid.gain": -1,
+        "band.lowmid.q": 0.8,
+        "band.highmid.freq": 4000,
+        "band.highmid.gain": 0.5,
+        "band.highmid.q": 0.6,
+        "band.high.freq": 14000,
+        "band.high.gain": 1.5,
+        "band.high.slope": 0.5,
+        "character": "console",
+        "drive": 1.5,
+        "oversampling": "4x"
+      }
+    },
+    {
+      "name": "Master Air",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Clean"
+      },
+      "values": {
+        "stereo_mode": "ms",
+        "hpf": 26,
+        "filter_in": true,
+        "band.low.freq": 70,
+        "band.low.gain": 0.5,
+        "band.low.q": 0.6,
+        "band.mid.freq": 1000,
+        "band.mid.gain": -0.5,
+        "band.high.freq": 12000,
+        "band.high.gain": 2,
+        "band.high.slope": 0.5,
+        "character": "clean",
+        "oversampling": "4x"
+      }
+    },
+    {
+      "name": "Old Radio Bus",
+      "category": "Creative",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Effect",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 220,
+        "lpf": 4500,
+        "filter_in": true,
+        "filter_slope": "24",
+        "band.mid.freq": 1400,
+        "band.mid.gain": 6,
+        "band.mid.q": 2.2,
+        "band.low.enabled": false,
+        "band.high.enabled": false,
+        "character": "tube",
+        "drive": 4,
+        "auto_gain": true
+      }
+    },
+    {
+      "name": "Telephone Booth",
+      "category": "Creative",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Effect",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "Tube"
+      },
+      "values": {
+        "hpf": 300,
+        "lpf": 3000,
+        "filter_in": true,
+        "filter_slope": "24",
+        "band.mid.freq": 1400,
+        "band.mid.gain": 6,
+        "band.mid.q": 2.2,
+        "band.low.enabled": false,
+        "band.high.enabled": false,
+        "character": "tube",
+        "drive": 6.5,
+        "auto_gain": true
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative"
+  ]
+}

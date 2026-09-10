@@ -1,0 +1,115 @@
+name: Amanorsac Analog Bundle
+
+# Builds the ten analog plug-ins and packages an installer for each platform.
+# macOS cannot be cross-built from Windows, so the mac job runs on a real
+# macOS runner here. That is the only way this repository produces a mac
+# installer today.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Bundle version, e.g. 1.0.0"
+        required: true
+        default: "1.0.0"
+  push:
+    tags:
+      - "analog-v*"
+
+env:
+  BUNDLE_NAME: "Amanorsac Analog Bundle"
+  ANALOG_TARGETS: >-
+    AmanorsacA01 AmanorsacA02 AmanorsacA03 AmanorsacA04 AmanorsacA05
+    AmanorsacA06 AmanorsacA07 AmanorsacA08 AmanorsacA09 AmanorsacA10
+
+jobs:
+  # ------------------------------------------------------------------ Windows
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: v
+        shell: bash
+        run: echo "version=${{ github.event.inputs.version || github.ref_name }}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DBUILD_TESTING=ON
+
+      - name: Build plug-ins
+        shell: bash
+        run: |
+          targets=""
+          for t in $ANALOG_TARGETS; do targets="$targets --target ${t}_VST3 ${t}_Standalone"; done
+          cmake --build build --config Release $targets --parallel 4
+
+      # The audit is the release gate: every parameter audible, output finite
+      # at every rate, bypass and mix transparent, every factory preset loads.
+      - name: Analog engine audit
+        run: |
+          cmake --build build --config Release --target AmanorsacAnalogEngineAudit
+          ./build/Release/AmanorsacAnalogEngineAudit.exe
+
+      - name: Stage payload
+        shell: bash
+        run: |
+          stage="installer/stage/Amanorsac Analog Bundle"
+          mkdir -p "$stage/VST3" "$stage/Standalone"
+          for t in $ANALOG_TARGETS; do
+            cp -r build/${t}_artefacts/Release/VST3/*.vst3 "$stage/VST3/" 2>/dev/null || true
+            cp -r "build/${t}_artefacts/Release/Standalone/"*.exe "$stage/Standalone/" 2>/dev/null || true
+          done
+          cp docs/marketing/ANALOG_BUNDLE_WEBSITE_COPY.md "$stage/" 2>/dev/null || true
+          ls -R "$stage" | head -50
+
+      - name: Package installer
+        shell: pwsh
+        run: |
+          $version = "${{ steps.v.outputs.version }}"
+          ./installer/build-windows-installer.ps1 -Version $version -Stage "installer/stage/Amanorsac Analog Bundle"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: analog-bundle-windows
+          path: dist/*.exe*
+          if-no-files-found: error
+
+  # -------------------------------------------------------------------- macOS
+  macos:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: v
+        run: echo "version=${{ github.event.inputs.version || github.ref_name }}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure
+        run: cmake -S . -B build -G Xcode -DBUILD_TESTING=ON
+
+      - name: Build plug-ins
+        run: |
+          targets=""
+          for t in $ANALOG_TARGETS; do targets="$targets --target ${t}_VST3 ${t}_AU ${t}_Standalone"; done
+          cmake --build build --config Release $targets --parallel 4
+
+      - name: Analog engine audit
+        run: |
+          cmake --build build --config Release --target AmanorsacAnalogEngineAudit
+          ./build/Release/AmanorsacAnalogEngineAudit
+
+      - name: Package installer
+        run: ./installer/build-macos-installer.sh "${{ steps.v.outputs.version }}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: analog-bundle-macos
+          path: dist/*.pkg
+          if-no-files-found: error
+
+  # Both installers are unsigned. Windows SmartScreen will warn and macOS
+  # Gatekeeper will refuse to open the package without a right-click Open.
+  # Signing is a company-level P0 in the launch audit: an Authenticode
+  # certificate and an Apple Developer ID must be added as repository secrets
+  # and wired into the two package steps before these go on sale.

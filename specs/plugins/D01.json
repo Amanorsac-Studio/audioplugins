@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D01",
+  "display_name": "PRISM EQ",
+  "series": "Digital",
+  "primary_role": "Precision Equalizer",
+  "feature_set": [
+    "24 bands",
+    "Dynamic per-band processing",
+    "Stereo / L / R / Mid / Side",
+    "Band solo / bypass / delta",
+    "Auto gain",
+    "Spectrum analyzer"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input_gain\nInput Gain",
+      "label": "input_gain\nInput Gain",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "output_gain\nOutput Gain",
+      "label": "output_gain\nOutput Gain",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "auto_gain\nAuto Gain",
+      "label": "auto_gain\nAuto Gain",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "analyzer\nAnalyzer",
+      "label": "analyzer\nAnalyzer",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "analyzer_speed\nAnalyzer Speed",
+      "label": "analyzer_speed\nAnalyzer Speed",
+      "type": "enum",
+      "range_or_values": "slow / medium / fast",
+      "default": "medium",
+      "automatable": true
+    },
+    {
+      "id": "processing_quality\nQuality",
+      "label": "processing_quality\nQuality",
+      "type": "enum",
+      "range_or_values": "eco / normal / high / linear-phase",
+      "default": "high",
+      "automatable": true
+    },
+    {
+      "id": "oversampling\nOversampling",
+      "label": "oversampling\nOversampling",
+      "type": "enum",
+      "range_or_values": "off / 2x / 4x / 8x",
+      "default": "2x",
+      "automatable": true
+    },
+    {
+      "id": "color_mode\nColor",
+      "label": "color_mode\nColor",
+      "type": "enum",
+      "range_or_values": "clean / console / tube / tape",
+      "default": "clean",
+      "automatable": true
+    },
+    {
+      "id": "color_drive\nColor Drive",
+      "label": "color_drive\nColor Drive",
+      "type": "float",
+      "range_or_values": "0 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "color_amount\nColor Amount",
+      "label": "color_amount\nColor Amount",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "band.type\nBand Type",
+      "label": "band.type\nBand Type",
+      "type": "enum",
+      "range_or_values": "bell / low_shelf / high_shelf / low_cut / high_cut / notch / band_pass / tilt",
+      "default": "bell",
+      "automatable": true
+    },
+    {
+      "id": "band.frequency\nBand Frequency",
+      "label": "band.frequency\nBand Frequency",
+      "type": "float",
+      "range_or_values": "20 to 40000 Hz",
+      "default": "1000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.gain\nBand Gain",
+      "label": "band.gain\nBand Gain",
+      "type": "float",
+      "range_or_values": "-30 to 30 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.q\nBand Q",
+      "label": "band.q\nBand Q",
+      "type": "float",
+      "range_or_values": "0.05 to 50",
+      "default": "1.0",
+      "automatable": true
+    },
+    {
+      "id": "band.slope\nFilter Slope",
+      "label": "band.slope\nFilter Slope",
+      "type": "float",
+      "range_or_values": "6 to 96 dB/oct",
+      "default": "24 dB/oct",
+      "automatable": true
+    },
+    {
+      "id": "band.stereo_mode\nBand Stereo Mode",
+      "label": "band.stereo_mode\nBand Stereo Mode",
+      "type": "enum",
+      "range_or_values": "stereo / left / right / mid / side",
+      "default": "stereo",
+      "automatable": true
+    },
+    {
+      "id": "band.dynamic_mode\nDynamic Mode",
+      "label": "band.dynamic_mode\nDynamic Mode",
+      "type": "enum",
+      "range_or_values": "off / downward / upward",
+      "default": "off",
+      "automatable": true
+    },
+    {
+      "id": "band.dynamic_range\nDynamic Range",
+      "label": "band.dynamic_range\nDynamic Range",
+      "type": "float",
+      "range_or_values": "0 to 24 dB",
+      "default": "6 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.threshold\nDynamic Threshold",
+      "label": "band.threshold\nDynamic Threshold",
+      "type": "float",
+      "range_or_values": "-72 to 0 dB",
+      "default": "-24 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.attack\nDynamic Attack",
+      "label": "band.attack\nDynamic Attack",
+      "type": "float",
+      "range_or_values": "0.1 to 200 ms",
+      "default": "15 ms",
+      "automatable": true
+    },
+    {
+      "id": "band.release\nDynamic Release",
+      "label": "band.release\nDynamic Release",
+      "type": "float",
+      "range_or_values": "10 to 3000 ms",
+      "default": "220 ms",
+      "automatable": true
+    },
+    {
+      "id": "band.enabled\nBand Enabled",
+      "label": "band.enabled\nBand Enabled",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "band.solo\nBand Solo",
+      "label": "band.solo\nBand Solo",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "band.delta\nBand Delta",
+      "label": "band.delta\nBand Delta",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D01_PRISM_EQ.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

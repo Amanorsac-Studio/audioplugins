@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A06",
+  "display_name": "STRIKE FET",
+  "series": "Analog",
+  "primary_role": "FET Compressor",
+  "feature_set": [
+    "Fast FET behavior",
+    "All-buttons creative mode",
+    "SC HPF",
+    "External sidechain",
+    "Saturation",
+    "GR VU"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "ratio\nRatio",
+      "label": "ratio\nRatio",
+      "type": "enum",
+      "range_or_values": "2:1 / 4:1 / 8:1 / 12:1 / 20:1 / all",
+      "default": "4:1",
+      "automatable": true
+    },
+    {
+      "id": "attack\nAttack",
+      "label": "attack\nAttack",
+      "type": "float",
+      "range_or_values": "0.02 to 20 ms",
+      "default": "1 ms",
+      "automatable": true
+    },
+    {
+      "id": "release\nRelease",
+      "label": "release\nRelease",
+      "type": "float",
+      "range_or_values": "20 to 1500 ms",
+      "default": "200 ms",
+      "automatable": true
+    },
+    {
+      "id": "makeup\nMakeup",
+      "label": "makeup\nMakeup",
+      "type": "float",
+      "range_or_values": "-12 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "sc_hpf\nSC HPF",
+      "label": "sc_hpf\nSC HPF",
+      "type": "float",
+      "range_or_values": "20 to 500 Hz",
+      "default": "80 Hz",
+      "automatable": true
+    },
+    {
+      "id": "external_sc\nExternal SC",
+      "label": "external_sc\nExternal SC",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "saturation\nSaturation",
+      "label": "saturation\nSaturation",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "15 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A06_STRIKE_FET.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

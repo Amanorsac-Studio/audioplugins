@@ -1,0 +1,704 @@
+{
+  "id": "A02",
+  "name": "IRON PRE",
+  "width": 1536,
+  "height": 910,
+  "regions": [
+    {
+      "id": "input_trim",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 155,
+      "cy": 274,
+      "r": 66,
+      "bounds": [
+        89,
+        208,
+        133,
+        133
+      ]
+    },
+    {
+      "id": "output_trim",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1382,
+      "cy": 275,
+      "r": 66,
+      "bounds": [
+        1316,
+        209,
+        133,
+        133
+      ]
+    },
+    {
+      "id": "hpf",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 158,
+      "cy": 575,
+      "r": 45,
+      "bounds": [
+        113,
+        530,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1380,
+      "cy": 471,
+      "r": 48,
+      "bounds": [
+        1332,
+        423,
+        97,
+        97
+      ]
+    },
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 420,
+      "cy": 529,
+      "r": 61,
+      "bounds": [
+        359,
+        468,
+        123,
+        123
+      ]
+    },
+    {
+      "id": "impedance",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 604,
+      "cy": 529,
+      "r": 61,
+      "bounds": [
+        543,
+        468,
+        123,
+        123
+      ]
+    },
+    {
+      "id": "drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 785,
+      "cy": 530,
+      "r": 61,
+      "bounds": [
+        724,
+        469,
+        123,
+        123
+      ]
+    },
+    {
+      "id": "output",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 970,
+      "cy": 530,
+      "r": 61,
+      "bounds": [
+        909,
+        469,
+        123,
+        123
+      ]
+    },
+    {
+      "id": "low_tone",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 453,
+      "cy": 768,
+      "r": 60,
+      "bounds": [
+        393,
+        708,
+        121,
+        121
+      ]
+    },
+    {
+      "id": "high_tone",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 680,
+      "cy": 768,
+      "r": 60,
+      "bounds": [
+        620,
+        708,
+        121,
+        121
+      ]
+    },
+    {
+      "id": "saturation",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 899,
+      "cy": 768,
+      "r": 60,
+      "bounds": [
+        839,
+        708,
+        121,
+        121
+      ]
+    },
+    {
+      "id": "preset_previous",
+      "kind": "button",
+      "shape": "rect",
+      "x": 510,
+      "y": 78,
+      "w": 64,
+      "h": 48,
+      "bounds": [
+        510,
+        78,
+        64,
+        48
+      ]
+    },
+    {
+      "id": "preset_name",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 574,
+      "y": 81,
+      "w": 339,
+      "h": 39,
+      "bounds": [
+        574,
+        81,
+        339,
+        39
+      ]
+    },
+    {
+      "id": "preset_next",
+      "kind": "button",
+      "shape": "rect",
+      "x": 914,
+      "y": 78,
+      "w": 61,
+      "h": 48,
+      "bounds": [
+        914,
+        78,
+        61,
+        48
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 999,
+      "y": 78,
+      "w": 76,
+      "h": 48,
+      "bounds": [
+        999,
+        78,
+        76,
+        48
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1075,
+      "y": 78,
+      "w": 69,
+      "h": 48,
+      "bounds": [
+        1075,
+        78,
+        69,
+        48
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1147,
+      "y": 78,
+      "w": 71,
+      "h": 48,
+      "bounds": [
+        1147,
+        78,
+        71,
+        48
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1221,
+      "y": 78,
+      "w": 65,
+      "h": 48,
+      "bounds": [
+        1221,
+        78,
+        65,
+        48
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1289,
+      "y": 78,
+      "w": 64,
+      "h": 48,
+      "bounds": [
+        1289,
+        78,
+        64,
+        48
+      ]
+    },
+    {
+      "id": "save",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1356,
+      "y": 78,
+      "w": 68,
+      "h": 48,
+      "bounds": [
+        1356,
+        78,
+        68,
+        48
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1429,
+      "y": 78,
+      "w": 63,
+      "h": 48,
+      "bounds": [
+        1429,
+        78,
+        63,
+        48
+      ]
+    },
+    {
+      "id": "phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 121,
+      "y": 386,
+      "w": 74,
+      "h": 46,
+      "bounds": [
+        121,
+        386,
+        74,
+        46
+      ]
+    },
+    {
+      "id": "hpf_lamp",
+      "kind": "lamp",
+      "shape": "rect",
+      "x": 218,
+      "y": 478,
+      "w": 36,
+      "h": 35,
+      "bounds": [
+        218,
+        478,
+        36,
+        35
+      ]
+    },
+    {
+      "id": "input_lamp",
+      "kind": "lamp",
+      "shape": "rect",
+      "x": 142,
+      "y": 660,
+      "w": 35,
+      "h": 36,
+      "bounds": [
+        142,
+        660,
+        35,
+        36
+      ]
+    },
+    {
+      "id": "transformer_a",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1081,
+      "y": 471,
+      "w": 99,
+      "h": 40,
+      "bounds": [
+        1081,
+        471,
+        99,
+        40
+      ]
+    },
+    {
+      "id": "transformer_b",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1081,
+      "y": 512,
+      "w": 99,
+      "h": 40,
+      "bounds": [
+        1081,
+        512,
+        99,
+        40
+      ]
+    },
+    {
+      "id": "transformer_c",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1081,
+      "y": 551,
+      "w": 99,
+      "h": 39,
+      "bounds": [
+        1081,
+        551,
+        99,
+        39
+      ]
+    },
+    {
+      "id": "transformer_lamp",
+      "kind": "lamp",
+      "shape": "rect",
+      "x": 1181,
+      "y": 478,
+      "w": 23,
+      "h": 26,
+      "bounds": [
+        1181,
+        478,
+        23,
+        26
+      ]
+    },
+    {
+      "id": "pad_0",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1076,
+      "y": 631,
+      "w": 52,
+      "h": 36,
+      "bounds": [
+        1076,
+        631,
+        52,
+        36
+      ]
+    },
+    {
+      "id": "pad_minus10",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1134,
+      "y": 631,
+      "w": 60,
+      "h": 36,
+      "bounds": [
+        1134,
+        631,
+        60,
+        36
+      ]
+    },
+    {
+      "id": "pad_minus20",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1081,
+      "y": 670,
+      "w": 106,
+      "h": 37,
+      "bounds": [
+        1081,
+        670,
+        106,
+        37
+      ]
+    },
+    {
+      "id": "oversample_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1076,
+      "y": 748,
+      "w": 41,
+      "h": 35,
+      "bounds": [
+        1076,
+        748,
+        41,
+        35
+      ]
+    },
+    {
+      "id": "oversample_2x",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1119,
+      "y": 748,
+      "w": 40,
+      "h": 35,
+      "bounds": [
+        1119,
+        748,
+        40,
+        35
+      ]
+    },
+    {
+      "id": "oversample_4x",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1161,
+      "y": 748,
+      "w": 40,
+      "h": 35,
+      "bounds": [
+        1161,
+        748,
+        40,
+        35
+      ]
+    },
+    {
+      "id": "link_lr",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1078,
+      "y": 822,
+      "w": 59,
+      "h": 36,
+      "bounds": [
+        1078,
+        822,
+        59,
+        36
+      ]
+    },
+    {
+      "id": "link_ms",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1140,
+      "y": 822,
+      "w": 60,
+      "h": 36,
+      "bounds": [
+        1140,
+        822,
+        60,
+        36
+      ]
+    },
+    {
+      "id": "input_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 376,
+      "y": 598,
+      "w": 91,
+      "h": 29,
+      "bounds": [
+        376,
+        598,
+        91,
+        29
+      ]
+    },
+    {
+      "id": "impedance_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 560,
+      "y": 598,
+      "w": 91,
+      "h": 29,
+      "bounds": [
+        560,
+        598,
+        91,
+        29
+      ]
+    },
+    {
+      "id": "drive_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 741,
+      "y": 598,
+      "w": 91,
+      "h": 29,
+      "bounds": [
+        741,
+        598,
+        91,
+        29
+      ]
+    },
+    {
+      "id": "output_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 926,
+      "y": 598,
+      "w": 90,
+      "h": 29,
+      "bounds": [
+        926,
+        598,
+        90,
+        29
+      ]
+    },
+    {
+      "id": "low_tone_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 410,
+      "y": 825,
+      "w": 90,
+      "h": 29,
+      "bounds": [
+        410,
+        825,
+        90,
+        29
+      ]
+    },
+    {
+      "id": "high_tone_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 637,
+      "y": 825,
+      "w": 89,
+      "h": 29,
+      "bounds": [
+        637,
+        825,
+        89,
+        29
+      ]
+    },
+    {
+      "id": "saturation_value",
+      "kind": "readout",
+      "shape": "rect",
+      "x": 855,
+      "y": 825,
+      "w": 89,
+      "h": 29,
+      "bounds": [
+        855,
+        825,
+        89,
+        29
+      ]
+    },
+    {
+      "id": "vu_meter",
+      "kind": "meter",
+      "shape": "rect",
+      "x": 491,
+      "y": 181,
+      "w": 548,
+      "h": 214,
+      "bounds": [
+        491,
+        181,
+        548,
+        214
+      ]
+    },
+    {
+      "id": "led_left",
+      "kind": "meter",
+      "shape": "rect",
+      "x": 1305,
+      "y": 602,
+      "w": 32,
+      "h": 205,
+      "bounds": [
+        1305,
+        602,
+        32,
+        205
+      ]
+    },
+    {
+      "id": "led_right",
+      "kind": "meter",
+      "shape": "rect",
+      "x": 1428,
+      "y": 602,
+      "w": 32,
+      "h": 205,
+      "bounds": [
+        1428,
+        602,
+        32,
+        205
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/05_High_Fidelity_Review_Candidates/Analog/A02_IRON_PRE_HF_REVIEW.png",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "crop": [
+    0,
+    0,
+    1536,
+    910
+  ],
+  "faceplate": "png/A02_IRON_PRE_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "85effa0554de4724eb91bc35c64657b054f7e38b9d6afdf219505752d7213ca9"
+}

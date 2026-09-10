@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D02",
+  "display_name": "FLUX DYNAMIC EQ",
+  "series": "Digital",
+  "primary_role": "Adaptive Dynamic Equalizer",
+  "feature_set": [
+    "Upward/downward dynamics",
+    "External sidechain",
+    "Adaptive threshold",
+    "Per-band stereo mode",
+    "Auto learn",
+    "Delta monitoring"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input_gain\nInput Gain",
+      "label": "input_gain\nInput Gain",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "output_gain\nOutput Gain",
+      "label": "output_gain\nOutput Gain",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band_count\nBands",
+      "label": "band_count\nBands",
+      "type": "int",
+      "range_or_values": "1 to 12",
+      "default": "4",
+      "automatable": true
+    },
+    {
+      "id": "adaptive\nAdaptive Mode",
+      "label": "adaptive\nAdaptive Mode",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "external_sc\nExternal Sidechain",
+      "label": "external_sc\nExternal Sidechain",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "band.frequency\nFrequency",
+      "label": "band.frequency\nFrequency",
+      "type": "float",
+      "range_or_values": "20 to 40000 Hz",
+      "default": "1000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.q\nQ",
+      "label": "band.q\nQ",
+      "type": "float",
+      "range_or_values": "0.1 to 24",
+      "default": "1.2",
+      "automatable": true
+    },
+    {
+      "id": "band.threshold\nThreshold",
+      "label": "band.threshold\nThreshold",
+      "type": "float",
+      "range_or_values": "-72 to 0 dB",
+      "default": "-24 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.range\nRange",
+      "label": "band.range\nRange",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "-4 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.ratio\nRatio",
+      "label": "band.ratio\nRatio",
+      "type": "float",
+      "range_or_values": "0.25 to 20",
+      "default": "2",
+      "automatable": true
+    },
+    {
+      "id": "band.attack\nAttack",
+      "label": "band.attack\nAttack",
+      "type": "float",
+      "range_or_values": "0.1 to 500 ms",
+      "default": "20 ms",
+      "automatable": true
+    },
+    {
+      "id": "band.release\nRelease",
+      "label": "band.release\nRelease",
+      "type": "float",
+      "range_or_values": "5 to 5000 ms",
+      "default": "250 ms",
+      "automatable": true
+    },
+    {
+      "id": "band.stereo_mode\nStereo Mode",
+      "label": "band.stereo_mode\nStereo Mode",
+      "type": "enum",
+      "range_or_values": "stereo / left / right / mid / side",
+      "default": "stereo",
+      "automatable": true
+    },
+    {
+      "id": "band.direction\nDirection",
+      "label": "band.direction\nDirection",
+      "type": "enum",
+      "range_or_values": "down / up",
+      "default": "down",
+      "automatable": true
+    },
+    {
+      "id": "band.listen\nListen",
+      "label": "band.listen\nListen",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "auto_learn\nAuto Learn",
+      "label": "auto_learn\nAuto Learn",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "delta\nDelta",
+      "label": "delta\nDelta",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D02_FLUX_DYNAMIC_EQ.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

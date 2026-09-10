@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A03",
+  "display_name": "CONSOLE ONE",
+  "series": "Analog",
+  "primary_role": "Console Channel Color",
+  "feature_set": [
+    "Preamp + 3-band EQ",
+    "HPF",
+    "Console bus color",
+    "Noise optional",
+    "Stereo/dual/MS",
+    "Mix control"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "drive\nDrive",
+      "label": "drive\nDrive",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "20 %",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "float",
+      "range_or_values": "20 to 300 Hz",
+      "default": "40 Hz",
+      "automatable": true
+    },
+    {
+      "id": "low\nLow",
+      "label": "low\nLow",
+      "type": "float",
+      "range_or_values": "-12 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "mid_freq\nMid Frequency",
+      "label": "mid_freq\nMid Frequency",
+      "type": "float",
+      "range_or_values": "100 to 8000 Hz",
+      "default": "1200 Hz",
+      "automatable": true
+    },
+    {
+      "id": "mid\nMid",
+      "label": "mid\nMid",
+      "type": "float",
+      "range_or_values": "-12 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "high\nHigh",
+      "label": "high\nHigh",
+      "type": "float",
+      "range_or_values": "-12 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "bus_color\nBus Color",
+      "label": "bus_color\nBus Color",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "20 %",
+      "automatable": true
+    },
+    {
+      "id": "noise\nNoise",
+      "label": "noise\nNoise",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "stereo_mode\nStereo Mode",
+      "label": "stereo_mode\nStereo Mode",
+      "type": "enum",
+      "range_or_values": "stereo / dual / ms",
+      "default": "stereo",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "hpf_in\nHPF In",
+      "label": "hpf_in\nHPF In",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "eq_in\nEQ In",
+      "label": "eq_in\nEQ In",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A03_CONSOLE_ONE.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

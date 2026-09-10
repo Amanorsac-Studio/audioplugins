@@ -1,0 +1,419 @@
+{
+  "plugin_id": "A09",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Air Above",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Air",
+        "Genre": "Pop",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 100,
+        "low_cut": 3,
+        "mid_freq": 3000,
+        "mid_gain": 1.5,
+        "high_freq": 16000,
+        "high_boost": 5,
+        "output_stage": "tube",
+        "drive": 10,
+        "hpf": 80
+      }
+    },
+    {
+      "name": "Presence Lift",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Presence",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Solid"
+      },
+      "values": {
+        "low_freq": 100,
+        "low_cut": 3,
+        "mid_freq": 4000,
+        "mid_gain": 3.5,
+        "high_freq": 12000,
+        "high_boost": 2,
+        "output_stage": "solid",
+        "drive": 12,
+        "hpf": 90
+      }
+    },
+    {
+      "name": "Overhead Sheen",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Sparkle",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 120,
+        "low_cut": 4,
+        "mid_freq": 1200,
+        "mid_gain": -1,
+        "high_freq": 14000,
+        "high_boost": 4,
+        "output_stage": "tube",
+        "drive": 8,
+        "hpf": 110
+      }
+    },
+    {
+      "name": "The Old Trick",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Weight",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 60,
+        "low_boost": 7,
+        "low_cut": 5.5,
+        "mid_freq": 700,
+        "mid_gain": -1.5,
+        "high_freq": 10000,
+        "high_boost": 2,
+        "output_stage": "tube",
+        "drive": 12
+      }
+    },
+    {
+      "name": "Wood And Skin",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Body",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Solid"
+      },
+      "values": {
+        "low_freq": 120,
+        "low_boost": 4.5,
+        "low_cut": 2,
+        "mid_freq": 900,
+        "mid_gain": -2.5,
+        "high_freq": 8000,
+        "high_boost": 3.5,
+        "output_stage": "solid",
+        "drive": 16,
+        "hpf": 70
+      }
+    },
+    {
+      "name": "Rock Bass Cut",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Focus",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Solid"
+      },
+      "values": {
+        "low_freq": 80,
+        "low_boost": 4,
+        "low_cut": 6,
+        "mid_freq": 1600,
+        "mid_gain": 2.5,
+        "high_freq": 8000,
+        "high_boost": 1.5,
+        "output_stage": "solid",
+        "drive": 10
+      }
+    },
+    {
+      "name": "Sub Shelf",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Weight",
+        "Genre": "Hip Hop",
+        "Intensity": "Strong",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 30,
+        "low_boost": 8,
+        "low_cut": 2,
+        "mid_freq": 900,
+        "mid_gain": -2,
+        "high_freq": 8000,
+        "high_cut": 3,
+        "output_stage": "tube",
+        "drive": 14,
+        "hpf": 22
+      }
+    },
+    {
+      "name": "Electric Guitar Silk",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Warmth",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 120,
+        "low_boost": 3,
+        "low_cut": 4,
+        "mid_freq": 1800,
+        "mid_gain": 2.5,
+        "high_freq": 8000,
+        "high_boost": 1.5,
+        "output_stage": "tube",
+        "drive": 16,
+        "hpf": 85
+      }
+    },
+    {
+      "name": "Warm Acoustic",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Warmth",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 100,
+        "low_boost": 3,
+        "low_cut": 3.5,
+        "mid_freq": 2500,
+        "mid_gain": 1.5,
+        "high_freq": 12000,
+        "high_boost": 2.5,
+        "output_stage": "tube",
+        "drive": 10,
+        "hpf": 85
+      }
+    },
+    {
+      "name": "Keys Silk",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Smooth",
+        "Genre": "Cinematic",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 80,
+        "low_cut": 2.5,
+        "mid_freq": 1500,
+        "mid_gain": -1.5,
+        "high_freq": 12000,
+        "high_boost": 3,
+        "output_stage": "tube",
+        "drive": 8,
+        "hpf": 60,
+        "low_boost": 2.5
+      }
+    },
+    {
+      "name": "Horns Silk",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Horns",
+        "Intent": "Smooth",
+        "Genre": "Cinematic",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 120,
+        "low_cut": 3.5,
+        "mid_freq": 2500,
+        "mid_gain": 1.5,
+        "high_freq": 12000,
+        "high_boost": 3,
+        "output_stage": "tube",
+        "drive": 8,
+        "hpf": 60
+      }
+    },
+    {
+      "name": "Pretty Strings",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Smooth",
+        "Genre": "Cinematic",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 100,
+        "low_cut": 2.5,
+        "mid_freq": 2000,
+        "mid_gain": -2,
+        "high_freq": 12000,
+        "high_boost": 4,
+        "output_stage": "tube",
+        "drive": 8,
+        "hpf": 60
+      }
+    },
+    {
+      "name": "Broad Shoulders",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 40,
+        "low_boost": 2.5,
+        "low_cut": 1.5,
+        "mid_freq": 500,
+        "mid_gain": -1,
+        "high_freq": 14000,
+        "high_boost": 2.5,
+        "output_stage": "tube",
+        "drive": 8
+      }
+    },
+    {
+      "name": "Mix Bus Silk",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 40,
+        "low_boost": 3,
+        "low_cut": 2,
+        "mid_freq": 500,
+        "mid_gain": -1,
+        "high_freq": 14000,
+        "high_boost": 3,
+        "output_stage": "tube",
+        "drive": 12
+      }
+    },
+    {
+      "name": "Master Silk",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Air",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 40,
+        "low_boost": 2,
+        "low_cut": 1.5,
+        "mid_freq": 600,
+        "mid_gain": -0.5,
+        "high_freq": 16000,
+        "high_boost": 3,
+        "output_stage": "tube",
+        "drive": 6,
+        "hpf": 22
+      }
+    },
+    {
+      "name": "Parallel Colour",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Colour",
+        "Genre": "Any",
+        "Intensity": "Strong",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 60,
+        "low_boost": 6,
+        "high_freq": 12000,
+        "high_boost": 6,
+        "output_stage": "tube",
+        "drive": 55,
+        "mix": 45,
+        "output": -3
+      }
+    },
+    {
+      "name": "Boom Removal",
+      "category": "Utility",
+      "tags": {
+        "Source": "Room Mic",
+        "Intent": "Control",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Solid"
+      },
+      "values": {
+        "low_freq": 120,
+        "low_cut": 8,
+        "mid_freq": 400,
+        "mid_gain": -4,
+        "high_freq": 9000,
+        "high_boost": 2,
+        "output_stage": "solid",
+        "drive": 6,
+        "hpf": 120
+      }
+    },
+    {
+      "name": "Dull Tape Helper",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Clarity",
+        "Genre": "Lo-fi",
+        "Intensity": "Medium",
+        "Character": "Tube"
+      },
+      "values": {
+        "low_freq": 60,
+        "low_boost": 3.5,
+        "mid_freq": 2500,
+        "mid_gain": 2,
+        "high_freq": 12000,
+        "high_boost": 5.5,
+        "output_stage": "tube",
+        "drive": 18
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative",
+    "Utility"
+  ]
+}

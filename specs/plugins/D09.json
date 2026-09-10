@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D09",
+  "display_name": "SPACEVERB PRO",
+  "series": "Digital",
+  "primary_role": "Algorithmic Reverb",
+  "feature_set": [
+    "Early/late balance",
+    "Damping EQ",
+    "Modulation",
+    "Ducker",
+    "Stereo width",
+    "Freeze"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "pre_delay\nPre Delay",
+      "label": "pre_delay\nPre Delay",
+      "type": "float",
+      "range_or_values": "0 to 500 ms",
+      "default": "25 ms",
+      "automatable": true
+    },
+    {
+      "id": "decay\nDecay",
+      "label": "decay\nDecay",
+      "type": "float",
+      "range_or_values": "0.1 to 40 s",
+      "default": "2.4 s",
+      "automatable": true
+    },
+    {
+      "id": "size\nSize",
+      "label": "size\nSize",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "70 %",
+      "automatable": true
+    },
+    {
+      "id": "density\nDensity",
+      "label": "density\nDensity",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "65 %",
+      "automatable": true
+    },
+    {
+      "id": "diffusion\nDiffusion",
+      "label": "diffusion\nDiffusion",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "60 %",
+      "automatable": true
+    },
+    {
+      "id": "early_late\nEarly/Late",
+      "label": "early_late\nEarly/Late",
+      "type": "float",
+      "range_or_values": "-100 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "low_damp\nLow Damp",
+      "label": "low_damp\nLow Damp",
+      "type": "float",
+      "range_or_values": "0.1 to 2",
+      "default": "0.8",
+      "automatable": true
+    },
+    {
+      "id": "high_damp\nHigh Damp",
+      "label": "high_damp\nHigh Damp",
+      "type": "float",
+      "range_or_values": "0.1 to 2",
+      "default": "0.6",
+      "automatable": true
+    },
+    {
+      "id": "mod_rate\nMod Rate",
+      "label": "mod_rate\nMod Rate",
+      "type": "float",
+      "range_or_values": "0.01 to 5 Hz",
+      "default": "0.35 Hz",
+      "automatable": true
+    },
+    {
+      "id": "mod_depth\nMod Depth",
+      "label": "mod_depth\nMod Depth",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "20 %",
+      "automatable": true
+    },
+    {
+      "id": "duck\nDucker",
+      "label": "duck\nDucker",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "20 %",
+      "automatable": true
+    },
+    {
+      "id": "width\nWidth",
+      "label": "width\nWidth",
+      "type": "float",
+      "range_or_values": "0 to 200 %",
+      "default": "120 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "25 %",
+      "automatable": true
+    },
+    {
+      "id": "freeze\nFreeze",
+      "label": "freeze\nFreeze",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D09_SPACEVERB_PRO.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

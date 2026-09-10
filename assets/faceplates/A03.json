@@ -1,0 +1,858 @@
+{
+  "id": "A03",
+  "name": "CONSOLE ONE",
+  "width": 1586,
+  "height": 992,
+  "regions": [
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 161,
+      "cy": 218,
+      "r": 43,
+      "bounds": [
+        118,
+        175,
+        87,
+        87
+      ]
+    },
+    {
+      "id": "hpf",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 162,
+      "cy": 489,
+      "r": 39,
+      "bounds": [
+        123,
+        450,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "pre_drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 408,
+      "cy": 279,
+      "r": 45,
+      "bounds": [
+        363,
+        234,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "pre_mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 409,
+      "cy": 490,
+      "r": 40,
+      "bounds": [
+        369,
+        450,
+        81,
+        81
+      ]
+    },
+    {
+      "id": "low_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 628,
+      "cy": 322,
+      "r": 44,
+      "bounds": [
+        584,
+        278,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "low_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 628,
+      "cy": 490,
+      "r": 39,
+      "bounds": [
+        589,
+        451,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "low_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 628,
+      "cy": 634,
+      "r": 34,
+      "bounds": [
+        594,
+        600,
+        69,
+        69
+      ]
+    },
+    {
+      "id": "mid_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 805,
+      "cy": 322,
+      "r": 45,
+      "bounds": [
+        760,
+        277,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "mid_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 805,
+      "cy": 490,
+      "r": 39,
+      "bounds": [
+        766,
+        451,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "mid_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 805,
+      "cy": 634,
+      "r": 34,
+      "bounds": [
+        771,
+        600,
+        69,
+        69
+      ]
+    },
+    {
+      "id": "high_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 979,
+      "cy": 322,
+      "r": 45,
+      "bounds": [
+        934,
+        277,
+        91,
+        91
+      ]
+    },
+    {
+      "id": "high_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 979,
+      "cy": 490,
+      "r": 39,
+      "bounds": [
+        940,
+        451,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "high_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 979,
+      "cy": 634,
+      "r": 34,
+      "bounds": [
+        945,
+        600,
+        69,
+        69
+      ]
+    },
+    {
+      "id": "color_drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1192,
+      "cy": 278,
+      "r": 43,
+      "bounds": [
+        1149,
+        235,
+        87,
+        87
+      ]
+    },
+    {
+      "id": "color_mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1192,
+      "cy": 427,
+      "r": 39,
+      "bounds": [
+        1153,
+        388,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "noise",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1192,
+      "cy": 641,
+      "r": 39,
+      "bounds": [
+        1153,
+        602,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "output",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1428,
+      "cy": 218,
+      "r": 43,
+      "bounds": [
+        1385,
+        175,
+        87,
+        87
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1428,
+      "cy": 489,
+      "r": 39,
+      "bounds": [
+        1389,
+        450,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1008,
+      "y": 18,
+      "w": 64,
+      "h": 52,
+      "bounds": [
+        1008,
+        18,
+        64,
+        52
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1075,
+      "y": 18,
+      "w": 65,
+      "h": 52,
+      "bounds": [
+        1075,
+        18,
+        65,
+        52
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1144,
+      "y": 18,
+      "w": 70,
+      "h": 52,
+      "bounds": [
+        1144,
+        18,
+        70,
+        52
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1217,
+      "y": 18,
+      "w": 65,
+      "h": 52,
+      "bounds": [
+        1217,
+        18,
+        65,
+        52
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1287,
+      "y": 18,
+      "w": 70,
+      "h": 52,
+      "bounds": [
+        1287,
+        18,
+        70,
+        52
+      ]
+    },
+    {
+      "id": "save",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1361,
+      "y": 18,
+      "w": 69,
+      "h": 52,
+      "bounds": [
+        1361,
+        18,
+        69,
+        52
+      ]
+    },
+    {
+      "id": "help",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1435,
+      "y": 18,
+      "w": 49,
+      "h": 52,
+      "bounds": [
+        1435,
+        18,
+        49,
+        52
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1488,
+      "y": 18,
+      "w": 42,
+      "h": 52,
+      "bounds": [
+        1488,
+        18,
+        42,
+        52
+      ]
+    },
+    {
+      "id": "input_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 125,
+      "y": 315,
+      "w": 75,
+      "h": 39,
+      "bounds": [
+        125,
+        315,
+        75,
+        39
+      ]
+    },
+    {
+      "id": "output_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1385,
+      "y": 315,
+      "w": 78,
+      "h": 39,
+      "bounds": [
+        1385,
+        315,
+        78,
+        39
+      ]
+    },
+    {
+      "id": "hpf_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 212,
+      "y": 400,
+      "w": 30,
+      "h": 33,
+      "bounds": [
+        212,
+        400,
+        30,
+        33
+      ]
+    },
+    {
+      "id": "pre_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 394,
+      "y": 157,
+      "w": 29,
+      "h": 32,
+      "bounds": [
+        394,
+        157,
+        29,
+        32
+      ]
+    },
+    {
+      "id": "low_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 614,
+      "y": 194,
+      "w": 29,
+      "h": 29,
+      "bounds": [
+        614,
+        194,
+        29,
+        29
+      ]
+    },
+    {
+      "id": "mid_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 792,
+      "y": 194,
+      "w": 29,
+      "h": 29,
+      "bounds": [
+        792,
+        194,
+        29,
+        29
+      ]
+    },
+    {
+      "id": "high_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 966,
+      "y": 194,
+      "w": 28,
+      "h": 29,
+      "bounds": [
+        966,
+        194,
+        28,
+        29
+      ]
+    },
+    {
+      "id": "color_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1177,
+      "y": 157,
+      "w": 30,
+      "h": 31,
+      "bounds": [
+        1177,
+        157,
+        30,
+        31
+      ]
+    },
+    {
+      "id": "noise_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1177,
+      "y": 548,
+      "w": 30,
+      "h": 29,
+      "bounds": [
+        1177,
+        548,
+        30,
+        29
+      ]
+    },
+    {
+      "id": "mode_stereo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 301,
+      "y": 598,
+      "w": 75,
+      "h": 40,
+      "bounds": [
+        301,
+        598,
+        75,
+        40
+      ]
+    },
+    {
+      "id": "mode_dual",
+      "kind": "button",
+      "shape": "rect",
+      "x": 377,
+      "y": 598,
+      "w": 64,
+      "h": 40,
+      "bounds": [
+        377,
+        598,
+        64,
+        40
+      ]
+    },
+    {
+      "id": "mode_ms",
+      "kind": "button",
+      "shape": "rect",
+      "x": 442,
+      "y": 598,
+      "w": 70,
+      "h": 40,
+      "bounds": [
+        442,
+        598,
+        70,
+        40
+      ]
+    },
+    {
+      "id": "bypass",
+      "kind": "button",
+      "shape": "rect",
+      "x": 810,
+      "y": 838,
+      "w": 64,
+      "h": 43,
+      "bounds": [
+        810,
+        838,
+        64,
+        43
+      ]
+    },
+    {
+      "id": "os_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1197,
+      "y": 815,
+      "w": 39,
+      "h": 45,
+      "bounds": [
+        1197,
+        815,
+        39,
+        45
+      ]
+    },
+    {
+      "id": "os_2",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1242,
+      "y": 815,
+      "w": 39,
+      "h": 45,
+      "bounds": [
+        1242,
+        815,
+        39,
+        45
+      ]
+    },
+    {
+      "id": "os_4",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1217,
+      "y": 864,
+      "w": 59,
+      "h": 38,
+      "bounds": [
+        1217,
+        864,
+        59,
+        38
+      ]
+    },
+    {
+      "id": "pre_drive_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 363,
+      "y": 350,
+      "w": 92,
+      "h": 30,
+      "bounds": [
+        363,
+        350,
+        92,
+        30
+      ]
+    },
+    {
+      "id": "pre_mix_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 368,
+      "y": 545,
+      "w": 84,
+      "h": 31,
+      "bounds": [
+        368,
+        545,
+        84,
+        31
+      ]
+    },
+    {
+      "id": "color_mix_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1145,
+      "y": 478,
+      "w": 88,
+      "h": 28,
+      "bounds": [
+        1145,
+        478,
+        88,
+        28
+      ]
+    },
+    {
+      "id": "noise_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1143,
+      "y": 686,
+      "w": 92,
+      "h": 29,
+      "bounds": [
+        1143,
+        686,
+        92,
+        29
+      ]
+    },
+    {
+      "id": "mix_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1382,
+      "y": 544,
+      "w": 88,
+      "h": 30,
+      "bounds": [
+        1382,
+        544,
+        88,
+        30
+      ]
+    },
+    {
+      "id": "input_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 117,
+      "y": 598,
+      "w": 25,
+      "h": 242,
+      "bounds": [
+        117,
+        598,
+        25,
+        242
+      ]
+    },
+    {
+      "id": "input_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 182,
+      "y": 598,
+      "w": 25,
+      "h": 242,
+      "bounds": [
+        182,
+        598,
+        25,
+        242
+      ]
+    },
+    {
+      "id": "output_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1381,
+      "y": 599,
+      "w": 25,
+      "h": 240,
+      "bounds": [
+        1381,
+        599,
+        25,
+        240
+      ]
+    },
+    {
+      "id": "output_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1442,
+      "y": 599,
+      "w": 25,
+      "h": 240,
+      "bounds": [
+        1442,
+        599,
+        25,
+        240
+      ]
+    },
+    {
+      "id": "vu_left",
+      "kind": "display",
+      "shape": "rect",
+      "x": 506,
+      "y": 770,
+      "w": 270,
+      "h": 120,
+      "bounds": [
+        506,
+        770,
+        270,
+        120
+      ]
+    },
+    {
+      "id": "vu_right",
+      "kind": "display",
+      "shape": "rect",
+      "x": 906,
+      "y": 770,
+      "w": 269,
+      "h": 120,
+      "bounds": [
+        906,
+        770,
+        269,
+        120
+      ]
+    },
+    {
+      "id": "input_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 249,
+      "cy": 125,
+      "r": 12,
+      "bounds": [
+        237,
+        113,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "output_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1507,
+      "cy": 125,
+      "r": 12,
+      "bounds": [
+        1495,
+        113,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "process_in",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 819,
+      "cy": 809,
+      "r": 11,
+      "bounds": [
+        808,
+        798,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "process_out",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 863,
+      "cy": 809,
+      "r": 11,
+      "bounds": [
+        852,
+        798,
+        23,
+        23
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/05_High_Fidelity_Review_Candidates/Analog/A03_CONSOLE_ONE_HF_REVIEW.png",
+  "sourceDimensions": [
+    1586,
+    992
+  ],
+  "crop": [
+    0,
+    0,
+    1586,
+    992
+  ],
+  "faceplate": "png/A03_CONSOLE_ONE_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "05f87c4d36a79eb4bf43a9f14d5fe14b0b27be34c26b2597ef706928b3bcc13e"
+}

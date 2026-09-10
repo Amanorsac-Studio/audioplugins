@@ -1,0 +1,456 @@
+{
+  "plugin_id": "A04",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Vocal Tape Drive",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Warmth",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "30",
+        "bias": 0.5,
+        "saturation": 52,
+        "wow": 3,
+        "flutter": 2,
+        "head_bump": 30,
+        "hf_rolloff": 26,
+        "hpf": 80,
+        "input": 4
+      }
+    },
+    {
+      "name": "Vocal Tape Silk",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Warmth",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "30",
+        "bias": 0.5,
+        "saturation": 28,
+        "wow": 3,
+        "flutter": 2,
+        "head_bump": 18,
+        "hf_rolloff": 12,
+        "hpf": 80,
+        "input": 2
+      }
+    },
+    {
+      "name": "Fifteen And Fat",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Weight",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "15",
+        "bias": 1.5,
+        "saturation": 42,
+        "wow": 6,
+        "flutter": 5,
+        "head_bump": 55,
+        "hf_rolloff": 22,
+        "input": 3
+      }
+    },
+    {
+      "name": "Kick Bump",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Weight",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "15",
+        "bias": 2,
+        "saturation": 36,
+        "wow": 2,
+        "flutter": 2,
+        "head_bump": 78,
+        "hf_rolloff": 14,
+        "hpf": 25,
+        "input": 3
+      }
+    },
+    {
+      "name": "Overheads To Tape",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Smooth",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "30",
+        "bias": 0,
+        "saturation": 26,
+        "wow": 2,
+        "flutter": 2,
+        "head_bump": 15,
+        "hf_rolloff": 28,
+        "hpf": 120,
+        "input": 2
+      }
+    },
+    {
+      "name": "Snare Slam",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Attack",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Modern"
+      },
+      "values": {
+        "formula": "modern",
+        "speed": "30",
+        "bias": 1,
+        "saturation": 55,
+        "wow": 1,
+        "flutter": 1,
+        "head_bump": 30,
+        "hf_rolloff": 6,
+        "hpf": 90,
+        "input": 4
+      }
+    },
+    {
+      "name": "Bass To Tape",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Body",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Vintage"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "15",
+        "bias": 2.5,
+        "saturation": 45,
+        "wow": 4,
+        "flutter": 3,
+        "head_bump": 65,
+        "hf_rolloff": 30,
+        "hpf": 32,
+        "input": 3
+      }
+    },
+    {
+      "name": "Acoustic Reel",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Colour",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "15",
+        "bias": 1.5,
+        "saturation": 32,
+        "wow": 5,
+        "flutter": 4,
+        "head_bump": 22,
+        "hf_rolloff": 14,
+        "hpf": 90,
+        "input": 3
+      }
+    },
+    {
+      "name": "Guitar Reel",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Colour",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "15",
+        "bias": 1.5,
+        "saturation": 48,
+        "wow": 5,
+        "flutter": 4,
+        "head_bump": 35,
+        "hf_rolloff": 26,
+        "hpf": 100,
+        "input": 3
+      }
+    },
+    {
+      "name": "Keys To Tape",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Warmth",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "30",
+        "bias": 0.5,
+        "saturation": 34,
+        "wow": 3,
+        "flutter": 2,
+        "head_bump": 26,
+        "hf_rolloff": 18,
+        "hpf": 50,
+        "input": 2
+      }
+    },
+    {
+      "name": "Strings To Tape",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Warmth",
+        "Genre": "Soul",
+        "Intensity": "Gentle",
+        "Character": "Classic"
+      },
+      "values": {
+        "formula": "classic",
+        "speed": "30",
+        "bias": 0.5,
+        "saturation": 24,
+        "wow": 4,
+        "flutter": 2,
+        "head_bump": 20,
+        "hf_rolloff": 20,
+        "hpf": 60,
+        "input": 2
+      }
+    },
+    {
+      "name": "Mix Glue Tape",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Modern"
+      },
+      "values": {
+        "formula": "modern",
+        "speed": "30",
+        "bias": 0,
+        "saturation": 30,
+        "wow": 3,
+        "flutter": 2,
+        "head_bump": 28,
+        "hf_rolloff": 12,
+        "hiss": 0,
+        "input": 2
+      }
+    },
+    {
+      "name": "Parallel Tape",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Saturation",
+        "Genre": "Any",
+        "Intensity": "Strong",
+        "Character": "Modern"
+      },
+      "values": {
+        "formula": "modern",
+        "speed": "15",
+        "bias": 3.5,
+        "saturation": 85,
+        "wow": 4,
+        "flutter": 3,
+        "head_bump": 45,
+        "hf_rolloff": 18,
+        "mix": 40,
+        "input": 6
+      }
+    },
+    {
+      "name": "Two Inch Warmth",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Modern"
+      },
+      "values": {
+        "formula": "modern",
+        "speed": "30",
+        "bias": 0,
+        "saturation": 22,
+        "wow": 3,
+        "flutter": 2,
+        "head_bump": 20,
+        "hf_rolloff": 8,
+        "hiss": 0,
+        "input": 2
+      }
+    },
+    {
+      "name": "Master Reel",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Modern"
+      },
+      "values": {
+        "formula": "modern",
+        "speed": "30",
+        "bias": 0.5,
+        "saturation": 18,
+        "wow": 1,
+        "flutter": 1,
+        "head_bump": 14,
+        "hf_rolloff": 5,
+        "hpf": 22,
+        "input": 1
+      }
+    },
+    {
+      "name": "Cassette Memory",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Effect",
+        "Genre": "Lo-fi",
+        "Intensity": "Extreme",
+        "Character": "Vintage"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "7.5",
+        "bias": 5,
+        "saturation": 78,
+        "wow": 40,
+        "flutter": 55,
+        "head_bump": 40,
+        "hf_rolloff": 80,
+        "hiss": 45,
+        "hpf": 90,
+        "input": 5,
+        "output": -3
+      }
+    },
+    {
+      "name": "Print Through",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Vintage",
+        "Genre": "Lo-fi",
+        "Intensity": "Strong",
+        "Character": "Vintage"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "15",
+        "bias": 4.5,
+        "saturation": 68,
+        "wow": 14,
+        "flutter": 12,
+        "head_bump": 60,
+        "hf_rolloff": 45,
+        "hiss": 55,
+        "input": 4
+      }
+    },
+    {
+      "name": "Seven And A Half Dreams",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Vintage",
+        "Genre": "Lo-fi",
+        "Intensity": "Strong",
+        "Character": "Vintage"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "7.5",
+        "bias": 3,
+        "saturation": 62,
+        "wow": 22,
+        "flutter": 18,
+        "head_bump": 70,
+        "hf_rolloff": 55,
+        "hiss": 18,
+        "input": 4
+      }
+    },
+    {
+      "name": "Wobble Chamber",
+      "category": "Creative",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Effect",
+        "Genre": "Lo-fi",
+        "Intensity": "Extreme",
+        "Character": "Vintage"
+      },
+      "values": {
+        "formula": "vintage",
+        "speed": "7.5",
+        "bias": 4,
+        "saturation": 55,
+        "wow": 65,
+        "flutter": 48,
+        "head_bump": 50,
+        "hf_rolloff": 62,
+        "hiss": 30,
+        "mix": 80
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D07",
+  "display_name": "FREQ SHAPER",
+  "series": "Digital",
+  "primary_role": "Harmonic Spectral Shaper",
+  "feature_set": [
+    "6 spectral zones",
+    "Harmonic enhancement",
+    "Per-band width",
+    "Transient emphasis",
+    "Solo/bypass zones",
+    "Auto gain"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "direct\nDirect",
+      "label": "direct\nDirect",
+      "type": "float",
+      "range_or_values": "-60 to 0 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "global_mix\nMix",
+      "label": "global_mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "50 %",
+      "automatable": true
+    },
+    {
+      "id": "punch\nPunch",
+      "label": "punch\nPunch",
+      "type": "float",
+      "range_or_values": "-100 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "zone.harmonics\nHarmonics",
+      "label": "zone.harmonics\nHarmonics",
+      "type": "float",
+      "range_or_values": "0 to 48 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "zone.density\nDensity",
+      "label": "zone.density\nDensity",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "50 %",
+      "automatable": true
+    },
+    {
+      "id": "zone.width\nWidth",
+      "label": "zone.width\nWidth",
+      "type": "float",
+      "range_or_values": "0 to 200 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "zone.enabled\nEnabled",
+      "label": "zone.enabled\nEnabled",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "zone.solo\nSolo",
+      "label": "zone.solo\nSolo",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "xover.frequency\nCrossover",
+      "label": "xover.frequency\nCrossover",
+      "type": "float",
+      "range_or_values": "20 to 20000 Hz",
+      "default": "1000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "auto_gain\nAuto Gain",
+      "label": "auto_gain\nAuto Gain",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D07_FREQ_SHAPER.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

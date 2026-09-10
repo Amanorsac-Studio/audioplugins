@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D04",
+  "display_name": "PULSE LIMITER",
+  "series": "Digital",
+  "primary_role": "True-Peak Limiter",
+  "feature_set": [
+    "True peak",
+    "LUFS meter",
+    "Oversampling 1x-16x",
+    "Adaptive release",
+    "Transient preserve",
+    "Delta clip listen"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "threshold\nThreshold",
+      "label": "threshold\nThreshold",
+      "type": "float",
+      "range_or_values": "-36 to 0 dB",
+      "default": "-8 dB",
+      "automatable": true
+    },
+    {
+      "id": "ceiling\nCeiling",
+      "label": "ceiling\nCeiling",
+      "type": "float",
+      "range_or_values": "-3 to 0 dBTP",
+      "default": "-1 dBTP",
+      "automatable": true
+    },
+    {
+      "id": "lookahead\nLookahead",
+      "label": "lookahead\nLookahead",
+      "type": "float",
+      "range_or_values": "0 to 20 ms",
+      "default": "1 ms",
+      "automatable": true
+    },
+    {
+      "id": "release\nRelease",
+      "label": "release\nRelease",
+      "type": "float",
+      "range_or_values": "20 to 2000 ms",
+      "default": "250 ms",
+      "automatable": true
+    },
+    {
+      "id": "release_mode\nRelease Mode",
+      "label": "release_mode\nRelease Mode",
+      "type": "enum",
+      "range_or_values": "adaptive / manual",
+      "default": "adaptive",
+      "automatable": true
+    },
+    {
+      "id": "transient_preserve\nTransient Preserve",
+      "label": "transient_preserve\nTransient Preserve",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "40 %",
+      "automatable": true
+    },
+    {
+      "id": "stereo_link\nStereo Link",
+      "label": "stereo_link\nStereo Link",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "oversampling\nOversampling",
+      "label": "oversampling\nOversampling",
+      "type": "enum",
+      "range_or_values": "1x / 2x / 4x / 8x / 16x",
+      "default": "8x",
+      "automatable": true
+    },
+    {
+      "id": "true_peak\nTrue Peak",
+      "label": "true_peak\nTrue Peak",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "style\nStyle",
+      "label": "style\nStyle",
+      "type": "enum",
+      "range_or_values": "transparent / balanced / punch / dense",
+      "default": "balanced",
+      "automatable": true
+    },
+    {
+      "id": "delta\nDelta Listen",
+      "label": "delta\nDelta Listen",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "target_lufs\nTarget LUFS",
+      "label": "target_lufs\nTarget LUFS",
+      "type": "float",
+      "range_or_values": "-24 to -5 LUFS",
+      "default": "-9 LUFS",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D04_PULSE_LIMITER.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

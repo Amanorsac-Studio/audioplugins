@@ -1,0 +1,386 @@
+{
+  "plugin_id": "A08",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Lead Vocal VCA",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Control",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -18,
+        "ratio": "2:1",
+        "attack": 20,
+        "release": 0.3,
+        "makeup": 3,
+        "sc_hpf": 130,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Vocal Group",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Backing Vocals",
+        "Intent": "Control",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -22,
+        "ratio": "4:1",
+        "attack": 10,
+        "release": 0.2,
+        "makeup": 5,
+        "sc_hpf": 130,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Drum Bus Pump",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Punch",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -26,
+        "ratio": "4:1",
+        "attack": 10,
+        "release": 0.1,
+        "makeup": 7,
+        "sc_hpf": 120,
+        "knee": "hard"
+      }
+    },
+    {
+      "name": "Overhead Glue",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Glue",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -18,
+        "ratio": "2:1",
+        "attack": 20,
+        "release": 0.25,
+        "makeup": 3,
+        "sc_hpf": 140,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Parallel Weight",
+      "category": "Drums",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Weight",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -40,
+        "ratio": "10:1",
+        "attack": 0.3,
+        "release": 0.1,
+        "makeup": 16,
+        "sc_hpf": 90,
+        "knee": "hard",
+        "mix": 40
+      }
+    },
+    {
+      "name": "Percussion Snap",
+      "category": "Drums",
+      "tags": {
+        "Source": "Percussion",
+        "Intent": "Attack",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -24,
+        "ratio": "4:1",
+        "attack": 30,
+        "release": 0.1,
+        "makeup": 6,
+        "sc_hpf": 150,
+        "knee": "hard"
+      }
+    },
+    {
+      "name": "Room Crush",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Room",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Extreme",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -38,
+        "ratio": "10:1",
+        "attack": 0.5,
+        "release": 0.15,
+        "makeup": 14,
+        "sc_hpf": 100,
+        "knee": "hard"
+      }
+    },
+    {
+      "name": "Bass Bus",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass Bus",
+        "Intent": "Control",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -20,
+        "ratio": "4:1",
+        "attack": 10,
+        "release": 0.2,
+        "makeup": 4,
+        "sc_hpf": 40,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Guitar Bus VCA",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Guitar Bus",
+        "Intent": "Glue",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -20,
+        "ratio": "2:1",
+        "attack": 20,
+        "release": 0.25,
+        "makeup": 4,
+        "sc_hpf": 110,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Keys Bus VCA",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -18,
+        "ratio": "2:1",
+        "attack": 20,
+        "release": 0.35,
+        "makeup": 3,
+        "sc_hpf": 70,
+        "knee": "soft",
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Strings Bus VCA",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -16,
+        "ratio": "2:1",
+        "attack": 30,
+        "release": 0.6,
+        "makeup": 2,
+        "sc_hpf": 60,
+        "knee": "soft",
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Auto Ride",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Control",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -18,
+        "ratio": "2:1",
+        "attack": 20,
+        "release": 0.5,
+        "auto_release": true,
+        "makeup": 3,
+        "sc_hpf": 100,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Mix Bus Cement",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -20,
+        "ratio": "4:1",
+        "attack": 10,
+        "release": 0.3,
+        "makeup": 4,
+        "sc_hpf": 110,
+        "knee": "soft",
+        "auto_release": true
+      }
+    },
+    {
+      "name": "Two Over Easy",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -16,
+        "ratio": "2:1",
+        "attack": 30,
+        "release": 0.3,
+        "makeup": 2,
+        "sc_hpf": 90,
+        "knee": "soft",
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Wide Unlinked",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Stereo Bus",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -22,
+        "ratio": "2:1",
+        "attack": 10,
+        "release": 0.3,
+        "makeup": 4,
+        "sc_hpf": 100,
+        "knee": "soft",
+        "stereo_link": 30
+      }
+    },
+    {
+      "name": "Just Touching",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -8,
+        "ratio": "1.5:1",
+        "attack": 30,
+        "release": 0.3,
+        "makeup": 1,
+        "sc_hpf": 70,
+        "knee": "soft"
+      }
+    },
+    {
+      "name": "Master Restraint",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Control",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -12,
+        "ratio": "1.5:1",
+        "attack": 30,
+        "release": 0.4,
+        "makeup": 1.5,
+        "sc_hpf": 80,
+        "knee": "soft",
+        "auto_release": true
+      }
+    },
+    {
+      "name": "Slow Breath",
+      "category": "Creative",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Movement",
+        "Genre": "Electronic",
+        "Intensity": "Strong",
+        "Character": "VCA"
+      },
+      "values": {
+        "threshold": -28,
+        "ratio": "4:1",
+        "attack": 0.3,
+        "release": 0.6,
+        "makeup": 8,
+        "sc_hpf": 60,
+        "knee": "hard"
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative"
+  ]
+}

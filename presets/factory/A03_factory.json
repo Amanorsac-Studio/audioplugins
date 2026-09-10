@@ -1,0 +1,403 @@
+{
+  "plugin_id": "A03",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Channel Strip Vocal",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Presence",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 26,
+        "bus_color": 20,
+        "hpf": 90,
+        "hpf_in": true,
+        "low": -1.5,
+        "mid_freq": 3200,
+        "mid": 2.5,
+        "high": 3
+      }
+    },
+    {
+      "name": "Vocal Group Desk",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Backing Vocals",
+        "Intent": "Presence",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 22,
+        "bus_color": 20,
+        "hpf": 90,
+        "hpf_in": true,
+        "low": -1.5,
+        "mid_freq": 3200,
+        "mid": 1.5,
+        "high": 2,
+        "stereo_mode": "stereo"
+      }
+    },
+    {
+      "name": "Drum Bus Glue",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Glue",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 34,
+        "bus_color": 45,
+        "hpf": 34,
+        "hpf_in": true,
+        "low": 1,
+        "mid_freq": 700,
+        "mid": -2,
+        "high": 1.5,
+        "mix": 90
+      }
+    },
+    {
+      "name": "Kick Desk",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Punch",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 38,
+        "bus_color": 30,
+        "hpf": 28,
+        "hpf_in": true,
+        "low": 3.5,
+        "mid_freq": 500,
+        "mid": -3.5,
+        "high": 1.5
+      }
+    },
+    {
+      "name": "Parallel Crush",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Saturation",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 85,
+        "bus_color": 80,
+        "hpf": 60,
+        "hpf_in": true,
+        "low": 2,
+        "mid_freq": 2500,
+        "mid": 2,
+        "high": 2,
+        "mix": 35
+      }
+    },
+    {
+      "name": "Snare Desk",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Attack",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 42,
+        "bus_color": 34,
+        "hpf": 100,
+        "hpf_in": true,
+        "low": 1.5,
+        "mid_freq": 4200,
+        "mid": 3.5,
+        "high": 2
+      }
+    },
+    {
+      "name": "Bass Channel",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Body",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 32,
+        "bus_color": 26,
+        "hpf": 35,
+        "hpf_in": true,
+        "low": 2.5,
+        "mid_freq": 800,
+        "mid": 1.5,
+        "high": -1
+      }
+    },
+    {
+      "name": "Synth Bass Desk",
+      "category": "Bass",
+      "tags": {
+        "Source": "Synth Bass",
+        "Intent": "Body",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 40,
+        "bus_color": 34,
+        "hpf": 25,
+        "hpf_in": true,
+        "low": 3.5,
+        "mid_freq": 800,
+        "mid": 1.5,
+        "high": -1
+      }
+    },
+    {
+      "name": "Acoustic Desk",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Focus",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 26,
+        "bus_color": 30,
+        "hpf": 95,
+        "hpf_in": true,
+        "low": -2,
+        "mid_freq": 2800,
+        "mid": 1.5,
+        "high": 3
+      }
+    },
+    {
+      "name": "Guitar Bite",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Focus",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 44,
+        "bus_color": 30,
+        "hpf": 110,
+        "hpf_in": true,
+        "low": -2,
+        "mid_freq": 1600,
+        "mid": 2.5,
+        "high": 1
+      }
+    },
+    {
+      "name": "Keys And Pads",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Colour",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 22,
+        "bus_color": 24,
+        "hpf": 55,
+        "hpf_in": true,
+        "low": -1,
+        "mid_freq": 900,
+        "mid": -1.5,
+        "high": 2.5,
+        "stereo_mode": "stereo"
+      }
+    },
+    {
+      "name": "Strings Desk",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Colour",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 22,
+        "bus_color": 24,
+        "hpf": 80,
+        "hpf_in": true,
+        "low": -1,
+        "mid_freq": 2200,
+        "mid": -2,
+        "high": 3,
+        "stereo_mode": "stereo"
+      }
+    },
+    {
+      "name": "Mid Side Desk",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Stereo Bus",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 20,
+        "bus_color": 26,
+        "stereo_mode": "ms",
+        "hpf": 28,
+        "hpf_in": true,
+        "low": 1,
+        "high": 2,
+        "mix": 85
+      }
+    },
+    {
+      "name": "Mix Bus Desk",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 16,
+        "bus_color": 30,
+        "hpf": 24,
+        "hpf_in": true,
+        "low": 0.5,
+        "mid_freq": 400,
+        "mid": -0.5,
+        "high": 1
+      }
+    },
+    {
+      "name": "Master Desk",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 10,
+        "bus_color": 22,
+        "hpf": 24,
+        "hpf_in": true,
+        "low": 0.5,
+        "mid_freq": 400,
+        "mid": -0.5,
+        "high": 0.5
+      }
+    },
+    {
+      "name": "Tape Room Noise",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Vintage",
+        "Genre": "Lo-fi",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 55,
+        "bus_color": 50,
+        "noise": true,
+        "hpf": 70,
+        "hpf_in": true,
+        "low": 1,
+        "mid_freq": 1000,
+        "mid": -2,
+        "high": -1.5
+      }
+    },
+    {
+      "name": "Desk Warm Up",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Glue",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 18,
+        "bus_color": 22,
+        "hpf": 30,
+        "hpf_in": true,
+        "low": 0.5,
+        "mid_freq": 1200,
+        "mid": 0,
+        "high": 0.5,
+        "stereo_mode": "stereo"
+      }
+    },
+    {
+      "name": "Dual Mono Desk",
+      "category": "Utility",
+      "tags": {
+        "Source": "Stereo Pair",
+        "Intent": "Separation",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Console"
+      },
+      "values": {
+        "drive": 30,
+        "bus_color": 28,
+        "stereo_mode": "dual",
+        "hpf": 40,
+        "hpf_in": true,
+        "low": 0.5,
+        "high": 1
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Master",
+    "Creative",
+    "Utility"
+  ]
+}

@@ -1,0 +1,757 @@
+{
+  "id": "A06",
+  "name": "STRIKE FET",
+  "width": 1536,
+  "height": 920,
+  "regions": [
+    {
+      "id": "input_trim",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 141,
+      "cy": 264,
+      "r": 44,
+      "bounds": [
+        97,
+        220,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "output_trim",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1393,
+      "cy": 264,
+      "r": 44,
+      "bounds": [
+        1349,
+        220,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "hpf",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 138,
+      "cy": 625,
+      "r": 44,
+      "bounds": [
+        94,
+        581,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1393,
+      "cy": 476,
+      "r": 43,
+      "bounds": [
+        1350,
+        433,
+        87,
+        87
+      ]
+    },
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 349,
+      "cy": 488,
+      "r": 50,
+      "bounds": [
+        299,
+        438,
+        101,
+        101
+      ]
+    },
+    {
+      "id": "ratio",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 521,
+      "cy": 488,
+      "r": 50,
+      "bounds": [
+        471,
+        438,
+        101,
+        101
+      ]
+    },
+    {
+      "id": "attack",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 696,
+      "cy": 488,
+      "r": 50,
+      "bounds": [
+        646,
+        438,
+        101,
+        101
+      ]
+    },
+    {
+      "id": "release",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 870,
+      "cy": 488,
+      "r": 50,
+      "bounds": [
+        820,
+        438,
+        101,
+        101
+      ]
+    },
+    {
+      "id": "makeup",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1027,
+      "cy": 488,
+      "r": 50,
+      "bounds": [
+        977,
+        438,
+        101,
+        101
+      ]
+    },
+    {
+      "id": "input_lower",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 349,
+      "cy": 682,
+      "r": 46,
+      "bounds": [
+        303,
+        636,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "ratio_lower",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 521,
+      "cy": 682,
+      "r": 46,
+      "bounds": [
+        475,
+        636,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "attack_lower",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 696,
+      "cy": 682,
+      "r": 46,
+      "bounds": [
+        650,
+        636,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "release_lower",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 870,
+      "cy": 682,
+      "r": 46,
+      "bounds": [
+        824,
+        636,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "makeup_lower",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1027,
+      "cy": 682,
+      "r": 46,
+      "bounds": [
+        981,
+        636,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "saturation",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1179,
+      "cy": 476,
+      "r": 35,
+      "bounds": [
+        1144,
+        441,
+        71,
+        71
+      ]
+    },
+    {
+      "id": "previous",
+      "kind": "button",
+      "shape": "rect",
+      "x": 539,
+      "y": 46,
+      "w": 55,
+      "h": 50,
+      "bounds": [
+        539,
+        46,
+        55,
+        50
+      ]
+    },
+    {
+      "id": "next",
+      "kind": "button",
+      "shape": "rect",
+      "x": 902,
+      "y": 46,
+      "w": 55,
+      "h": 50,
+      "bounds": [
+        902,
+        46,
+        55,
+        50
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 974,
+      "y": 46,
+      "w": 70,
+      "h": 50,
+      "bounds": [
+        974,
+        46,
+        70,
+        50
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1048,
+      "y": 46,
+      "w": 70,
+      "h": 50,
+      "bounds": [
+        1048,
+        46,
+        70,
+        50
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1123,
+      "y": 46,
+      "w": 70,
+      "h": 50,
+      "bounds": [
+        1123,
+        46,
+        70,
+        50
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1199,
+      "y": 46,
+      "w": 61,
+      "h": 50,
+      "bounds": [
+        1199,
+        46,
+        61,
+        50
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1265,
+      "y": 46,
+      "w": 63,
+      "h": 50,
+      "bounds": [
+        1265,
+        46,
+        63,
+        50
+      ]
+    },
+    {
+      "id": "save",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1333,
+      "y": 46,
+      "w": 72,
+      "h": 50,
+      "bounds": [
+        1333,
+        46,
+        72,
+        50
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1410,
+      "y": 46,
+      "w": 78,
+      "h": 50,
+      "bounds": [
+        1410,
+        46,
+        78,
+        50
+      ]
+    },
+    {
+      "id": "phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 89,
+      "y": 359,
+      "w": 104,
+      "h": 48,
+      "bounds": [
+        89,
+        359,
+        104,
+        48
+      ]
+    },
+    {
+      "id": "hpf_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 88,
+      "y": 415,
+      "w": 106,
+      "h": 49,
+      "bounds": [
+        88,
+        415,
+        106,
+        49
+      ]
+    },
+    {
+      "id": "ratio4",
+      "kind": "button",
+      "shape": "rect",
+      "x": 327,
+      "y": 756,
+      "w": 52,
+      "h": 43,
+      "bounds": [
+        327,
+        756,
+        52,
+        43
+      ]
+    },
+    {
+      "id": "ratio8",
+      "kind": "button",
+      "shape": "rect",
+      "x": 380,
+      "y": 756,
+      "w": 53,
+      "h": 43,
+      "bounds": [
+        380,
+        756,
+        53,
+        43
+      ]
+    },
+    {
+      "id": "ratio12",
+      "kind": "button",
+      "shape": "rect",
+      "x": 434,
+      "y": 756,
+      "w": 54,
+      "h": 43,
+      "bounds": [
+        434,
+        756,
+        54,
+        43
+      ]
+    },
+    {
+      "id": "ratio20",
+      "kind": "button",
+      "shape": "rect",
+      "x": 489,
+      "y": 756,
+      "w": 58,
+      "h": 43,
+      "bounds": [
+        489,
+        756,
+        58,
+        43
+      ]
+    },
+    {
+      "id": "ratioall",
+      "kind": "button",
+      "shape": "rect",
+      "x": 548,
+      "y": 756,
+      "w": 59,
+      "h": 43,
+      "bounds": [
+        548,
+        756,
+        59,
+        43
+      ]
+    },
+    {
+      "id": "character_clean",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1128,
+      "y": 615,
+      "w": 103,
+      "h": 39,
+      "bounds": [
+        1128,
+        615,
+        103,
+        39
+      ]
+    },
+    {
+      "id": "character_a",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1128,
+      "y": 657,
+      "w": 103,
+      "h": 40,
+      "bounds": [
+        1128,
+        657,
+        103,
+        40
+      ]
+    },
+    {
+      "id": "character_b",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1128,
+      "y": 701,
+      "w": 103,
+      "h": 39,
+      "bounds": [
+        1128,
+        701,
+        103,
+        39
+      ]
+    },
+    {
+      "id": "character_c",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1128,
+      "y": 744,
+      "w": 103,
+      "h": 39,
+      "bounds": [
+        1128,
+        744,
+        103,
+        39
+      ]
+    },
+    {
+      "id": "os_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1113,
+      "y": 827,
+      "w": 45,
+      "h": 39,
+      "bounds": [
+        1113,
+        827,
+        45,
+        39
+      ]
+    },
+    {
+      "id": "os_2",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1161,
+      "y": 827,
+      "w": 42,
+      "h": 39,
+      "bounds": [
+        1161,
+        827,
+        42,
+        39
+      ]
+    },
+    {
+      "id": "os_4",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1206,
+      "y": 827,
+      "w": 38,
+      "h": 39,
+      "bounds": [
+        1206,
+        827,
+        38,
+        39
+      ]
+    },
+    {
+      "id": "preset",
+      "kind": "display",
+      "shape": "rect",
+      "x": 594,
+      "y": 49,
+      "w": 308,
+      "h": 44,
+      "bounds": [
+        594,
+        49,
+        308,
+        44
+      ]
+    },
+    {
+      "id": "vu_gr",
+      "kind": "display",
+      "shape": "rect",
+      "x": 535,
+      "y": 167,
+      "w": 466,
+      "h": 169,
+      "bounds": [
+        535,
+        167,
+        466,
+        169
+      ]
+    },
+    {
+      "id": "input_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 297,
+      "y": 565,
+      "w": 104,
+      "h": 33,
+      "bounds": [
+        297,
+        565,
+        104,
+        33
+      ]
+    },
+    {
+      "id": "ratio_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 469,
+      "y": 565,
+      "w": 106,
+      "h": 33,
+      "bounds": [
+        469,
+        565,
+        106,
+        33
+      ]
+    },
+    {
+      "id": "attack_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 643,
+      "y": 565,
+      "w": 106,
+      "h": 33,
+      "bounds": [
+        643,
+        565,
+        106,
+        33
+      ]
+    },
+    {
+      "id": "release_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 817,
+      "y": 565,
+      "w": 105,
+      "h": 33,
+      "bounds": [
+        817,
+        565,
+        105,
+        33
+      ]
+    },
+    {
+      "id": "makeup_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 973,
+      "y": 565,
+      "w": 105,
+      "h": 33,
+      "bounds": [
+        973,
+        565,
+        105,
+        33
+      ]
+    },
+    {
+      "id": "led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1337,
+      "y": 596,
+      "w": 27,
+      "h": 237,
+      "bounds": [
+        1337,
+        596,
+        27,
+        237
+      ]
+    },
+    {
+      "id": "led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1416,
+      "y": 596,
+      "w": 27,
+      "h": 237,
+      "bounds": [
+        1416,
+        596,
+        27,
+        237
+      ]
+    },
+    {
+      "id": "hpf_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 138,
+      "cy": 534,
+      "r": 11,
+      "bounds": [
+        127,
+        523,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "saturation_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1179,
+      "cy": 411,
+      "r": 12,
+      "bounds": [
+        1167,
+        399,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "all_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 462,
+      "cy": 857,
+      "r": 12,
+      "bounds": [
+        450,
+        845,
+        25,
+        25
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/05_High_Fidelity_Review_Candidates/Analog/A06_STRIKE_FET_HF_REVIEW.png",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "crop": [
+    0,
+    0,
+    1536,
+    920
+  ],
+  "faceplate": "png/A06_STRIKE_FET_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "51379e0556f316199bb88771bb1377e5ba65e2c438e341ad79f1576f12f2fb7b"
+}

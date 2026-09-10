@@ -1,0 +1,40 @@
+# Build output
+/build/
+/out/
+/dist/
+/artifacts/
+/tmp/
+/logs/
+/output/
+/.vs/
+/.idea/
+/.vscode/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+*.vst3
+*.component
+*.aaxplugin
+
+/installer/Bootstrapper/bin/
+/installer/Bootstrapper/obj/
+/installer/stage/
+
+# Licensing secrets - never commit
+*.key
+amanorsac-private*
+*.amanorsac
+
+# Third-party preset registers used as reference material only. These are
+# decoded from another vendor's installed products and must not be published
+# or redistributed. The factory banks in presets/factory are our own work and
+# are committed.
+/outputs/
+
+# Node tooling
+node_modules/
+
+# Parameter maps decoded from another vendor's installed products: reference
+# material for our own authoring, not ours to publish.
+/tools/waves_parameter_maps.json

@@ -1,0 +1,641 @@
+{
+  "id": "A07",
+  "name": "LUMEN OPTO",
+  "width": 1536,
+  "height": 925,
+  "regions": [
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 171,
+      "cy": 241,
+      "r": 49,
+      "bounds": [
+        122,
+        192,
+        99,
+        99
+      ]
+    },
+    {
+      "id": "output",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1357,
+      "cy": 241,
+      "r": 49,
+      "bounds": [
+        1308,
+        192,
+        99,
+        99
+      ]
+    },
+    {
+      "id": "hpf",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 171,
+      "cy": 520,
+      "r": 42,
+      "bounds": [
+        129,
+        478,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1357,
+      "cy": 492,
+      "r": 46,
+      "bounds": [
+        1311,
+        446,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "peak_reduction",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 450,
+      "cy": 529,
+      "r": 52,
+      "bounds": [
+        398,
+        477,
+        105,
+        105
+      ]
+    },
+    {
+      "id": "gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 657,
+      "cy": 529,
+      "r": 52,
+      "bounds": [
+        605,
+        477,
+        105,
+        105
+      ]
+    },
+    {
+      "id": "response",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 873,
+      "cy": 529,
+      "r": 52,
+      "bounds": [
+        821,
+        477,
+        105,
+        105
+      ]
+    },
+    {
+      "id": "release",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1091,
+      "cy": 529,
+      "r": 52,
+      "bounds": [
+        1039,
+        477,
+        105,
+        105
+      ]
+    },
+    {
+      "id": "drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 500,
+      "cy": 826,
+      "r": 44,
+      "bounds": [
+        456,
+        782,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "stereo_link",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 768,
+      "cy": 805,
+      "r": 46,
+      "bounds": [
+        722,
+        759,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "previous",
+      "kind": "button",
+      "shape": "rect",
+      "x": 532,
+      "y": 28,
+      "w": 49,
+      "h": 51,
+      "bounds": [
+        532,
+        28,
+        49,
+        51
+      ]
+    },
+    {
+      "id": "next",
+      "kind": "button",
+      "shape": "rect",
+      "x": 894,
+      "y": 28,
+      "w": 50,
+      "h": 51,
+      "bounds": [
+        894,
+        28,
+        50,
+        51
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 972,
+      "y": 28,
+      "w": 70,
+      "h": 51,
+      "bounds": [
+        972,
+        28,
+        70,
+        51
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1046,
+      "y": 28,
+      "w": 72,
+      "h": 51,
+      "bounds": [
+        1046,
+        28,
+        72,
+        51
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1122,
+      "y": 28,
+      "w": 73,
+      "h": 51,
+      "bounds": [
+        1122,
+        28,
+        73,
+        51
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1201,
+      "y": 28,
+      "w": 63,
+      "h": 51,
+      "bounds": [
+        1201,
+        28,
+        63,
+        51
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1268,
+      "y": 28,
+      "w": 64,
+      "h": 51,
+      "bounds": [
+        1268,
+        28,
+        64,
+        51
+      ]
+    },
+    {
+      "id": "save",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1337,
+      "y": 28,
+      "w": 64,
+      "h": 51,
+      "bounds": [
+        1337,
+        28,
+        64,
+        51
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1410,
+      "y": 28,
+      "w": 65,
+      "h": 51,
+      "bounds": [
+        1410,
+        28,
+        65,
+        51
+      ]
+    },
+    {
+      "id": "input_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 115,
+      "y": 334,
+      "w": 119,
+      "h": 46,
+      "bounds": [
+        115,
+        334,
+        119,
+        46
+      ]
+    },
+    {
+      "id": "output_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1297,
+      "y": 333,
+      "w": 117,
+      "h": 47,
+      "bounds": [
+        1297,
+        333,
+        117,
+        47
+      ]
+    },
+    {
+      "id": "hpf_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 114,
+      "y": 398,
+      "w": 123,
+      "h": 45,
+      "bounds": [
+        114,
+        398,
+        123,
+        45
+      ]
+    },
+    {
+      "id": "fast",
+      "kind": "button",
+      "shape": "rect",
+      "x": 796,
+      "y": 603,
+      "w": 75,
+      "h": 47,
+      "bounds": [
+        796,
+        603,
+        75,
+        47
+      ]
+    },
+    {
+      "id": "slow",
+      "kind": "button",
+      "shape": "rect",
+      "x": 875,
+      "y": 603,
+      "w": 75,
+      "h": 47,
+      "bounds": [
+        875,
+        603,
+        75,
+        47
+      ]
+    },
+    {
+      "id": "os_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 929,
+      "y": 716,
+      "w": 73,
+      "h": 45,
+      "bounds": [
+        929,
+        716,
+        73,
+        45
+      ]
+    },
+    {
+      "id": "os_2",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1004,
+      "y": 716,
+      "w": 69,
+      "h": 45,
+      "bounds": [
+        1004,
+        716,
+        69,
+        45
+      ]
+    },
+    {
+      "id": "os_4",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1078,
+      "y": 716,
+      "w": 70,
+      "h": 45,
+      "bounds": [
+        1078,
+        716,
+        70,
+        45
+      ]
+    },
+    {
+      "id": "stereo_mode",
+      "kind": "button",
+      "shape": "rect",
+      "x": 980,
+      "y": 796,
+      "w": 119,
+      "h": 46,
+      "bounds": [
+        980,
+        796,
+        119,
+        46
+      ]
+    },
+    {
+      "id": "preset",
+      "kind": "display",
+      "shape": "rect",
+      "x": 582,
+      "y": 30,
+      "w": 312,
+      "h": 47,
+      "bounds": [
+        582,
+        30,
+        312,
+        47
+      ]
+    },
+    {
+      "id": "vu_gr",
+      "kind": "display",
+      "shape": "rect",
+      "x": 452,
+      "y": 170,
+      "w": 620,
+      "h": 193,
+      "bounds": [
+        452,
+        170,
+        620,
+        193
+      ]
+    },
+    {
+      "id": "peak_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 393,
+      "y": 598,
+      "w": 111,
+      "h": 39,
+      "bounds": [
+        393,
+        598,
+        111,
+        39
+      ]
+    },
+    {
+      "id": "gain_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 608,
+      "y": 598,
+      "w": 101,
+      "h": 39,
+      "bounds": [
+        608,
+        598,
+        101,
+        39
+      ]
+    },
+    {
+      "id": "release_value",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1038,
+      "y": 598,
+      "w": 113,
+      "h": 39,
+      "bounds": [
+        1038,
+        598,
+        113,
+        39
+      ]
+    },
+    {
+      "id": "input_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 114,
+      "y": 609,
+      "w": 27,
+      "h": 231,
+      "bounds": [
+        114,
+        609,
+        27,
+        231
+      ]
+    },
+    {
+      "id": "input_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 208,
+      "y": 609,
+      "w": 29,
+      "h": 231,
+      "bounds": [
+        208,
+        609,
+        29,
+        231
+      ]
+    },
+    {
+      "id": "output_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1296,
+      "y": 609,
+      "w": 29,
+      "h": 231,
+      "bounds": [
+        1296,
+        609,
+        29,
+        231
+      ]
+    },
+    {
+      "id": "output_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1388,
+      "y": 609,
+      "w": 29,
+      "h": 231,
+      "bounds": [
+        1388,
+        609,
+        29,
+        231
+      ]
+    },
+    {
+      "id": "link_light",
+      "kind": "display",
+      "shape": "rect",
+      "x": 750,
+      "y": 714,
+      "w": 32,
+      "h": 26,
+      "bounds": [
+        750,
+        714,
+        32,
+        26
+      ]
+    },
+    {
+      "id": "character_clean",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 417,
+      "cy": 748,
+      "r": 10,
+      "bounds": [
+        407,
+        738,
+        21,
+        21
+      ]
+    },
+    {
+      "id": "character_tube",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 498,
+      "cy": 748,
+      "r": 12,
+      "bounds": [
+        486,
+        736,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "character_warm",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 580,
+      "cy": 748,
+      "r": 10,
+      "bounds": [
+        570,
+        738,
+        21,
+        21
+      ]
+    },
+    {
+      "id": "power_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1447,
+      "cy": 102,
+      "r": 11,
+      "bounds": [
+        1436,
+        91,
+        23,
+        23
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/05_High_Fidelity_Review_Candidates/Analog/A07_LUMEN_OPTO_HF_REVIEW.png",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "crop": [
+    0,
+    0,
+    1536,
+    925
+  ],
+  "faceplate": "png/A07_LUMEN_OPTO_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "573c2e0138359069639be88f22724c376df60db911b983542155ddb91f587bf2"
+}

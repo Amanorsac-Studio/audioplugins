@@ -1,0 +1,380 @@
+{
+  "plugin_id": "A06",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Front Of The Speaker",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Control",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "4:1",
+        "attack": 1.2,
+        "release": 180,
+        "makeup": 5,
+        "sc_hpf": 110,
+        "saturation": 18,
+        "input": 3
+      }
+    },
+    {
+      "name": "In Your Face",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Aggression",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "8:1",
+        "attack": 0.3,
+        "release": 120,
+        "makeup": 8,
+        "sc_hpf": 130,
+        "saturation": 30,
+        "input": 6
+      }
+    },
+    {
+      "name": "Vocal Group FET",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Backing Vocals",
+        "Intent": "Control",
+        "Genre": "Pop",
+        "Intensity": "Medium",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 3,
+        "release": 260,
+        "makeup": 3,
+        "sc_hpf": 110,
+        "saturation": 12,
+        "input": 3
+      }
+    },
+    {
+      "name": "All Buttons Down",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Extreme",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "all",
+        "attack": 0.05,
+        "release": 55,
+        "makeup": 10,
+        "sc_hpf": 90,
+        "saturation": 45,
+        "input": 8,
+        "mix": 60
+      }
+    },
+    {
+      "name": "Kick Nail",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Punch",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "4:1",
+        "attack": 8,
+        "release": 140,
+        "makeup": 5,
+        "sc_hpf": 60,
+        "saturation": 20,
+        "input": 3
+      }
+    },
+    {
+      "name": "Parallel Crush",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Punch",
+        "Genre": "Any",
+        "Intensity": "Extreme",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "20:1",
+        "attack": 0.08,
+        "release": 70,
+        "makeup": 14,
+        "sc_hpf": 100,
+        "saturation": 40,
+        "mix": 35,
+        "input": 8
+      }
+    },
+    {
+      "name": "Room Explosion",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Room",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Extreme",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "20:1",
+        "attack": 0.1,
+        "release": 320,
+        "makeup": 12,
+        "sc_hpf": 120,
+        "saturation": 38,
+        "input": 7
+      }
+    },
+    {
+      "name": "Snare Hammer",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Attack",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "4:1",
+        "attack": 6,
+        "release": 90,
+        "makeup": 6,
+        "sc_hpf": 150,
+        "saturation": 25,
+        "input": 4
+      }
+    },
+    {
+      "name": "Bass Anchor",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Control",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "4:1",
+        "attack": 4,
+        "release": 260,
+        "makeup": 5,
+        "sc_hpf": 70,
+        "saturation": 15,
+        "input": 3
+      }
+    },
+    {
+      "name": "Synth Bass FET",
+      "category": "Bass",
+      "tags": {
+        "Source": "Synth Bass",
+        "Intent": "Control",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "8:1",
+        "attack": 2,
+        "release": 180,
+        "makeup": 6,
+        "sc_hpf": 45,
+        "saturation": 15,
+        "input": 3
+      }
+    },
+    {
+      "name": "Acoustic Even",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Control",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 5,
+        "release": 220,
+        "makeup": 3,
+        "sc_hpf": 120,
+        "saturation": 10,
+        "input": 2
+      }
+    },
+    {
+      "name": "Guitar Sustain",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Sustain",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "8:1",
+        "attack": 2.5,
+        "release": 400,
+        "makeup": 6,
+        "sc_hpf": 100,
+        "saturation": 22,
+        "input": 4
+      }
+    },
+    {
+      "name": "Keys Glue FET",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Control",
+        "Genre": "Ballad",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "4:1",
+        "attack": 6,
+        "release": 260,
+        "makeup": 4,
+        "sc_hpf": 60,
+        "saturation": 14,
+        "input": 2
+      }
+    },
+    {
+      "name": "Piano Level",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Control",
+        "Genre": "Ballad",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 8,
+        "release": 300,
+        "makeup": 3,
+        "sc_hpf": 60,
+        "saturation": 8,
+        "input": 2
+      }
+    },
+    {
+      "name": "Strings FET",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Control",
+        "Genre": "Folk",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 10,
+        "release": 400,
+        "makeup": 3,
+        "sc_hpf": 90,
+        "saturation": 8,
+        "input": 2
+      }
+    },
+    {
+      "name": "Hi Pass Detector",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Full Mix",
+        "Intent": "Control",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 10,
+        "release": 400,
+        "makeup": 2,
+        "sc_hpf": 320,
+        "saturation": 6,
+        "input": 1
+      }
+    },
+    {
+      "name": "Mix Bus FET",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Control",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "FET"
+      },
+      "values": {
+        "ratio": "2:1",
+        "attack": 15,
+        "release": 500,
+        "makeup": 2,
+        "sc_hpf": 200,
+        "saturation": 10,
+        "input": 1
+      }
+    },
+    {
+      "name": "Sidechain Key",
+      "category": "Creative",
+      "tags": {
+        "Source": "Bus",
+        "Intent": "Ducking",
+        "Genre": "Electronic",
+        "Intensity": "Strong",
+        "Character": "FET"
+      },
+      "values": {
+        "external_sc": true,
+        "ratio": "8:1",
+        "attack": 0.2,
+        "release": 150,
+        "makeup": 4,
+        "sc_hpf": 40,
+        "saturation": 8,
+        "input": 2
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Creative"
+  ]
+}

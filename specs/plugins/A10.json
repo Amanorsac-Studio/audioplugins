@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A10",
+  "display_name": "PLATE FOUR",
+  "series": "Analog",
+  "primary_role": "Electro-Mechanical Plate Reverb",
+  "feature_set": [
+    "4 original plate characters",
+    "Bass cut",
+    "Treble shelf",
+    "Crosstalk",
+    "Analog noise optional",
+    "Stereo/mono-stereo"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "plate\nPlate",
+      "label": "plate\nPlate",
+      "type": "enum",
+      "range_or_values": "A / B / C / D",
+      "default": "A",
+      "automatable": true
+    },
+    {
+      "id": "pre_delay\nPre Delay",
+      "label": "pre_delay\nPre Delay",
+      "type": "float",
+      "range_or_values": "0 to 500 ms",
+      "default": "25 ms",
+      "automatable": true
+    },
+    {
+      "id": "decay\nDecay",
+      "label": "decay\nDecay",
+      "type": "float",
+      "range_or_values": "0.4 to 8 s",
+      "default": "2.5 s",
+      "automatable": true
+    },
+    {
+      "id": "damp\nDamp",
+      "label": "damp\nDamp",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "45 %",
+      "automatable": true
+    },
+    {
+      "id": "bass_cut\nBass Cut",
+      "label": "bass_cut\nBass Cut",
+      "type": "float",
+      "range_or_values": "20 to 500 Hz",
+      "default": "80 Hz",
+      "automatable": true
+    },
+    {
+      "id": "treble\nTreble",
+      "label": "treble\nTreble",
+      "type": "float",
+      "range_or_values": "-12 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "drive\nDrive",
+      "label": "drive\nDrive",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "10 %",
+      "automatable": true
+    },
+    {
+      "id": "crosstalk\nCrosstalk",
+      "label": "crosstalk\nCrosstalk",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "25 %",
+      "automatable": true
+    },
+    {
+      "id": "noise\nAnalog Noise",
+      "label": "noise\nAnalog Noise",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "width\nWidth",
+      "label": "width\nWidth",
+      "type": "float",
+      "range_or_values": "0 to 200 %",
+      "default": "110 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "era\nEra",
+      "label": "era\nEra",
+      "type": "enum",
+      "range_or_values": "modern / vintage",
+      "default": "modern",
+      "automatable": true
+    },
+    {
+      "id": "tension\nPlate Tension",
+      "label": "tension\nPlate Tension",
+      "type": "enum",
+      "range_or_values": "low / standard / high",
+      "default": "standard",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A10_PLATE_FOUR.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

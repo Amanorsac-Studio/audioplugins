@@ -1,0 +1,468 @@
+{
+  "plugin_id": "A10",
+  "bank": "Amanorsac Factory",
+  "author": "Amanorsac Studio",
+  "presets": [
+    {
+      "name": "Ballad Vocal Plate",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Space",
+        "Genre": "Ballad",
+        "Intensity": "Medium",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 35,
+        "decay": 2.2,
+        "damp": 42,
+        "bass_cut": 200,
+        "treble": 2,
+        "drive": 10,
+        "crosstalk": 28,
+        "width": 120,
+        "mix": 28
+      }
+    },
+    {
+      "name": "Cathedral Of Tin",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Space",
+        "Genre": "Cinematic",
+        "Intensity": "Strong",
+        "Character": "Plate D"
+      },
+      "values": {
+        "plate": "D",
+        "pre_delay": 60,
+        "decay": 5.5,
+        "damp": 28,
+        "bass_cut": 150,
+        "treble": 3,
+        "drive": 12,
+        "crosstalk": 35,
+        "width": 140,
+        "mix": 34,
+        "tension": "low"
+      }
+    },
+    {
+      "name": "Valve Plate",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Colour",
+        "Genre": "Soul",
+        "Intensity": "Medium",
+        "Character": "Plate C"
+      },
+      "values": {
+        "plate": "C",
+        "pre_delay": 30,
+        "decay": 2.4,
+        "damp": 50,
+        "bass_cut": 190,
+        "treble": 0.5,
+        "drive": 45,
+        "crosstalk": 30,
+        "width": 115,
+        "mix": 30,
+        "era": "vintage"
+      }
+    },
+    {
+      "name": "Drum Chamber",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Room",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Plate A"
+      },
+      "values": {
+        "plate": "A",
+        "pre_delay": 8,
+        "decay": 1.3,
+        "damp": 60,
+        "bass_cut": 220,
+        "treble": 1,
+        "drive": 15,
+        "crosstalk": 22,
+        "width": 110,
+        "mix": 24
+      }
+    },
+    {
+      "name": "Percussion Flash",
+      "category": "Drums",
+      "tags": {
+        "Source": "Percussion",
+        "Intent": "Space",
+        "Genre": "Any",
+        "Intensity": "Gentle",
+        "Character": "Plate A"
+      },
+      "values": {
+        "plate": "A",
+        "pre_delay": 5,
+        "decay": 0.7,
+        "damp": 62,
+        "bass_cut": 260,
+        "treble": 3,
+        "drive": 10,
+        "crosstalk": 18,
+        "width": 100,
+        "mix": 18,
+        "tension": "high"
+      }
+    },
+    {
+      "name": "Short Steel",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Space",
+        "Genre": "Rock",
+        "Intensity": "Gentle",
+        "Character": "Plate A"
+      },
+      "values": {
+        "plate": "A",
+        "pre_delay": 12,
+        "decay": 0.9,
+        "damp": 55,
+        "bass_cut": 180,
+        "treble": 1.5,
+        "drive": 8,
+        "crosstalk": 20,
+        "width": 105,
+        "mix": 22,
+        "tension": "high"
+      }
+    },
+    {
+      "name": "Snare Plate Medium",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Space",
+        "Genre": "Rock",
+        "Intensity": "Gentle",
+        "Character": "Plate A"
+      },
+      "values": {
+        "plate": "A",
+        "pre_delay": 18,
+        "decay": 1.5,
+        "damp": 48,
+        "bass_cut": 180,
+        "treble": 1.5,
+        "drive": 8,
+        "crosstalk": 20,
+        "width": 105,
+        "mix": 26,
+        "tension": "standard"
+      }
+    },
+    {
+      "name": "Warm Drum Cave",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Room",
+        "Intent": "Room",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Plate C"
+      },
+      "values": {
+        "plate": "C",
+        "pre_delay": 18,
+        "decay": 2,
+        "damp": 72,
+        "bass_cut": 140,
+        "treble": -3,
+        "drive": 22,
+        "crosstalk": 40,
+        "width": 125,
+        "mix": 32,
+        "era": "vintage"
+      }
+    },
+    {
+      "name": "Acoustic Plate",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic Guitar",
+        "Intent": "Space",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 20,
+        "decay": 1.8,
+        "damp": 44,
+        "bass_cut": 260,
+        "treble": 2.5,
+        "drive": 6,
+        "crosstalk": 26,
+        "width": 130,
+        "mix": 20
+      }
+    },
+    {
+      "name": "Guitar Halo",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Space",
+        "Genre": "Rock",
+        "Intensity": "Medium",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 28,
+        "decay": 2.6,
+        "damp": 48,
+        "bass_cut": 240,
+        "treble": 1.5,
+        "drive": 14,
+        "crosstalk": 26,
+        "width": 130,
+        "mix": 26
+      }
+    },
+    {
+      "name": "Piano Bloom",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Space",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 22,
+        "decay": 1.8,
+        "damp": 40,
+        "bass_cut": 160,
+        "treble": 2.5,
+        "drive": 6,
+        "crosstalk": 24,
+        "width": 118,
+        "mix": 20
+      }
+    },
+    {
+      "name": "Synth Pad Plate",
+      "category": "Keys",
+      "tags": {
+        "Source": "Synth Pad",
+        "Intent": "Space",
+        "Genre": "Jazz",
+        "Intensity": "Gentle",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 40,
+        "decay": 3.5,
+        "damp": 34,
+        "bass_cut": 160,
+        "treble": 2.5,
+        "drive": 6,
+        "crosstalk": 24,
+        "width": 145,
+        "mix": 32
+      }
+    },
+    {
+      "name": "Horn Plate",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Horns",
+        "Intent": "Space",
+        "Genre": "Cinematic",
+        "Intensity": "Strong",
+        "Character": "Plate D"
+      },
+      "values": {
+        "plate": "D",
+        "pre_delay": 30,
+        "decay": 2.4,
+        "damp": 44,
+        "bass_cut": 180,
+        "treble": 2,
+        "drive": 8,
+        "crosstalk": 38,
+        "width": 125,
+        "mix": 26,
+        "tension": "low"
+      }
+    },
+    {
+      "name": "Lush Strings",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Space",
+        "Genre": "Cinematic",
+        "Intensity": "Strong",
+        "Character": "Plate D"
+      },
+      "values": {
+        "plate": "D",
+        "pre_delay": 45,
+        "decay": 4.5,
+        "damp": 32,
+        "bass_cut": 130,
+        "treble": 2,
+        "drive": 8,
+        "crosstalk": 38,
+        "width": 150,
+        "mix": 35,
+        "tension": "low"
+      }
+    },
+    {
+      "name": "Mix Bus Plate",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix Bus",
+        "Intent": "Space",
+        "Genre": "Ballad",
+        "Intensity": "Medium",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 15,
+        "decay": 1.4,
+        "damp": 55,
+        "bass_cut": 260,
+        "treble": 2,
+        "drive": 10,
+        "crosstalk": 28,
+        "width": 108,
+        "mix": 12
+      }
+    },
+    {
+      "name": "Driven Vocal Room",
+      "category": "Creative",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Effect",
+        "Genre": "Rock",
+        "Intensity": "Strong",
+        "Character": "Plate C"
+      },
+      "values": {
+        "plate": "C",
+        "pre_delay": 15,
+        "decay": 1.6,
+        "damp": 58,
+        "bass_cut": 220,
+        "treble": -1,
+        "drive": 70,
+        "crosstalk": 45,
+        "noise": 12,
+        "width": 108,
+        "mix": 40,
+        "era": "vintage"
+      }
+    },
+    {
+      "name": "Long Goodbye",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Effect",
+        "Genre": "Electronic",
+        "Intensity": "Extreme",
+        "Character": "Plate D"
+      },
+      "values": {
+        "plate": "D",
+        "pre_delay": 120,
+        "decay": 8,
+        "damp": 20,
+        "bass_cut": 120,
+        "treble": 4,
+        "drive": 25,
+        "crosstalk": 55,
+        "width": 175,
+        "mix": 55,
+        "tension": "low"
+      }
+    },
+    {
+      "name": "Tape Echo Plate",
+      "category": "Creative",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Vintage",
+        "Genre": "Lo-fi",
+        "Intensity": "Strong",
+        "Character": "Plate C"
+      },
+      "values": {
+        "plate": "C",
+        "pre_delay": 90,
+        "decay": 3,
+        "damp": 78,
+        "bass_cut": 250,
+        "treble": -5,
+        "drive": 40,
+        "crosstalk": 50,
+        "noise": 30,
+        "width": 112,
+        "mix": 38,
+        "era": "vintage",
+        "tension": "low"
+      }
+    },
+    {
+      "name": "Mono To Wide",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Width",
+        "Genre": "Any",
+        "Intensity": "Medium",
+        "Character": "Plate B"
+      },
+      "values": {
+        "plate": "B",
+        "pre_delay": 20,
+        "decay": 1.9,
+        "damp": 46,
+        "bass_cut": 200,
+        "treble": 1.5,
+        "drive": 10,
+        "crosstalk": 70,
+        "width": 185,
+        "mix": 30
+      }
+    }
+  ],
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Creative",
+    "Utility"
+  ]
+}

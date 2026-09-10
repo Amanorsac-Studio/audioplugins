@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D06",
+  "display_name": "RESONANCE CTRL",
+  "series": "Digital",
+  "primary_role": "Spectral Resonance Controller",
+  "feature_set": [
+    "Auto resonance detection",
+    "Learn / freeze",
+    "Delta monitoring",
+    "Keep transients",
+    "Frequency range focus",
+    "M/S processing"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "depth\nDepth",
+      "label": "depth\nDepth",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "35 %",
+      "automatable": true
+    },
+    {
+      "id": "selectivity\nSelectivity",
+      "label": "selectivity\nSelectivity",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "60 %",
+      "automatable": true
+    },
+    {
+      "id": "speed\nSpeed",
+      "label": "speed\nSpeed",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "50 %",
+      "automatable": true
+    },
+    {
+      "id": "sensitivity\nSensitivity",
+      "label": "sensitivity\nSensitivity",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "50 %",
+      "automatable": true
+    },
+    {
+      "id": "smooth\nSmooth",
+      "label": "smooth\nSmooth",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "35 %",
+      "automatable": true
+    },
+    {
+      "id": "low_freq\nLow Range",
+      "label": "low_freq\nLow Range",
+      "type": "float",
+      "range_or_values": "20 to 10000 Hz",
+      "default": "80 Hz",
+      "automatable": true
+    },
+    {
+      "id": "high_freq\nHigh Range",
+      "label": "high_freq\nHigh Range",
+      "type": "float",
+      "range_or_values": "200 to 40000 Hz",
+      "default": "18000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "learn\nLearn",
+      "label": "learn\nLearn",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "freeze\nFreeze Profile",
+      "label": "freeze\nFreeze Profile",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "delta\nDelta",
+      "label": "delta\nDelta",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "transient_keep\nKeep Transients",
+      "label": "transient_keep\nKeep Transients",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "65 %",
+      "automatable": true
+    },
+    {
+      "id": "stereo_mode\nStereo Mode",
+      "label": "stereo_mode\nStereo Mode",
+      "type": "enum",
+      "range_or_values": "stereo / mid / side / left / right",
+      "default": "stereo",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D06_RESONANCE_CTRL.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

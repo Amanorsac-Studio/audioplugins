@@ -1,0 +1,667 @@
+{
+  "id": "A10",
+  "name": "PLATE FOUR",
+  "width": 1586,
+  "height": 916,
+  "regions": [
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 155,
+      "cy": 211,
+      "r": 47,
+      "bounds": [
+        108,
+        164,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "output",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1427,
+      "cy": 211,
+      "r": 47,
+      "bounds": [
+        1380,
+        164,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1427,
+      "cy": 395,
+      "r": 44,
+      "bounds": [
+        1383,
+        351,
+        89,
+        89
+      ]
+    },
+    {
+      "id": "predelay",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 395,
+      "cy": 540,
+      "r": 42,
+      "bounds": [
+        353,
+        498,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "decay",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 590,
+      "cy": 540,
+      "r": 42,
+      "bounds": [
+        548,
+        498,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "damping",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 792,
+      "cy": 540,
+      "r": 42,
+      "bounds": [
+        750,
+        498,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "basscut",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 989,
+      "cy": 540,
+      "r": 42,
+      "bounds": [
+        947,
+        498,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 395,
+      "cy": 695,
+      "r": 42,
+      "bounds": [
+        353,
+        653,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "crosstalk",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 590,
+      "cy": 695,
+      "r": 42,
+      "bounds": [
+        548,
+        653,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "noise",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 792,
+      "cy": 695,
+      "r": 42,
+      "bounds": [
+        750,
+        653,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "width",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 989,
+      "cy": 695,
+      "r": 42,
+      "bounds": [
+        947,
+        653,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "previous",
+      "kind": "button",
+      "shape": "rect",
+      "x": 542,
+      "y": 23,
+      "w": 51,
+      "h": 50,
+      "bounds": [
+        542,
+        23,
+        51,
+        50
+      ]
+    },
+    {
+      "id": "next",
+      "kind": "button",
+      "shape": "rect",
+      "x": 890,
+      "y": 23,
+      "w": 55,
+      "h": 50,
+      "bounds": [
+        890,
+        23,
+        55,
+        50
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 969,
+      "y": 23,
+      "w": 80,
+      "h": 50,
+      "bounds": [
+        969,
+        23,
+        80,
+        50
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1052,
+      "y": 23,
+      "w": 74,
+      "h": 50,
+      "bounds": [
+        1052,
+        23,
+        74,
+        50
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1132,
+      "y": 23,
+      "w": 73,
+      "h": 50,
+      "bounds": [
+        1132,
+        23,
+        73,
+        50
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1212,
+      "y": 23,
+      "w": 60,
+      "h": 50,
+      "bounds": [
+        1212,
+        23,
+        60,
+        50
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1277,
+      "y": 23,
+      "w": 60,
+      "h": 50,
+      "bounds": [
+        1277,
+        23,
+        60,
+        50
+      ]
+    },
+    {
+      "id": "settings",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1343,
+      "y": 23,
+      "w": 60,
+      "h": 50,
+      "bounds": [
+        1343,
+        23,
+        60,
+        50
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1409,
+      "y": 23,
+      "w": 105,
+      "h": 50,
+      "bounds": [
+        1409,
+        23,
+        105,
+        50
+      ]
+    },
+    {
+      "id": "phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 70,
+      "y": 301,
+      "w": 75,
+      "h": 42,
+      "bounds": [
+        70,
+        301,
+        75,
+        42
+      ]
+    },
+    {
+      "id": "hpf_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 159,
+      "y": 299,
+      "w": 77,
+      "h": 45,
+      "bounds": [
+        159,
+        299,
+        77,
+        45
+      ]
+    },
+    {
+      "id": "character_a",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1127,
+      "y": 516,
+      "w": 120,
+      "h": 41,
+      "bounds": [
+        1127,
+        516,
+        120,
+        41
+      ]
+    },
+    {
+      "id": "character_b",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1127,
+      "y": 563,
+      "w": 120,
+      "h": 43,
+      "bounds": [
+        1127,
+        563,
+        120,
+        43
+      ]
+    },
+    {
+      "id": "character_c",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1127,
+      "y": 611,
+      "w": 120,
+      "h": 43,
+      "bounds": [
+        1127,
+        611,
+        120,
+        43
+      ]
+    },
+    {
+      "id": "character_d",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1127,
+      "y": 660,
+      "w": 120,
+      "h": 40,
+      "bounds": [
+        1127,
+        660,
+        120,
+        40
+      ]
+    },
+    {
+      "id": "bypass",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1063,
+      "y": 810,
+      "w": 76,
+      "h": 53,
+      "bounds": [
+        1063,
+        810,
+        76,
+        53
+      ]
+    },
+    {
+      "id": "input_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 233,
+      "cy": 127,
+      "r": 11,
+      "bounds": [
+        222,
+        116,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "output_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1507,
+      "cy": 127,
+      "r": 11,
+      "bounds": [
+        1496,
+        116,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "noise_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 863,
+      "cy": 709,
+      "r": 11,
+      "bounds": [
+        852,
+        698,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "inputvu_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 391,
+      "cy": 826,
+      "r": 11,
+      "bounds": [
+        380,
+        815,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "quality_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 621,
+      "cy": 839,
+      "r": 11,
+      "bounds": [
+        610,
+        828,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "outputvu_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1493,
+      "cy": 824,
+      "r": 11,
+      "bounds": [
+        1482,
+        813,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "meter_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1029,
+      "cy": 839,
+      "r": 11,
+      "bounds": [
+        1018,
+        828,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "modern_vintage",
+      "kind": "toggle",
+      "shape": "rect",
+      "x": 459,
+      "y": 815,
+      "w": 30,
+      "h": 40,
+      "bounds": [
+        459,
+        815,
+        30,
+        40
+      ]
+    },
+    {
+      "id": "quality",
+      "kind": "toggle",
+      "shape": "rect",
+      "x": 568,
+      "y": 802,
+      "w": 30,
+      "h": 40,
+      "bounds": [
+        568,
+        802,
+        30,
+        40
+      ]
+    },
+    {
+      "id": "meter_mode",
+      "kind": "toggle",
+      "shape": "rect",
+      "x": 973,
+      "y": 802,
+      "w": 30,
+      "h": 40,
+      "bounds": [
+        973,
+        802,
+        30,
+        40
+      ]
+    },
+    {
+      "id": "preset",
+      "kind": "display",
+      "shape": "rect",
+      "x": 594,
+      "y": 26,
+      "w": 296,
+      "h": 46,
+      "bounds": [
+        594,
+        26,
+        296,
+        46
+      ]
+    },
+    {
+      "id": "vu_in",
+      "kind": "display",
+      "shape": "rect",
+      "x": 96,
+      "y": 787,
+      "w": 250,
+      "h": 98,
+      "bounds": [
+        96,
+        787,
+        250,
+        98
+      ]
+    },
+    {
+      "id": "vu_out",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1222,
+      "y": 787,
+      "w": 263,
+      "h": 98,
+      "bounds": [
+        1222,
+        787,
+        263,
+        98
+      ]
+    },
+    {
+      "id": "input_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 80,
+      "y": 398,
+      "w": 37,
+      "h": 262,
+      "bounds": [
+        80,
+        398,
+        37,
+        262
+      ]
+    },
+    {
+      "id": "input_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 190,
+      "y": 398,
+      "w": 37,
+      "h": 262,
+      "bounds": [
+        190,
+        398,
+        37,
+        262
+      ]
+    },
+    {
+      "id": "output_led_l",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1361,
+      "y": 526,
+      "w": 34,
+      "h": 190,
+      "bounds": [
+        1361,
+        526,
+        34,
+        190
+      ]
+    },
+    {
+      "id": "output_led_r",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1465,
+      "y": 526,
+      "w": 34,
+      "h": 190,
+      "bounds": [
+        1465,
+        526,
+        34,
+        190
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/05_High_Fidelity_Review_Candidates/Analog/A10_PLATE_FOUR_HF_REVIEW.png",
+  "sourceDimensions": [
+    1586,
+    992
+  ],
+  "crop": [
+    0,
+    0,
+    1586,
+    916
+  ],
+  "faceplate": "png/A10_PLATE_FOUR_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "7bed65d7814c4b81da10091bf50f5c82ecc388b47e3c002fdfbf8d2390e54a30"
+}

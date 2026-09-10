@@ -1,0 +1,11 @@
+#pragma once
+
+namespace amanorsac::generated
+{
+inline constexpr const char* pluginId = "@plugin_id@";
+inline constexpr const char* displayName = "@DISPLAY_NAME@";
+inline constexpr const char* series = "@SERIES@";
+inline constexpr const char* primaryRole = "@PRIMARY_ROLE@";
+inline constexpr const char* json = R"AMNS_SPEC(@SPEC_JSON@)AMNS_SPEC";
+}
+

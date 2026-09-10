@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A01",
+  "display_name": "HERITAGE EQ",
+  "series": "Analog",
+  "primary_role": "Class-A Musical Equalizer",
+  "feature_set": [
+    "5 musical bands",
+    "HPF/LPF",
+    "Clean/Console/Tube/Tape color",
+    "Auto gain",
+    "L/R or M/S",
+    "2x/4x oversampling"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input_trim\nInput Trim",
+      "label": "input_trim\nInput Trim",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "float",
+      "range_or_values": "20 to 300 Hz",
+      "default": "20 Hz",
+      "automatable": true
+    },
+    {
+      "id": "lpf\nLPF",
+      "label": "lpf\nLPF",
+      "type": "float",
+      "range_or_values": "2000 to 40000 Hz",
+      "default": "40000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.low.freq\nLow Frequency",
+      "label": "band.low.freq\nLow Frequency",
+      "type": "float",
+      "range_or_values": "30 to 220 Hz",
+      "default": "60 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.low.gain\nLow Gain",
+      "label": "band.low.gain\nLow Gain",
+      "type": "float",
+      "range_or_values": "-15 to 15 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.low.q\nLow Q",
+      "label": "band.low.q\nLow Q",
+      "type": "float",
+      "range_or_values": "0.3 to 3",
+      "default": "0.7",
+      "automatable": true
+    },
+    {
+      "id": "band.lowmid.freq\nLow Mid Frequency",
+      "label": "band.lowmid.freq\nLow Mid Frequency",
+      "type": "float",
+      "range_or_values": "80 to 700 Hz",
+      "default": "250 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.lowmid.gain\nLow Mid Gain",
+      "label": "band.lowmid.gain\nLow Mid Gain",
+      "type": "float",
+      "range_or_values": "-15 to 15 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.mid.freq\nMid Frequency",
+      "label": "band.mid.freq\nMid Frequency",
+      "type": "float",
+      "range_or_values": "300 to 2500 Hz",
+      "default": "1000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.mid.gain\nMid Gain",
+      "label": "band.mid.gain\nMid Gain",
+      "type": "float",
+      "range_or_values": "-15 to 15 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.highmid.freq\nHigh Mid Frequency",
+      "label": "band.highmid.freq\nHigh Mid Frequency",
+      "type": "float",
+      "range_or_values": "1200 to 8000 Hz",
+      "default": "3500 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.highmid.gain\nHigh Mid Gain",
+      "label": "band.highmid.gain\nHigh Mid Gain",
+      "type": "float",
+      "range_or_values": "-15 to 15 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.high.freq\nHigh Frequency",
+      "label": "band.high.freq\nHigh Frequency",
+      "type": "float",
+      "range_or_values": "4000 to 16000 Hz",
+      "default": "12000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "band.high.gain\nHigh Gain",
+      "label": "band.high.gain\nHigh Gain",
+      "type": "float",
+      "range_or_values": "-15 to 15 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "character\nAnalog Character",
+      "label": "character\nAnalog Character",
+      "type": "enum",
+      "range_or_values": "clean / console / tube / tape",
+      "default": "clean",
+      "automatable": true
+    },
+    {
+      "id": "drive\nDrive",
+      "label": "drive\nDrive",
+      "type": "float",
+      "range_or_values": "0 to 10",
+      "default": "0",
+      "automatable": true
+    },
+    {
+      "id": "auto_gain\nAuto Gain",
+      "label": "auto_gain\nAuto Gain",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "stereo_mode\nStereo Mode",
+      "label": "stereo_mode\nStereo Mode",
+      "type": "enum",
+      "range_or_values": "lr / ms",
+      "default": "lr",
+      "automatable": true
+    },
+    {
+      "id": "oversampling\nOversampling",
+      "label": "oversampling\nOversampling",
+      "type": "enum",
+      "range_or_values": "off / 2x / 4x",
+      "default": "2x",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output_trim\nOutput Trim",
+      "label": "output_trim\nOutput Trim",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.lowmid.q\nLow Mid Q",
+      "label": "band.lowmid.q\nLow Mid Q",
+      "type": "float",
+      "range_or_values": "0.3 to 3",
+      "default": "0.9",
+      "automatable": true
+    },
+    {
+      "id": "band.mid.q\nMid Q",
+      "label": "band.mid.q\nMid Q",
+      "type": "float",
+      "range_or_values": "0.3 to 3",
+      "default": "0.9",
+      "automatable": true
+    },
+    {
+      "id": "band.highmid.q\nHigh Mid Q",
+      "label": "band.highmid.q\nHigh Mid Q",
+      "type": "float",
+      "range_or_values": "0.3 to 3",
+      "default": "0.9",
+      "automatable": true
+    },
+    {
+      "id": "band.high.slope\nHigh Slope",
+      "label": "band.high.slope\nHigh Slope",
+      "type": "float",
+      "range_or_values": "0.3 to 3",
+      "default": "0.7",
+      "automatable": true
+    },
+    {
+      "id": "band.low.enabled\nLow On",
+      "label": "band.low.enabled\nLow On",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "band.lowmid.enabled\nLow Mid On",
+      "label": "band.lowmid.enabled\nLow Mid On",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "band.mid.enabled\nMid On",
+      "label": "band.mid.enabled\nMid On",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "band.highmid.enabled\nHigh Mid On",
+      "label": "band.highmid.enabled\nHigh Mid On",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "band.high.enabled\nHigh On",
+      "label": "band.high.enabled\nHigh On",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "eq_in\nEQ In",
+      "label": "eq_in\nEQ In",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "filter_in\nFilter In",
+      "label": "filter_in\nFilter In",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "filter_slope\nFilter Slope",
+      "label": "filter_slope\nFilter Slope",
+      "type": "enum",
+      "range_or_values": "18 / 24",
+      "default": "18",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A01_HERITAGE_EQ.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

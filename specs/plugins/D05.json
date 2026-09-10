@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D05",
+  "display_name": "AIR DE-ESSER",
+  "series": "Digital",
+  "primary_role": "Intelligent De-Essing",
+  "feature_set": [
+    "Wide / split band",
+    "Ess detection graph",
+    "Voice mode",
+    "Listen detector",
+    "Adaptive focus",
+    "Stereo linking"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "threshold\nThreshold",
+      "label": "threshold\nThreshold",
+      "type": "float",
+      "range_or_values": "-60 to 0 dB",
+      "default": "-24 dB",
+      "automatable": true
+    },
+    {
+      "id": "range\nReduction Range",
+      "label": "range\nReduction Range",
+      "type": "float",
+      "range_or_values": "0 to 24 dB",
+      "default": "8 dB",
+      "automatable": true
+    },
+    {
+      "id": "focus\nFocus Frequency",
+      "label": "focus\nFocus Frequency",
+      "type": "float",
+      "range_or_values": "1500 to 16000 Hz",
+      "default": "6500 Hz",
+      "automatable": true
+    },
+    {
+      "id": "bandwidth\nBandwidth",
+      "label": "bandwidth\nBandwidth",
+      "type": "float",
+      "range_or_values": "0.2 to 4 oct",
+      "default": "1.2 oct",
+      "automatable": true
+    },
+    {
+      "id": "attack\nAttack",
+      "label": "attack\nAttack",
+      "type": "float",
+      "range_or_values": "0.1 to 50 ms",
+      "default": "2 ms",
+      "automatable": true
+    },
+    {
+      "id": "release\nRelease",
+      "label": "release\nRelease",
+      "type": "float",
+      "range_or_values": "10 to 1000 ms",
+      "default": "120 ms",
+      "automatable": true
+    },
+    {
+      "id": "sensitivity\nSensitivity",
+      "label": "sensitivity\nSensitivity",
+      "type": "float",
+      "range_or_values": "-12 to 12 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "mode\nMode",
+      "label": "mode\nMode",
+      "type": "enum",
+      "range_or_values": "wide / split / smart",
+      "default": "split",
+      "automatable": true
+    },
+    {
+      "id": "voice_profile\nVoice Profile",
+      "label": "voice_profile\nVoice Profile",
+      "type": "enum",
+      "range_or_values": "neutral / bright / dark",
+      "default": "neutral",
+      "automatable": true
+    },
+    {
+      "id": "listen\nDetector Listen",
+      "label": "listen\nDetector Listen",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    },
+    {
+      "id": "stereo_link\nStereo Link",
+      "label": "stereo_link\nStereo Link",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D05_AIR_DE-ESSER.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A08",
+  "display_name": "BUSFORGE VCA",
+  "series": "Analog",
+  "primary_role": "VCA Bus Compressor",
+  "feature_set": [
+    "Bus glue behavior",
+    "Auto release",
+    "SC HPF",
+    "Stereo link",
+    "Soft/hard knee",
+    "GR meter"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "threshold\nThreshold",
+      "label": "threshold\nThreshold",
+      "type": "float",
+      "range_or_values": "-60 to 0 dB",
+      "default": "-18 dB",
+      "automatable": true
+    },
+    {
+      "id": "ratio\nRatio",
+      "label": "ratio\nRatio",
+      "type": "enum",
+      "range_or_values": "1.5:1 / 2:1 / 4:1 / 10:1",
+      "default": "4:1",
+      "automatable": true
+    },
+    {
+      "id": "attack\nAttack",
+      "label": "attack\nAttack",
+      "type": "float",
+      "range_or_values": "0.1 to 30 ms",
+      "default": "10 ms",
+      "automatable": true
+    },
+    {
+      "id": "release\nRelease",
+      "label": "release\nRelease",
+      "type": "float",
+      "range_or_values": "0.05 to 1.2 s",
+      "default": "0.3 s",
+      "automatable": true
+    },
+    {
+      "id": "auto_release\nAuto Release",
+      "label": "auto_release\nAuto Release",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "makeup\nMakeup",
+      "label": "makeup\nMakeup",
+      "type": "float",
+      "range_or_values": "-12 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "sc_hpf\nSC HPF",
+      "label": "sc_hpf\nSC HPF",
+      "type": "float",
+      "range_or_values": "20 to 500 Hz",
+      "default": "90 Hz",
+      "automatable": true
+    },
+    {
+      "id": "knee\nKnee",
+      "label": "knee\nKnee",
+      "type": "enum",
+      "range_or_values": "hard / soft",
+      "default": "soft",
+      "automatable": true
+    },
+    {
+      "id": "stereo_link\nStereo Link",
+      "label": "stereo_link\nStereo Link",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A08_BUSFORGE_VCA.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

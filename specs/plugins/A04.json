@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "plugin_id": "A04",
+  "display_name": "REELSAT",
+  "series": "Analog",
+  "primary_role": "Tape Machine",
+  "feature_set": [
+    "3 tape formulas",
+    "7.5/15/30 ips",
+    "Head bump",
+    "HF rolloff",
+    "Hiss optional",
+    "Linked I/O"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=38, y=0, x2=1498, y2=72",
+    "chassis": "x=58, y=92, x2=1478, y2=846",
+    "input": "x=80, y=122, x2=260, y2=805",
+    "main": "x=282, y=122, x2=1254, y2=805",
+    "output": "x=1276, y=122, x2=1456, y2=805",
+    "footer": "x=58, y=860, x2=1478, y2=924"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": false,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "input\nInput",
+      "label": "input\nInput",
+      "type": "float",
+      "range_or_values": "-18 to 18 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "formula\nFormula",
+      "label": "formula\nFormula",
+      "type": "enum",
+      "range_or_values": "vintage / classic / modern",
+      "default": "modern",
+      "automatable": true
+    },
+    {
+      "id": "speed\nSpeed",
+      "label": "speed\nSpeed",
+      "type": "enum",
+      "range_or_values": "7.5 / 15 / 30",
+      "default": "15",
+      "automatable": true
+    },
+    {
+      "id": "bias\nBias",
+      "label": "bias\nBias",
+      "type": "float",
+      "range_or_values": "-3 to 6 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "saturation\nSaturation",
+      "label": "saturation\nSaturation",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "30 %",
+      "automatable": true
+    },
+    {
+      "id": "wow\nWow",
+      "label": "wow\nWow",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "5 %",
+      "automatable": true
+    },
+    {
+      "id": "flutter\nFlutter",
+      "label": "flutter\nFlutter",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "4 %",
+      "automatable": true
+    },
+    {
+      "id": "head_bump\nHead Bump",
+      "label": "head_bump\nHead Bump",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "25 %",
+      "automatable": true
+    },
+    {
+      "id": "hf_rolloff\nHF Rolloff",
+      "label": "hf_rolloff\nHF Rolloff",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "15 %",
+      "automatable": true
+    },
+    {
+      "id": "hiss\nHiss",
+      "label": "hiss\nHiss",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "mix\nMix",
+      "label": "mix\nMix",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "output\nOutput",
+      "label": "output\nOutput",
+      "type": "float",
+      "range_or_values": "-18 to 18 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "phase\nPhase",
+      "label": "phase\nPhase",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    },
+    {
+      "id": "hpf\nHPF",
+      "label": "hpf\nHPF",
+      "type": "float",
+      "range_or_values": "20 to 300 Hz",
+      "default": "20 Hz",
+      "automatable": true
+    },
+    {
+      "id": "bypass\nBypass",
+      "label": "bypass\nBypass",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": true
+    }
+  ],
+  "design_asset": "02_Designs/02_Analog/A04_REELSAT.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": true
+}

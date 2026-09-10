@@ -1,0 +1,882 @@
+{
+  "id": "A01",
+  "name": "HERITAGE EQ",
+  "width": 1536,
+  "height": 949,
+  "regions": [
+    {
+      "id": "input",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 130,
+      "cy": 211,
+      "r": 46,
+      "bounds": [
+        84,
+        165,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "output",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1398,
+      "cy": 211,
+      "r": 46,
+      "bounds": [
+        1352,
+        165,
+        93,
+        93
+      ]
+    },
+    {
+      "id": "hpf",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 130,
+      "cy": 476,
+      "r": 38,
+      "bounds": [
+        92,
+        438,
+        77,
+        77
+      ]
+    },
+    {
+      "id": "mix",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1397,
+      "cy": 476,
+      "r": 39,
+      "bounds": [
+        1358,
+        437,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "low_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 352,
+      "cy": 261,
+      "r": 47,
+      "bounds": [
+        305,
+        214,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "low_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 352,
+      "cy": 445,
+      "r": 47,
+      "bounds": [
+        305,
+        398,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "low_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 352,
+      "cy": 599,
+      "r": 39,
+      "bounds": [
+        313,
+        560,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "lowmid_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 539,
+      "cy": 261,
+      "r": 47,
+      "bounds": [
+        492,
+        214,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "lowmid_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 539,
+      "cy": 445,
+      "r": 47,
+      "bounds": [
+        492,
+        398,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "lowmid_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 539,
+      "cy": 599,
+      "r": 39,
+      "bounds": [
+        500,
+        560,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "mid_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 741,
+      "cy": 261,
+      "r": 47,
+      "bounds": [
+        694,
+        214,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "mid_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 741,
+      "cy": 445,
+      "r": 47,
+      "bounds": [
+        694,
+        398,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "mid_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 741,
+      "cy": 599,
+      "r": 39,
+      "bounds": [
+        702,
+        560,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "highmid_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 944,
+      "cy": 261,
+      "r": 47,
+      "bounds": [
+        897,
+        214,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "highmid_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 944,
+      "cy": 445,
+      "r": 47,
+      "bounds": [
+        897,
+        398,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "highmid_q",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 944,
+      "cy": 599,
+      "r": 39,
+      "bounds": [
+        905,
+        560,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "high_frequency",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1140,
+      "cy": 261,
+      "r": 47,
+      "bounds": [
+        1093,
+        214,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "high_gain",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1140,
+      "cy": 445,
+      "r": 47,
+      "bounds": [
+        1093,
+        398,
+        95,
+        95
+      ]
+    },
+    {
+      "id": "high_slope",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 1140,
+      "cy": 599,
+      "r": 39,
+      "bounds": [
+        1101,
+        560,
+        79,
+        79
+      ]
+    },
+    {
+      "id": "filter_selector",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 532,
+      "cy": 748,
+      "r": 25,
+      "bounds": [
+        507,
+        723,
+        51,
+        51
+      ]
+    },
+    {
+      "id": "drive",
+      "kind": "knob",
+      "shape": "circle",
+      "cx": 701,
+      "cy": 812,
+      "r": 34,
+      "bounds": [
+        667,
+        778,
+        69,
+        69
+      ]
+    },
+    {
+      "id": "previous",
+      "kind": "button",
+      "shape": "rect",
+      "x": 607,
+      "y": 19,
+      "w": 48,
+      "h": 48,
+      "bounds": [
+        607,
+        19,
+        48,
+        48
+      ]
+    },
+    {
+      "id": "next",
+      "kind": "button",
+      "shape": "rect",
+      "x": 944,
+      "y": 19,
+      "w": 46,
+      "h": 48,
+      "bounds": [
+        944,
+        19,
+        46,
+        48
+      ]
+    },
+    {
+      "id": "ab",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1006,
+      "y": 21,
+      "w": 69,
+      "h": 44,
+      "bounds": [
+        1006,
+        21,
+        69,
+        44
+      ]
+    },
+    {
+      "id": "copy",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1078,
+      "y": 21,
+      "w": 69,
+      "h": 44,
+      "bounds": [
+        1078,
+        21,
+        69,
+        44
+      ]
+    },
+    {
+      "id": "paste",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1150,
+      "y": 21,
+      "w": 70,
+      "h": 44,
+      "bounds": [
+        1150,
+        21,
+        70,
+        44
+      ]
+    },
+    {
+      "id": "undo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1226,
+      "y": 21,
+      "w": 60,
+      "h": 44,
+      "bounds": [
+        1226,
+        21,
+        60,
+        44
+      ]
+    },
+    {
+      "id": "redo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1292,
+      "y": 21,
+      "w": 62,
+      "h": 44,
+      "bounds": [
+        1292,
+        21,
+        62,
+        44
+      ]
+    },
+    {
+      "id": "settings",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1359,
+      "y": 21,
+      "w": 53,
+      "h": 44,
+      "bounds": [
+        1359,
+        21,
+        53,
+        44
+      ]
+    },
+    {
+      "id": "menu",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1419,
+      "y": 21,
+      "w": 55,
+      "h": 44,
+      "bounds": [
+        1419,
+        21,
+        55,
+        44
+      ]
+    },
+    {
+      "id": "input_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 106,
+      "y": 291,
+      "w": 53,
+      "h": 44,
+      "bounds": [
+        106,
+        291,
+        53,
+        44
+      ]
+    },
+    {
+      "id": "output_phase",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1368,
+      "y": 291,
+      "w": 54,
+      "h": 44,
+      "bounds": [
+        1368,
+        291,
+        54,
+        44
+      ]
+    },
+    {
+      "id": "low_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 337,
+      "y": 133,
+      "w": 34,
+      "h": 37,
+      "bounds": [
+        337,
+        133,
+        34,
+        37
+      ]
+    },
+    {
+      "id": "lowmid_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 522,
+      "y": 133,
+      "w": 34,
+      "h": 37,
+      "bounds": [
+        522,
+        133,
+        34,
+        37
+      ]
+    },
+    {
+      "id": "mid_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 723,
+      "y": 133,
+      "w": 34,
+      "h": 37,
+      "bounds": [
+        723,
+        133,
+        34,
+        37
+      ]
+    },
+    {
+      "id": "highmid_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 925,
+      "y": 133,
+      "w": 34,
+      "h": 37,
+      "bounds": [
+        925,
+        133,
+        34,
+        37
+      ]
+    },
+    {
+      "id": "high_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1122,
+      "y": 133,
+      "w": 34,
+      "h": 37,
+      "bounds": [
+        1122,
+        133,
+        34,
+        37
+      ]
+    },
+    {
+      "id": "hpf_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 181,
+      "y": 385,
+      "w": 30,
+      "h": 29,
+      "bounds": [
+        181,
+        385,
+        30,
+        29
+      ]
+    },
+    {
+      "id": "eq_enable",
+      "kind": "button",
+      "shape": "rect",
+      "x": 278,
+      "y": 731,
+      "w": 39,
+      "h": 44,
+      "bounds": [
+        278,
+        731,
+        39,
+        44
+      ]
+    },
+    {
+      "id": "filter_18",
+      "kind": "button",
+      "shape": "rect",
+      "x": 369,
+      "y": 733,
+      "w": 58,
+      "h": 40,
+      "bounds": [
+        369,
+        733,
+        58,
+        40
+      ]
+    },
+    {
+      "id": "filter_24",
+      "kind": "button",
+      "shape": "rect",
+      "x": 431,
+      "y": 733,
+      "w": 59,
+      "h": 40,
+      "bounds": [
+        431,
+        733,
+        59,
+        40
+      ]
+    },
+    {
+      "id": "autogain_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 839,
+      "y": 731,
+      "w": 45,
+      "h": 37,
+      "bounds": [
+        839,
+        731,
+        45,
+        37
+      ]
+    },
+    {
+      "id": "autogain_on",
+      "kind": "button",
+      "shape": "rect",
+      "x": 889,
+      "y": 731,
+      "w": 47,
+      "h": 37,
+      "bounds": [
+        889,
+        731,
+        47,
+        37
+      ]
+    },
+    {
+      "id": "stereo",
+      "kind": "button",
+      "shape": "rect",
+      "x": 838,
+      "y": 780,
+      "w": 101,
+      "h": 42,
+      "bounds": [
+        838,
+        780,
+        101,
+        42
+      ]
+    },
+    {
+      "id": "os_off",
+      "kind": "button",
+      "shape": "rect",
+      "x": 985,
+      "y": 731,
+      "w": 58,
+      "h": 37,
+      "bounds": [
+        985,
+        731,
+        58,
+        37
+      ]
+    },
+    {
+      "id": "os_2",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1047,
+      "y": 731,
+      "w": 39,
+      "h": 37,
+      "bounds": [
+        1047,
+        731,
+        39,
+        37
+      ]
+    },
+    {
+      "id": "os_4",
+      "kind": "button",
+      "shape": "rect",
+      "x": 1089,
+      "y": 731,
+      "w": 52,
+      "h": 37,
+      "bounds": [
+        1089,
+        731,
+        52,
+        37
+      ]
+    },
+    {
+      "id": "preset",
+      "kind": "display",
+      "shape": "rect",
+      "x": 655,
+      "y": 21,
+      "w": 289,
+      "h": 43,
+      "bounds": [
+        655,
+        21,
+        289,
+        43
+      ]
+    },
+    {
+      "id": "vu_left",
+      "kind": "display",
+      "shape": "rect",
+      "x": 289,
+      "y": 833,
+      "w": 258,
+      "h": 94,
+      "bounds": [
+        289,
+        833,
+        258,
+        94
+      ]
+    },
+    {
+      "id": "vu_right",
+      "kind": "display",
+      "shape": "rect",
+      "x": 982,
+      "y": 833,
+      "w": 263,
+      "h": 94,
+      "bounds": [
+        982,
+        833,
+        263,
+        94
+      ]
+    },
+    {
+      "id": "led_left",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1328,
+      "y": 609,
+      "w": 24,
+      "h": 241,
+      "bounds": [
+        1328,
+        609,
+        24,
+        241
+      ]
+    },
+    {
+      "id": "led_right",
+      "kind": "display",
+      "shape": "rect",
+      "x": 1431,
+      "y": 609,
+      "w": 24,
+      "h": 241,
+      "bounds": [
+        1431,
+        609,
+        24,
+        241
+      ]
+    },
+    {
+      "id": "input_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 209,
+      "cy": 117,
+      "r": 12,
+      "bounds": [
+        197,
+        105,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "output_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 1316,
+      "cy": 117,
+      "r": 12,
+      "bounds": [
+        1304,
+        105,
+        25,
+        25
+      ]
+    },
+    {
+      "id": "filter_lamp",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 134,
+      "cy": 620,
+      "r": 14,
+      "bounds": [
+        120,
+        606,
+        29,
+        29
+      ]
+    },
+    {
+      "id": "character_clean",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 621,
+      "cy": 758,
+      "r": 10,
+      "bounds": [
+        611,
+        748,
+        21,
+        21
+      ]
+    },
+    {
+      "id": "character_console",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 674,
+      "cy": 758,
+      "r": 10,
+      "bounds": [
+        664,
+        748,
+        21,
+        21
+      ]
+    },
+    {
+      "id": "character_tube",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 727,
+      "cy": 758,
+      "r": 10,
+      "bounds": [
+        717,
+        748,
+        21,
+        21
+      ]
+    },
+    {
+      "id": "character_tape",
+      "kind": "lamp",
+      "shape": "circle",
+      "cx": 777,
+      "cy": 758,
+      "r": 10,
+      "bounds": [
+        767,
+        748,
+        21,
+        21
+      ]
+    }
+  ],
+  "source": "C:/Users/amano/Documents/AMANORSAC_CODEX_FILES/02_Designs/00_Approved_Visual_Anchors/A01_HERITAGE_EQ_APPROVED.png",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "crop": [
+    0,
+    0,
+    1536,
+    949
+  ],
+  "faceplate": "png/A01_HERITAGE_EQ_FACEPLATE.png",
+  "pixelPolicy": "Native source pixels preserved outside explicit per-plugin apertures. Fully transparent inside; hidden backgrounds not invented.",
+  "stage": "Faceplates only. No component extraction or animation state generation in this stage.",
+  "decorations": "Panel frames, screws, printed scales and logos preserved. Valve tube illustration and Plate Four chamber retained as static artwork. ReelSat top reel faces have individual elliptical apertures; the perspective mechanism remains static.",
+  "footer": "Crop boundary selected individually. Actual controls sharing the removed help footer require a placement decision during integration.",
+  "sha256": "7493d53de67f1d7117000879a6854e3ea431c907c347ed2624ee37efd6682e54"
+}

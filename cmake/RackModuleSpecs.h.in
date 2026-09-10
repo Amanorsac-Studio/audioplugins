@@ -1,0 +1,9 @@
+#pragma once
+#include <array>
+namespace amanorsac::generated
+{
+inline constexpr std::array<const char*, 10> rackModuleJson {
+R"A01(@A01_JSON@)A01", R"A02(@A02_JSON@)A02", R"A03(@A03_JSON@)A03", R"A04(@A04_JSON@)A04", R"A05(@A05_JSON@)A05",
+R"A06(@A06_JSON@)A06", R"A07(@A07_JSON@)A07", R"A08(@A08_JSON@)A08", R"A09(@A09_JSON@)A09", R"A10(@A10_JSON@)A10"
+};
+}

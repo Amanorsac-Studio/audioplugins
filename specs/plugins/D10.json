@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "plugin_id": "D10",
+  "display_name": "WIDE IMAGER",
+  "series": "Digital",
+  "primary_role": "Frequency-Dependent Stereo",
+  "feature_set": [
+    "5 width bands",
+    "Vectorscope",
+    "Correlation meter",
+    "Mono maker",
+    "L/R and M/S trim",
+    "Safe-width warning"
+  ],
+  "reference_canvas": "1536 × 960",
+  "signal_flow": "",
+  "ui_geometry": {
+    "topbar": "x=0, y=0, x2=1536, y2=74",
+    "visualizer": "x=42, y=102, x2=1494, y2=566",
+    "control_dock": "x=42, y=590, x2=1494, y2=890",
+    "footer": "x=0, y=916, x2=1536, y2=960"
+  },
+  "interaction_contract": {
+    "resizable": true,
+    "hidpi": true,
+    "numeric_entry": true,
+    "mouse_wheel_controls_hovered_parameter": true,
+    "fine_adjustment_modifier": "Shift",
+    "right_click_context_menu": true,
+    "right_click_is_not_sole_access_path": true
+  },
+  "parameters": [
+    {
+      "id": "global_width\nGlobal Width",
+      "label": "global_width\nGlobal Width",
+      "type": "float",
+      "range_or_values": "0 to 250 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "rotation\nRotation",
+      "label": "rotation\nRotation",
+      "type": "float",
+      "range_or_values": "-90 to 90 deg",
+      "default": "0 deg",
+      "automatable": true
+    },
+    {
+      "id": "bass_mono\nBass Mono",
+      "label": "bass_mono\nBass Mono",
+      "type": "float",
+      "range_or_values": "20 to 500 Hz",
+      "default": "120 Hz",
+      "automatable": true
+    },
+    {
+      "id": "ms_balance\nM/S Balance",
+      "label": "ms_balance\nM/S Balance",
+      "type": "float",
+      "range_or_values": "-100 to 100 %",
+      "default": "0 %",
+      "automatable": true
+    },
+    {
+      "id": "focus\nFocus",
+      "label": "focus\nFocus",
+      "type": "float",
+      "range_or_values": "0 to 100 %",
+      "default": "50 %",
+      "automatable": true
+    },
+    {
+      "id": "output_gain\nOutput",
+      "label": "output_gain\nOutput",
+      "type": "float",
+      "range_or_values": "-24 to 24 dB",
+      "default": "0 dB",
+      "automatable": true
+    },
+    {
+      "id": "band.width\nBand Width",
+      "label": "band.width\nBand Width",
+      "type": "float",
+      "range_or_values": "0 to 250 %",
+      "default": "100 %",
+      "automatable": true
+    },
+    {
+      "id": "xover.frequency\nCrossover",
+      "label": "xover.frequency\nCrossover",
+      "type": "float",
+      "range_or_values": "40 to 18000 Hz",
+      "default": "1000 Hz",
+      "automatable": true
+    },
+    {
+      "id": "safe_width\nSafe Width",
+      "label": "safe_width\nSafe Width",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "True",
+      "automatable": true
+    },
+    {
+      "id": "correlation_alarm\nCorrelation Alarm",
+      "label": "correlation_alarm\nCorrelation Alarm",
+      "type": "float",
+      "range_or_values": "-1 to 1",
+      "default": "0",
+      "automatable": true
+    },
+    {
+      "id": "mono_check\nMono Check",
+      "label": "mono_check\nMono Check",
+      "type": "bool",
+      "range_or_values": "Off / On",
+      "default": "False",
+      "automatable": false
+    }
+  ],
+  "design_asset": "02_Designs/01_Digital/D10_WIDE_IMAGER.png",
+  "standalone_plugin_required": true,
+  "rack_eligible": false
+}
