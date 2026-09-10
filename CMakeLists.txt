@@ -23,6 +23,13 @@ set(AMANORSAC_PLUGIN_IDS
     A01 A02 A03 A04 A05 A06 A07 A08 A09 A10
 )
 
+# Audio Units are macOS only, and are what Logic loads. Built there, absent
+# everywhere else so the Windows build is unchanged.
+set(plugin_formats VST3 Standalone)
+if(APPLE)
+    list(APPEND plugin_formats AU)
+endif()
+
 function(amanorsac_add_plugin plugin_id)
     set(spec_path "${CMAKE_CURRENT_SOURCE_DIR}/specs/plugins/${plugin_id}.json")
     if(NOT EXISTS "${spec_path}")
@@ -84,7 +91,7 @@ function(amanorsac_add_plugin plugin_id)
         PLUGIN_CODE ${plugin_id}P
         PRODUCT_NAME "${DISPLAY_NAME}"
         DESCRIPTION "Amanorsac Studio ${SERIES} ${PRIMARY_ROLE}"
-        FORMATS VST3 Standalone
+        FORMATS ${plugin_formats}
         COPY_PLUGIN_AFTER_BUILD FALSE
         IS_SYNTH FALSE
         NEEDS_MIDI_INPUT FALSE
