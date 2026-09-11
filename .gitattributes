@@ -1,0 +1,27 @@
+# Anything a Unix shell has to execute must stay LF. A CRLF shell script on
+# the macOS runner fails with "\r: command not found", which is a confusing
+# way to lose a build.
+*.sh            text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.command       text eol=lf
+
+# Source and data keep native endings locally and LF in the repository.
+*.cpp           text
+*.h             text
+*.cmake         text
+*.txt           text
+*.json          text
+*.md            text
+
+# Binary assets must never be line-ending converted.
+*.png           binary
+*.jpg           binary
+*.JPG           binary
+*.otf           binary
+*.ttf           binary
+*.zip           binary
+*.docx          binary
+*.xlsx          binary
+*.pdf           binary
+*.p12           binary
