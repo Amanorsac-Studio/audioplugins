@@ -5,7 +5,7 @@ specifications and the asset manifest. Written to be lifted straight into page
 templates. Nothing in here claims a feature the products do not have.
 
 - **Version covered:** Analog line, ten plug-ins
-- **Screenshots:** `docs/marketing/screenshots/A01.png` … `A10.png` (1600 px wide, transparent-free, ready for retina cards at 800 px)
+- **Screenshots:** `docs/marketing/Analog Plugins/A01.png` … `A10.png` (1600 px wide, transparent-free, ready for retina cards at 800 px)
 - **Status:** copy approved for build once the preset names are signed off
 
 ---
@@ -324,7 +324,7 @@ written to be descriptive of the sound, not of any other product.
 
 | Asset | Path | Notes |
 |---|---|---|
-| Product screenshots | `docs/marketing/screenshots/A01.png` … `A10.png` | 1600 px wide, PNG |
+| Product screenshots | `docs/marketing/Analog Plugins/A01.png` … `A10.png` | 1600 px wide, PNG |
 | Logo | `assets/brand/AmanorsacLogo.png` | transparent |
 | Faceplate backdrops | `assets/backdrops/analog/` | source art if a designer needs to compose |
 

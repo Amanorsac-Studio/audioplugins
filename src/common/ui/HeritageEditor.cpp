@@ -257,14 +257,6 @@ private:
         g.drawText("HERITAGE ANALOG EQ", juce::Rectangle<float>(300.0f, 30.0f, 220.0f, 24.0f),
                    juce::Justification::centredLeft, false);
 
-        const auto chip = juce::Rectangle<float>(28.0f, 20.0f).withCentre({ 500.0f, 42.0f });
-        g.setColour(juce::Colour(0xff22201d));
-        g.fillRoundedRectangle(chip, 4.0f);
-        g.setColour(juce::Colour(0xff3a3631));
-        g.drawRoundedRectangle(chip, 4.0f, 1.0f);
-        g.setColour(juce::Colour(0xffe8b04a));
-        g.setFont(labelFont(11.0f, true, 0.95f));
-        g.drawText("A1", chip, juce::Justification::centred, false);
     }
 
     void drawSidePanels(juce::Graphics& g)

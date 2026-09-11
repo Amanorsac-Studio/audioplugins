@@ -46,7 +46,7 @@ public:
     ~PresetManager() override;
 
     static juce::File userDirectory(const juce::String& pluginId);
-    juce::File userDirectory() const { return userDirectory(spec.id); }
+    juce::File userDirectory() const { return userDirectory(spec.displayName); }
 
     /** Re-reads the factory bank and the user folder. Keeps the current
         selection by name. */
