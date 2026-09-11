@@ -30,7 +30,7 @@ has its own engine, its own faceplate and its own factory bank, and each was
 measured before it shipped: every parameter proven audible, every output proven
 finite from 44.1 to 192 kHz, silence proven silent, bypass proven to return
 exactly what went in. The panels are drawn to hardware proportion, the type is
-set to be read across a room, and 190 presets are sorted by source so the first
+set to be read across a room, and 187 presets are sorted by source so the first
 five minutes are productive rather than exploratory.
 
 ### Three pillars
@@ -48,8 +48,14 @@ every parameter changes the sound, the output stays finite and bounded, silence
 in gives silence out, bypass and MIX 0 % return the input, and every factory
 preset loads and does something.
 
+**One key, ten plug-ins.**
+Buy once, type the key into whichever plug-in you open first, and the whole
+bundle is licensed on that machine. Two computers per licence, and a
+Deactivate button when you move to a new one. It keeps working for thirty days
+without an internet connection.
+
 **Presets that are a starting point, not a maze.**
-190 presets across the bundle, grouped by source — Vocals, Drums, Bass, Guitars,
+187 presets across the bundle, grouped by source — Vocals, Drums, Bass, Guitars,
 Keys, Strings & Horns, Mix Bus, Master, Creative — so you open the drawer you
 need. They ship inside the plug-in; nothing to install, nothing to copy.
 
@@ -269,9 +275,10 @@ Every preset also carries five tags the site can filter or display:
 | Sample rates | 44.1 kHz to 192 kHz |
 | Channels | Mono and stereo; sidechain input on STRIKE FET |
 | Interface | Resizable, 1024 to 1920 px wide, fixed aspect |
-| Presets | 190 factory presets across the bundle, grouped by source |
+| Presets | 187 factory presets across the bundle, grouped by source |
 | Preset location | `%APPDATA%\Amanorsac Studio\Presets\<product>\` |
 | Preset format | `.amanorsacpreset`, plain XML, portable between machines |
+| Licence | One key unlocks the whole bundle; 2 computers per licence; 30-day offline grace |
 
 *macOS and AAX are not part of this release.*
 
