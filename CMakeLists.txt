@@ -98,6 +98,13 @@ function(amanorsac_add_plugin plugin_id)
         NEEDS_MIDI_OUTPUT FALSE
         IS_MIDI_EFFECT FALSE
         EDITOR_WANTS_KEYBOARD_FOCUS TRUE
+        # macOS notarisation requires the hardened runtime, and the standalone
+        # opens an audio input, so it must declare the entitlement and carry a
+        # usage string or Apple rejects the submission.
+        HARDENED_RUNTIME_ENABLED TRUE
+        HARDENED_RUNTIME_OPTIONS "com.apple.security.device.audio-input"
+        MICROPHONE_PERMISSION_ENABLED TRUE
+        MICROPHONE_PERMISSION_TEXT "${DISPLAY_NAME} needs the audio input to process sound from your interface."
         VST3_CATEGORIES Fx
     )
 

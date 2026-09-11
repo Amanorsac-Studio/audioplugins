@@ -108,14 +108,32 @@ XML
 
 mkdir -p "$ROOT/dist"
 OUT="$ROOT/dist/${SLUG}_${VERSION}_macOS.pkg"
+UNSIGNED="$PKGROOT/unsigned.pkg"
 
 productbuild --distribution "$PKGROOT/distribution.xml" \
              --package-path "$PKGROOT" \
              --version "$VERSION" \
-             "$OUT"
+             "$UNSIGNED"
 
-shasum -a 256 "$OUT" | sed "s|$ROOT/dist/||" > "$OUT.sha256"
+# Sign the installer when a Developer ID Installer identity is in the keychain.
+# Gatekeeper refuses an unsigned package and notarisation cannot proceed
+# without one, so this is not optional for release; a local packaging run
+# without the certificates still produces something testable.
+INSTALLER_IDENTITY="$(security find-identity -v 2>/dev/null | sed -n 's/.*"\(Developer ID Installer: [^"]*\)".*/\1/p' | head -1)"
+if [ -n "$INSTALLER_IDENTITY" ]; then
+  echo "Signing with: $INSTALLER_IDENTITY"
+  productsign --sign "$INSTALLER_IDENTITY" "$UNSIGNED" "$OUT"
+  pkgutil --check-signature "$OUT"
+  SIGNED="yes"
+else
+  echo "No Developer ID Installer identity in the keychain; leaving the package unsigned." >&2
+  cp "$UNSIGNED" "$OUT"
+  SIGNED="no"
+fi
 
 echo ""
 echo "Installer: $OUT"
-echo "Signed:    NO - add a Developer ID Installer certificate and notarise before release."
+echo "Signed:    $SIGNED"
+if [ "$SIGNED" = "no" ]; then
+  echo "Gatekeeper will refuse an unsigned package, and it cannot be notarised."
+fi
