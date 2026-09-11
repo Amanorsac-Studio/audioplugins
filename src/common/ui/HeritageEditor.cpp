@@ -1,5 +1,7 @@
 #include "HeritageEditor.h"
 
+#include "ActivationView.h"
+
 #include "AnalogChassis.h"
 
 #include <array>
@@ -518,6 +520,11 @@ HeritageEditor::HeritageEditor(juce::AudioProcessor& owner, ProductHost host)
     : AudioProcessorEditor(owner), surface(std::make_unique<Surface>(std::move(host)))
 {
     addAndMakeVisible(*surface);
+    // One activation page for the whole bundle: the first plug-in the customer
+    // opens asks for the key, and every other one is already unlocked.
+    gate = std::make_unique<ActivationView>(owner.getName(), [this] { if (gate != nullptr) gate->setVisible(false); });
+    addAndMakeVisible(*gate);
+    gate->setVisible(! licensing::LicenseClient::getInstance().isLicensed());
     setResizable(true, true);
     setResizeLimits(1024, static_cast<int>(1024.0f * stageHeight / stageWidth),
                     1920, static_cast<int>(1920.0f * stageHeight / stageWidth));
@@ -531,6 +538,7 @@ void HeritageEditor::paint(juce::Graphics& g) { g.fillAll(juce::Colour(0xff0a090
 
 void HeritageEditor::resized()
 {
+    if (gate != nullptr) gate->setBounds(getLocalBounds());
     const auto scale = juce::jmin(static_cast<float>(getWidth()) / stageWidth,
                                   static_cast<float>(getHeight()) / stageHeight);
     surface->setTransform(juce::AffineTransform::scale(scale));

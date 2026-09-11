@@ -115,12 +115,15 @@ function(amanorsac_add_plugin plugin_id)
         src/common/dsp/AnalogFrontEnd.cpp
         src/common/dsp/AnalogFrontEnd.h
         src/common/dsp/AnchorDSP.h
-        src/common/licensing/LicenseManager.cpp
-        src/common/licensing/LicenseManager.h
+        src/common/licensing/LicenseClient.cpp
+        src/common/licensing/LicenseClient.h
+        src/common/licensing/LicenseCrypto.cpp
+        src/common/licensing/LicenseCrypto.h
+        src/common/licensing/LicenseStore.cpp
+        src/common/licensing/LicenseStore.h
+        src/common/ui/ActivationView.h
         src/common/presets/PresetManager.cpp
         src/common/presets/PresetManager.h
-        src/common/licensing/MachineId.cpp
-        src/common/licensing/MachineId.h
         src/common/state/PluginSpec.cpp
         src/common/state/PluginSpec.h
         src/common/ui/PluginEditor.cpp
@@ -408,18 +411,9 @@ if(BUILD_TESTING)
       juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
 endif()
 
-# Studio tool only: this is what holds the private key. It is deliberately not
-# part of ALL_BUILD so it can never be swept into a customer package.
-add_executable(AmanorsacLicenseGen EXCLUDE_FROM_ALL
-    tools/licensegen/main.cpp
-    src/common/licensing/LicenseManager.cpp
-    src/common/licensing/MachineId.cpp)
-target_include_directories(AmanorsacLicenseGen PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
-target_link_libraries(AmanorsacLicenseGen PRIVATE
-    juce::juce_cryptography juce::juce_core
-    juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
-target_compile_definitions(AmanorsacLicenseGen PRIVATE
-    JUCE_STANDALONE_APPLICATION=1 JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0)
+# The offline key generator that belonged to the retired node-lock scheme is
+# gone. Licences are issued by the server now, the private key never leaves it,
+# and the build carries exactly one public key (License Integration Standard R2).
 
 set(rack_generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated/R01")
 file(MAKE_DIRECTORY "${rack_generated_dir}")

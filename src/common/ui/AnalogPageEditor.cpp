@@ -1,5 +1,7 @@
 #include "AnalogPageEditor.h"
 
+#include "ActivationView.h"
+
 #include "AnalogChassis.h"
 
 #include <cmath>
@@ -1101,6 +1103,11 @@ AnalogPageEditor::AnalogPageEditor(juce::AudioProcessor& owner, ProductHost host
     : AudioProcessorEditor(owner), surface(std::make_unique<Surface>(std::move(host)))
 {
     addAndMakeVisible(*surface);
+    // One activation page for the whole bundle: the first plug-in the customer
+    // opens asks for the key, and every other one is already unlocked.
+    gate = std::make_unique<ActivationView>(owner.getName(), [this] { if (gate != nullptr) gate->setVisible(false); });
+    addAndMakeVisible(*gate);
+    gate->setVisible(! licensing::LicenseClient::getInstance().isLicensed());
     setResizable(true, true);
     const auto ratio = static_cast<double>(surface->getWidth()) / surface->getHeight();
     setResizeLimits(960, juce::roundToInt(960 / ratio), 1920, juce::roundToInt(1920 / ratio));
@@ -1114,6 +1121,7 @@ void AnalogPageEditor::paint(juce::Graphics& g) { g.fillAll(juce::Colour(0xff080
 
 void AnalogPageEditor::resized()
 {
+    if (gate != nullptr) gate->setBounds(getLocalBounds());
     const auto scale = juce::jmin(static_cast<float>(getWidth()) / static_cast<float>(surface->getWidth()),
                                   static_cast<float>(getHeight()) / static_cast<float>(surface->getHeight()));
     surface->setTransform(juce::AffineTransform::scale(scale));

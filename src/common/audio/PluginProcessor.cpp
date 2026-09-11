@@ -6,7 +6,7 @@
 #include "common/ui/AnalogPageEditor.h"
 #include "common/ui/FaceplateEditor.h"
 #include "common/ui/PrismEditor.h"
-#include "common/licensing/LicenseManager.h"
+#include "common/licensing/LicenseClient.h"
 
 namespace amanorsac
 {
@@ -70,6 +70,8 @@ void PluginProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     dsp.prepare(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
     frontEnd.prepare(sampleRate, samplesPerBlock);
+    entitlement.reset(sampleRate, 0.05);
+    entitlement.setCurrentAndTargetValue(licensing::LicenseClient::getInstance().isLicensed() ? 1.0f : 0.0f);
 }
 
 void PluginProcessor::releaseResources()
@@ -114,26 +116,20 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
     dsp.process(buffer, state, spec.id);
     frontEnd.processBack(buffer, state, mainChannels);
 
-    // Licensing is built but deliberately inert until the products are finished:
-    // with it live, every machine without a licence would dip the audio while we
-    // are still developing. Enforcement is enabled in one place, at release, by
-    // defining AMANORSAC_LICENSING_ENABLED=1.
-    //
-    // Applied as a gain ramp consumed by the signal path rather than a branch
-    // around the processing, so an unlicensed build sounds wrong rather than
-    // simply refusing to run, and cannot be defeated by one edit.
-   #if AMANORSAC_LICENSING_ENABLED
+    // An unlicensed bundle produces no output. The flag is atomic and the
+    // ramp is smooth, so this never allocates, blocks or clicks on the audio
+    // thread whatever the licence state is doing elsewhere.
     {
-        const auto& licence = licensing::LicenseManager::getInstance();
-        const auto samples = buffer.getNumSamples();
-        const auto start = licence.entitlementScale(static_cast<int>(licenseSamples));
-        const auto end = licence.entitlementScale(static_cast<int>(licenseSamples + samples));
-        if (start < 1.0f || end < 1.0f)
+        entitlement.setTargetValue(licensing::LicenseClient::getInstance().isLicensed() ? 1.0f : 0.0f);
+        if (entitlement.isSmoothing() || entitlement.getTargetValue() < 0.5f)
             for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
-                buffer.applyGainRamp(channel, 0, samples, start, end);
-        licenseSamples += samples;
+            {
+                auto ramp = entitlement;
+                auto* samples = buffer.getWritePointer(channel);
+                for (int i = 0; i < buffer.getNumSamples(); ++i) samples[i] *= ramp.getNextValue();
+                if (channel == buffer.getNumChannels() - 1) entitlement = ramp;
+            }
     }
-   #endif
 
     for (int channel = 0; channel < 2; ++channel)
         outputPeaks[static_cast<size_t>(channel)].store(

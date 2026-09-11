@@ -2,6 +2,7 @@
 
 #include "common/dsp/AnchorDSP.h"
 #include "common/dsp/AnalogFrontEnd.h"
+#include "common/licensing/LicenseClient.h"
 #include "common/state/PluginSpec.h"
 #include "common/presets/PresetManager.h"
 
@@ -67,7 +68,9 @@ private:
     static BusesProperties makeBusesProperties();
     AnchorDSP dsp;
     // Advances with the audio clock so the entitlement curve is time varying.
-    juce::int64 licenseSamples = 0;
+    // Ramps the output away when the bundle is not licensed, so it is
+    // obvious rather than silent-but-working, and never clicks.
+    juce::LinearSmoothedValue<float> entitlement;
 
     // The console strip around the engine, shared with the rack.
     AnalogFrontEnd frontEnd;
