@@ -63,7 +63,7 @@ need. They ship inside the plug-in; nothing to install, nothing to copy.
 
 ## 2. Shared feature list (applies to all ten)
 
-- VST3 and Standalone, Windows
+- VST3 and Standalone on Windows; VST3, Audio Unit and Standalone on macOS
 - Resizable interface, fixed aspect, from 1024 px to 1920 px wide
 - Full-size hardware faceplate with printed scales and machined switches
 - Factory preset bank grouped by source, plus your own presets saved alongside
@@ -270,10 +270,10 @@ Every preset also carries five tags the site can filter or display:
 
 | | |
 |---|---|
-| Formats | VST3, Standalone |
-| Platform | Windows 10 and 11, 64-bit |
-| Sample rates | 44.1 kHz to 192 kHz |
-| Channels | Mono and stereo; sidechain input on STRIKE FET |
+| Formats | VST3 and Standalone on Windows; VST3, AU and Standalone on macOS |
+| Platform | Windows 10 and 11, 64-bit; macOS on Apple silicon and Intel (universal) |
+| Sample rates | Any rate from 44.1 to 192 kHz, including 44.1, 48, 88.2, 96 and 192 |
+| Channels | Mono in, mono out; stereo in, stereo out. Mid/side where the panel offers it. Sidechain input on STRIKE FET |
 | Interface | Resizable, 1024 to 1920 px wide, fixed aspect |
 | Presets | 187 factory presets across the bundle, grouped by source |
 | Preset location | `%APPDATA%\Amanorsac Studio\Presets\<product>\` |
