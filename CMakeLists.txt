@@ -484,7 +484,9 @@ add_executable(AmanorsacAnalogEngineAudit tests/dsp/AnalogEngineAudit.cpp
     src/common/dsp/AnchorDSP.cpp src/common/dsp/AnalogFrontEnd.cpp
     src/common/presets/PresetManager.cpp src/common/ui/AnalogUI.cpp
     src/common/state/PluginSpec.cpp
-    src/common/ui/HeritageEditor.cpp src/common/ui/AnalogPageEditor.cpp)
+    src/common/ui/HeritageEditor.cpp src/common/ui/AnalogPageEditor.cpp
+    src/common/licensing/LicenseClient.cpp src/common/licensing/LicenseCrypto.cpp
+    src/common/licensing/LicenseStore.cpp)
 target_include_directories(AmanorsacAnalogEngineAudit PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/src" "${rack_generated_dir}")
 target_compile_definitions(AmanorsacAnalogEngineAudit PRIVATE JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0)
