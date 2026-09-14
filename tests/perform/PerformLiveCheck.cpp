@@ -146,7 +146,7 @@ int main(int argc, char** argv)
     {
         // Tempo-synced 1/4 at 120 BPM with nothing else: echo arrives 24000 samples later.
         PerformProcessor p;
-        set(p, "eq_on", 0); set(p, "comp_on", 0); set(p, "rev_on", 0);
+        set(p, "eq_on", 0); set(p, "comp_on", 0); set(p, "rev_on", 0); set(p, "dly_on", 1);
         set(p, "dly_div", 2); set(p, "dly_mix", 100); set(p, "dly_feedback", 0); set(p, "dly_pingpong", 0); set(p, "dly_filter", 20000);
         p.prepareToPlay(48000.0, 256);
         juce::AudioBuffer<float> impulse(2, 30000);

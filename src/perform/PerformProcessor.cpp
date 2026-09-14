@@ -69,7 +69,7 @@ const juce::StringArray& delayDivisionNames()
 
 const juce::StringArray& presetCategoryOrder()
 {
-    static const juce::StringArray names { "Vocals", "Speech", "Instruments", "Creative" };
+    static const juce::StringArray names { "General", "Vocals", "Speech", "Instruments", "Creative" };
     return names;
 }
 
@@ -83,6 +83,15 @@ const std::vector<FactoryPreset>& factoryPresets()
         std::vector<FactoryPreset> b;
         auto add = [&b](const char* name, const char* category, std::vector<std::pair<const char*, float>> v)
         { b.push_back({ name, category, std::move(v) }); };
+
+        // Loads when the plug-in opens, so it has to suit almost any source:
+        // a touch of clean-up EQ, light levelling, a short room, no echo.
+        // Every control is set here so it never depends on the defaults.
+        add("Stage Ready", "General", { { "eq_on", 1 }, { "eq_low", -1 }, { "eq_lowmid", -1 }, { "eq_highmid", 1 }, { "eq_high", 1.5f },
+            { "comp_on", 1 }, { "comp_threshold", -16 }, { "comp_ratio", 2.5f }, { "comp_attack", 15 }, { "comp_release", 150 }, { "comp_makeup", 2 },
+            { "rev_on", 1 }, { "rev_type", 1 }, { "rev_mix", 12 }, { "rev_size", 45 }, { "rev_decay", 1.4f }, { "rev_tone", 50 }, { "rev_predelay", 15 },
+            { "dly_on", 0 }, { "dly_div", 2 }, { "dly_mix", 15 }, { "dly_time", 500 }, { "dly_feedback", 30 }, { "dly_filter", 6000 }, { "dly_pingpong", 1 },
+            { "out_gain", 0 }, { "out_mute", 0 } });
 
         add("Vocal Live", "Vocals", { { "eq_low", -2 }, { "eq_lowmid", -1.5f }, { "eq_highmid", 1.5f }, { "eq_high", 2.5f },
             { "comp_threshold", -18 }, { "comp_ratio", 4 }, { "comp_attack", 10 }, { "comp_release", 100 }, { "comp_makeup", 3 },

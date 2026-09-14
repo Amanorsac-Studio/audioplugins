@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 
         plugin->prepareToPlay(rate, 256);
         check(plugin->getLatencySamples() == 0, "reports zero latency to the host");
-        check(plugin->getNumPrograms() == 19, "exposes " + juce::String(plugin->getNumPrograms()) + " presets to the host");
+        check(plugin->getNumPrograms() == 20, "exposes " + juce::String(plugin->getNumPrograms()) + " presets to the host");
         check(plugin->getParameters().size() >= 28, "exposes " + juce::String(plugin->getParameters().size()) + " automatable parameters");
 
         juce::Random random(3);
@@ -75,7 +75,8 @@ int main(int argc, char** argv)
         }
         check(finite && peak > 0.01f && peak < 4.0f, "processes two seconds of audio cleanly (peak " + juce::String(peak, 2) + ")");
 
-        plugin->setCurrentProgram(9);
+        check(plugin->getProgramName(plugin->getCurrentProgram()) == "Stage Ready", "opens on the general preset (\"" + plugin->getProgramName(plugin->getCurrentProgram()) + "\")");
+        plugin->setCurrentProgram(10);
         check(plugin->getProgramName(plugin->getCurrentProgram()) == "MC and Host", "host can switch presets (now \"" + plugin->getProgramName(plugin->getCurrentProgram()) + "\")");
 
         juce::MemoryBlock state;
