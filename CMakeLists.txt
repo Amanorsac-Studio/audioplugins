@@ -516,3 +516,28 @@ if(BUILD_TESTING)
             -P ${CMAKE_CURRENT_SOURCE_DIR}/tools/validate_contracts.cmake
     )
 endif()
+
+# ---------------------------------------------------------------- PERFORM LIVE
+# A live channel strip for the Perform Live app: zero latency, no oversampling.
+juce_add_plugin(AmanorsacPerformLive
+    COMPANY_NAME "Amanorsac Studio" BUNDLE_ID "studio.amanorsac.performlive"
+    PLUGIN_MANUFACTURER_CODE Amns PLUGIN_CODE Pfl1 PRODUCT_NAME "PERFORM LIVE"
+    DESCRIPTION "Amanorsac Studio live channel strip" FORMATS ${plugin_formats}
+    COPY_PLUGIN_AFTER_BUILD FALSE IS_SYNTH FALSE NEEDS_MIDI_INPUT FALSE NEEDS_MIDI_OUTPUT FALSE
+    IS_MIDI_EFFECT FALSE EDITOR_WANTS_KEYBOARD_FOCUS TRUE VST3_CATEGORIES Fx
+    MICROPHONE_PERMISSION_ENABLED TRUE MICROPHONE_PERMISSION_TEXT "PERFORM LIVE processes your microphone.")
+target_sources(AmanorsacPerformLive PRIVATE
+    src/perform/PerformProcessor.cpp src/perform/PerformProcessor.h
+    src/perform/PerformEditor.cpp src/perform/PerformEditor.h)
+target_include_directories(AmanorsacPerformLive PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_compile_definitions(AmanorsacPerformLive PRIVATE JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
+target_link_libraries(AmanorsacPerformLive PRIVATE juce::juce_audio_utils juce::juce_dsp
+    PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
+
+add_executable(AmanorsacPerformLiveCheck tests/perform/PerformLiveCheck.cpp)
+target_include_directories(AmanorsacPerformLiveCheck PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_compile_definitions(AmanorsacPerformLiveCheck PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1
+    JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
+target_link_libraries(AmanorsacPerformLiveCheck PRIVATE AmanorsacPerformLive juce::juce_audio_utils juce::juce_dsp
+    juce::juce_recommended_config_flags)
+add_test(NAME Amanorsac.PerformLive COMMAND AmanorsacPerformLiveCheck)
