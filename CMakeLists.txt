@@ -541,3 +541,11 @@ target_compile_definitions(AmanorsacPerformLiveCheck PRIVATE JUCE_GLOBAL_MODULE_
 target_link_libraries(AmanorsacPerformLiveCheck PRIVATE AmanorsacPerformLive juce::juce_audio_utils juce::juce_dsp
     juce::juce_recommended_config_flags)
 add_test(NAME Amanorsac.PerformLive COMMAND AmanorsacPerformLiveCheck)
+
+# Loads the built PERFORM LIVE.vst3 through the VST3 SDK, as a host would.
+juce_add_console_app(AmanorsacPerformLiveHostLoad PRODUCT_NAME "PerformLiveHostLoad")
+target_sources(AmanorsacPerformLiveHostLoad PRIVATE tests/perform/PerformLiveHostLoad.cpp)
+target_compile_definitions(AmanorsacPerformLiveHostLoad PRIVATE JUCE_PLUGINHOST_VST3=1
+    JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_USE_CAMERA=0)
+target_link_libraries(AmanorsacPerformLiveHostLoad PRIVATE juce::juce_audio_processors juce::juce_gui_basics
+    juce::juce_recommended_config_flags)
