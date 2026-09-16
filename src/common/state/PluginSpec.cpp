@@ -140,6 +140,28 @@ std::vector<ParameterDescriptor> expandIndexedContracts(const PluginSpec& spec,
                 indexed.defaultValue = startupFrequencies[slot - 1];
                 indexed.defaultText = juce::String(indexed.defaultValue, 0) + " Hz";
             }
+            // Slots must not all start on top of each other: spread them so a
+            // fresh instance shows, and sounds like, a sensible layout.
+            if (spec.id == "D02" && isBand && descriptor.id.endsWith(".frequency"))
+            {
+                constexpr float spread[] { 120.0f, 450.0f, 2000.0f, 7000.0f, 60.0f, 250.0f,
+                                           800.0f, 1200.0f, 3200.0f, 5000.0f, 10000.0f, 14000.0f };
+                indexed.defaultValue = spread[slot - 1];
+            }
+            if (isCrossover)
+            {
+                constexpr float d03[] { 120.0f, 500.0f, 2000.0f, 6000.0f, 12000.0f };
+                constexpr float d07[] { 150.0f, 600.0f, 2000.0f, 5000.0f, 10000.0f };
+                constexpr float d10[] { 150.0f, 800.0f, 3000.0f, 8000.0f };
+                if (spec.id == "D03") indexed.defaultValue = d03[slot - 1];
+                if (spec.id == "D07") indexed.defaultValue = d07[slot - 1];
+                if (spec.id == "D10") indexed.defaultValue = d10[slot - 1];
+            }
+            // One tap sounds by default; the others wait, spaced in time.
+            if (spec.id == "D08" && isTap && descriptor.id.endsWith(".time"))
+                indexed.defaultValue = 125.0f * static_cast<float>(slot);
+            if (spec.id == "D08" && isTap && descriptor.id.endsWith(".enabled") && slot > 1)
+                indexed.defaultValue = 0.0f;
             if (spec.id == "D01" && isBand && slot <= 6 && descriptor.id.endsWith(".gain"))
             {
                 constexpr float startupGains[] { -1.5f, 1.0f, 2.5f, 5.0f, 2.5f, 0.5f };

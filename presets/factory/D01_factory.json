@@ -23,7 +23,7 @@
         "Intensity": "Medium"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 70,
         "band.01.slope": 24,
         "band.01.enabled": true,
@@ -79,7 +79,7 @@
         "Intensity": "High"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 110,
         "band.01.slope": 24,
         "band.01.enabled": true,
@@ -180,7 +180,7 @@
         "Intensity": "High"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 90,
         "band.01.slope": 24,
         "band.01.enabled": true,
@@ -230,7 +230,7 @@
         "Intensity": "Low"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 180,
         "band.01.slope": 18,
         "band.01.enabled": true,
@@ -276,7 +276,7 @@
         "Intensity": "Medium"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 32,
         "band.01.slope": 24,
         "band.01.enabled": true,
@@ -327,7 +327,7 @@
         "Intensity": "Medium"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 95,
         "band.01.slope": 18,
         "band.01.enabled": true,
@@ -341,7 +341,7 @@
         "band.03.gain": 2,
         "band.03.q": 0.9,
         "band.03.enabled": true,
-        "band.04.type": "low_cut",
+        "band.04.type": "high_cut",
         "band.04.frequency": 9000,
         "band.04.slope": 12,
         "band.04.enabled": true,
@@ -376,7 +376,7 @@
         "Intensity": "Low"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 80,
         "band.01.slope": 18,
         "band.01.enabled": true,
@@ -523,7 +523,7 @@
         "Intensity": "Low"
       },
       "values": {
-        "band.01.type": "high_cut",
+        "band.01.type": "low_cut",
         "band.01.frequency": 24,
         "band.01.slope": 24,
         "band.01.enabled": true,

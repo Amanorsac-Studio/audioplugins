@@ -19,11 +19,21 @@ public:
     /** Deepest gain reduction (dB, <= 0) applied by the analog compressors in the last block. */
     [[nodiscard]] float gainReductionDb() const noexcept { return analogGainReduction.load(); }
 
+    /** The gain a dynamic band is applying right now, in dB, for the display
+        (PRISM dynamic bands, FLUX bands, SPECTRA bands). Zero when idle. */
+    [[nodiscard]] float bandActivityDb(int index) const noexcept
+    {
+        return juce::isPositiveAndBelow(index, static_cast<int>(bandActivity.size()))
+                   ? bandActivity[static_cast<size_t>(index)].load(std::memory_order_relaxed) : 0.0f;
+    }
+
     /** Reads its parameters under this prefix, so several engines can share one
         parameter tree (the rack: "A01.", "A02.", ...). Empty for a plugin. */
     void setParameterPrefix(juce::String prefix) { parameterPrefix = std::move(prefix); }
 
 private:
+    std::array<std::atomic<float>, 24> bandActivity {};
+
     struct Biquad
     {
         void reset() noexcept;

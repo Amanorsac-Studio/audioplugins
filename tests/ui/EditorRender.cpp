@@ -1,4 +1,7 @@
 #include "common/audio/PluginProcessor.h"
+#include "common/ui/DigitalChassis.h"
+
+#include <cmath>
 
 #include <juce_gui_extra/juce_gui_extra.h>
 
@@ -24,6 +27,32 @@ int main(int argc, char** argv)
     }
 
     editor->resized();
+
+    // A digital window shows live analysis, so play something through it
+    // first: shaped noise with a moving level and a few tones, like music.
+    if (auto* digital = dynamic_cast<amanorsac::DigitalChassis*>(editor.get()))
+    {
+        juce::Random random(5);
+        juce::AudioBuffer<float> block(2, 512);
+        juce::MidiBuffer midi;
+        float pinkL = 0.0f, pinkR = 0.0f, phase = 0.0f;
+        for (int frame = 0; frame < 280; ++frame)
+        {
+            const auto level = 0.18f + 0.12f * std::sin(static_cast<float>(frame) * 0.11f);
+            for (int i = 0; i < block.getNumSamples(); ++i)
+            {
+                pinkL = 0.97f * pinkL + 0.2f * (random.nextFloat() * 2.0f - 1.0f);
+                pinkR = 0.97f * pinkR + 0.2f * (random.nextFloat() * 2.0f - 1.0f);
+                phase += 2.0f * juce::MathConstants<float>::pi / 48000.0f;
+                const auto tones = 0.2f * std::sin(phase * 110.0f) + 0.08f * std::sin(phase * 1250.0f) + 0.05f * std::sin(phase * 6800.0f);
+                block.setSample(0, i, level * (pinkL + tones));
+                block.setSample(1, i, level * (0.8f * pinkR + 0.2f * pinkL + tones));
+            }
+            processor.processBlock(block, midi);
+            if (frame % 3 == 2) digital->advanceDisplay();
+        }
+    }
+
     const auto image = editor->createComponentSnapshot(editor->getLocalBounds(), true, 1.0f);
     destination.getParentDirectory().createDirectory();
     juce::FileOutputStream stream(destination);

@@ -348,6 +348,7 @@ void AnchorDSP::processPrism(juce::AudioBuffer<float>& buffer, const juce::Audio
         const auto prefix="band."+juce::String(static_cast<int>(band)+1).paddedLeft('0',2);
         const auto enabled=value(state,prefix+".enabled",1)>.5f;
         const auto solo=value(state,prefix+".solo")>.5f;
+        bandActivity[band].store(0.0f,std::memory_order_relaxed);
         if(!enabled||(anySolo&&!solo))continue;
         const auto frequency=juce::jlimit(20.0f,static_cast<float>(sampleRate*.45),value(state,prefix+".frequency",1000));
         const auto q=juce::jlimit(.05f,50.0f,value(state,prefix+".q",1));
@@ -387,6 +388,7 @@ void AnchorDSP::processPrism(juce::AudioBuffer<float>& buffer, const juce::Audio
                                       :juce::jmin(range,juce::jmax(0.0f,threshold-levelDb)*.5f);
         }
         const auto totalGain=staticGain+dynamicGain;
+        bandActivity[band].store(dynamicGain,std::memory_order_relaxed);
         staticGainSum+=staticGain;
         for(int channel=0;channel<channels;++channel)
         {
@@ -441,6 +443,9 @@ void AnchorDSP::processFlux(juce::AudioBuffer<float>& buffer, const juce::AudioP
     const auto autoLearn = value(state, "auto_learn") > 0.5f;
     bool listening = false;
 
+    for (auto i = static_cast<size_t>(juce::jmax(0, activeBands)); i < bandActivity.size(); ++i)
+        bandActivity[i].store(0.0f, std::memory_order_relaxed);
+
     for (int band = 0; band < activeBands; ++band)
     {
         const auto prefix = "band." + juce::String(band + 1).paddedLeft('0', 2);
@@ -491,6 +496,7 @@ void AnchorDSP::processFlux(juce::AudioBuffer<float>& buffer, const juce::AudioP
         const auto mode = upward ? DynamicsGainComputer::Mode::expandUp
                                  : DynamicsGainComputer::Mode::compress;
         const auto dynamicDb = DynamicsGainComputer::gainDecibels(levelDb, threshold, ratio, range, mode);
+        bandActivity[static_cast<size_t>(band)].store(dynamicDb, std::memory_order_relaxed);
         const auto bandListen = value(state, prefix + ".listen") > 0.5f;
         listening = listening || bandListen;
 
@@ -706,6 +712,7 @@ void AnchorDSP::processSpectra(juce::AudioBuffer<float>& buffer, const juce::Aud
             const auto dynamics = bypass[static_cast<size_t>(band)]
                                       ? 0.0f
                                       : juce::jmap(link, gainDb[static_cast<size_t>(band)], linkedGain);
+            if (channel == 0) bandActivity[static_cast<size_t>(band)].store(dynamics, std::memory_order_relaxed);
             const auto totalGain = bypass[static_cast<size_t>(band)]
                                        ? 1.0f
                                        : gainFromDb(dynamics + value(state, prefix + ".makeup"));

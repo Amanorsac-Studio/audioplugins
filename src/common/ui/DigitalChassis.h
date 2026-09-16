@@ -27,6 +27,9 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
+    /** One display frame, for tools that render without a message loop. */
+    void advanceDisplay() { timerCallback(); }
+
 private:
     void timerCallback() override;
 

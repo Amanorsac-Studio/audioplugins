@@ -130,6 +130,9 @@ function(amanorsac_add_plugin plugin_id)
         src/common/ui/PluginEditor.h
         src/common/ui/DigitalChassis.cpp
         src/common/ui/DigitalChassis.h
+        src/common/ui/DigitalDisplays.cpp
+        src/common/ui/DigitalDisplays.h
+        src/common/audio/AnalysisTap.h
         src/common/ui/AnalogChassis.h
         src/common/ui/HeritageEditor.cpp
         src/common/ui/HeritageEditor.h

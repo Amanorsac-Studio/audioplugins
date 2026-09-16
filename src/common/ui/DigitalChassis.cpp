@@ -1,5 +1,6 @@
 #include "DigitalChassis.h"
 
+#include "DigitalDisplays.h"
 #include "common/audio/PluginProcessor.h"
 #include "common/presets/PresetManager.h"
 
@@ -11,7 +12,10 @@ namespace amanorsac
 namespace
 {
 constexpr float canvasWidth = 1536.0f, canvasHeight = 1024.0f;
-constexpr float contentTop = 120.0f, contentHeight = 782.0f;
+// The live display fills the top; the panels sit in a strip underneath.
+constexpr float displayTop = 116.0f, displayHeight = 380.0f;
+constexpr float contentTop = 510.0f, contentHeight = 392.0f, panelHeader = 56.0f;
+constexpr float meterTop = 120.0f, meterHeight = 782.0f;
 
 const juce::Colour textMain { 0xffe9edf2 }, textDim { 0xff8e97a3 };
 const juce::Colour blue { 0xff2f8bff }, green { 0xff2fd36b }, purple { 0xffa65cf2 }, orange { 0xffff7a1a };
@@ -329,6 +333,17 @@ public:
         setLookAndFeel(&look);
         setSize(static_cast<int>(canvasWidth), static_cast<int>(canvasHeight));
 
+        display = DigitalDisplay::create(processor);
+        display->setBounds(juce::Rectangle<float>(24.0f, displayTop, 1359.0f, displayHeight).toNearestInt());
+        addAndMakeVisible(*display);
+        display->onSelectSlot = [this](const juce::String& family, int slot)
+        {
+            if (slotFor.count(family) != 0 && slotFor[family] == slot) return;
+            slotFor[family] = slot;
+            rebuild();
+        };
+        processor.analysisWanted.store(true);
+
         buildSections();
         layOutSections();
 
@@ -348,10 +363,15 @@ public:
         refresh();
     }
 
-    ~Surface() override { setLookAndFeel(nullptr); }
+    ~Surface() override
+    {
+        processor.analysisWanted.store(false);
+        setLookAndFeel(nullptr);
+    }
 
     void tick()
     {
+        display->tick();
         const auto peak = juce::jmax(processor.getOutputPeak(0), processor.getOutputPeak(1));
         const auto peakDb = juce::Decibels::gainToDecibels(peak, -90.0f);
         meterLevel = juce::jmax(peakDb, meterLevel - 1.2f);
@@ -502,11 +522,12 @@ private:
         if (sections.empty()) return;
 
         // Panels are as wide as their contents need, sharing the row.
+        // Two rows at most under the display, so wide panels take more columns.
         float demand = 0.0f;
         for (auto& section : sections)
         {
             const auto count = static_cast<int>(section.controls.size());
-            section.columns = juce::jlimit(1, 3, (count + 2) / 3);
+            section.columns = juce::jlimit(1, 4, (count + 1) / 2);
             demand += columnPitch(section.columns) * section.columns + 30.0f;
         }
         // Panels always fill the row, so the window never looks half empty.
@@ -523,7 +544,7 @@ private:
         }
     }
 
-    static float columnPitch(int columns) { return columns >= 3 ? 122.0f : 152.0f; }
+    static float columnPitch(int) { return 104.0f; }
 
     void placeControls(Section& section)
     {
@@ -535,10 +556,11 @@ private:
             const auto family = section.family;
             section.slotDown = std::make_unique<ChevronButton>(false);
             section.slotUp = std::make_unique<ChevronButton>(true);
-            section.slotDown->setBounds(juce::Rectangle<int>(28, 30).withCentre(
-                { juce::roundToInt(section.bounds.getRight()) - 96, 196 }));
-            section.slotUp->setBounds(juce::Rectangle<int>(28, 30).withCentre(
-                { juce::roundToInt(section.bounds.getRight()) - 22, 196 }));
+            const auto row = juce::roundToInt(contentTop + panelHeader * 0.5f);
+            section.slotDown->setBounds(juce::Rectangle<int>(26, 30).withCentre(
+                { juce::roundToInt(section.bounds.getRight()) - 104, row }));
+            section.slotUp->setBounds(juce::Rectangle<int>(26, 30).withCentre(
+                { juce::roundToInt(section.bounds.getRight()) - 20, row }));
             addAndMakeVisible(*section.slotDown);
             addAndMakeVisible(*section.slotUp);
             section.slotDown->onClick = [this, family, slots] { stepSlot(family, -1, slots); };
@@ -550,8 +572,8 @@ private:
             auto* descriptor = describe(section.powerId);
             juce::ignoreUnused(descriptor);
             section.power = std::make_unique<PowerButton>(section.accent);
-            section.power->setBounds(juce::Rectangle<int>(52, 52).withCentre(
-                { juce::roundToInt(section.bounds.getX()) + 40, 161 }));
+            section.power->setBounds(juce::Rectangle<int>(40, 40).withCentre(
+                { juce::roundToInt(section.bounds.getX()) + 30, juce::roundToInt(contentTop + panelHeader * 0.5f) }));
             addAndMakeVisible(*section.power);
             section.powerAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
                 processor.state, section.powerId, *section.power);
@@ -562,10 +584,10 @@ private:
         const auto columns = section.columns;
         const auto rows = (count + columns - 1) / columns;
         const auto pitchX = section.bounds.getWidth() / static_cast<float>(columns);
-        const auto usable = contentHeight - 110.0f;
+        const auto usable = contentHeight - panelHeader - 14.0f;
         const auto pitchY = usable / static_cast<float>(juce::jmax(1, rows));
-        const auto knob = juce::jlimit(84.0f, 132.0f, juce::jmin(pitchY * 0.5f, pitchX * 0.62f));
-        const auto top = contentTop + 96.0f;
+        const auto knob = juce::jlimit(56.0f, 92.0f, juce::jmin(pitchY * 0.5f, pitchX * 0.7f));
+        const auto top = contentTop + panelHeader + 4.0f;
 
         for (int i = 0; i < count; ++i)
         {
@@ -580,7 +602,7 @@ private:
             if (descriptor->kind == ParameterDescriptor::Kind::boolean)
             {
                 control.toggle = std::make_unique<PillToggle>(section.accent);
-                control.toggle->setBounds(juce::Rectangle<int>(78, 36).withCentre(control.centre.toInt()));
+                control.toggle->setBounds(juce::Rectangle<int>(64, 30).withCentre(control.centre.toInt()));
                 addAndMakeVisible(*control.toggle);
                 control.buttonAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
                     processor.state, control.id, *control.toggle);
@@ -592,7 +614,7 @@ private:
                 juce::StringArray pretty;
                 for (const auto& choice : descriptor->choices) pretty.add(prettyChoice(choice));
                 control.combo->addItemList(pretty, 1);
-                control.combo->setBounds(juce::Rectangle<int>(juce::roundToInt(pitchX - 22.0f), 42)
+                control.combo->setBounds(juce::Rectangle<int>(juce::roundToInt(pitchX - 12.0f), 34)
                                              .withCentre(control.centre.toInt()));
                 addAndMakeVisible(*control.combo);
                 control.comboAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
@@ -647,6 +669,7 @@ private:
         steppedFamilies.clear();
         buildSections();
         layOutSections();
+        for (const auto& [family, slot] : slotFor) display->setSelectedSlot(family, slot);
         refresh();
     }
 
@@ -776,52 +799,56 @@ private:
                                                accent.withAlpha(0.0f), r.getX(), r.getY() + 230.0f, false));
         g.fillRoundedRectangle(r, 10.0f);
 
-        const auto body = r.withTrimmedTop(80.0f).reduced(6.0f, 0.0f).withTrimmedBottom(6.0f);
+        const auto body = r.withTrimmedTop(panelHeader).reduced(6.0f, 0.0f).withTrimmedBottom(6.0f);
         g.setColour(juce::Colour(0xff0c0f14).withAlpha(0.8f));
         g.fillRoundedRectangle(body, 8.0f);
         g.setColour(accent.withAlpha(on ? 0.5f : 0.18f));
         g.drawRoundedRectangle(r.reduced(0.6f), 10.0f, 1.4f);
 
+        const auto header = r.withHeight(panelHeader);
+        const auto stepped = section.slotUp != nullptr;
         g.setColour(on ? juce::Colours::white : textDim);
-        g.setFont(uiFont(26.0f, true));
-        g.drawText(section.title, r.withHeight(80.0f), juce::Justification::centred, false);
+        g.setFont(uiFont(20.0f, true));
+        g.drawText(section.title, stepped ? header.withTrimmedRight(118.0f).withTrimmedLeft(section.power != nullptr ? 50.0f : 14.0f)
+                                          : header,
+                   stepped ? juce::Justification::centredLeft : juce::Justification::centred, false);
 
-        if (section.power != nullptr)
+        if (section.power != nullptr && ! stepped)
         {
             g.setColour(on ? accent : textDim);
-            g.setFont(uiFont(17.0f, true));
-            g.drawText(on ? "ON" : "OFF", r.withHeight(80.0f).withTrimmedRight(16.0f), juce::Justification::centredRight, false);
+            g.setFont(uiFont(15.0f, true));
+            g.drawText(on ? "ON" : "OFF", header.withTrimmedRight(16.0f), juce::Justification::centredRight, false);
         }
 
-        if (section.slotUp != nullptr)
+        if (stepped)
         {
             const auto slots = slotCount(section.family);
             const auto slot = slotFor.count(section.family) != 0 ? slotFor.at(section.family) : 1;
-            g.setColour(textDim);
-            g.setFont(uiFont(13.0f, false, 0.3f));
-            g.drawText(section.family.toUpperCase(), juce::Rectangle<float>(r.getX() + 16.0f, 184.0f, 120.0f, 22.0f),
-                       juce::Justification::centredLeft, false);
+            g.setColour(accent.withAlpha(0.18f));
+            g.fillRoundedRectangle(juce::Rectangle<float>(r.getRight() - 118.0f, header.getCentreY() - 15.0f, 112.0f, 30.0f), 6.0f);
             g.setColour(textMain);
-            g.setFont(uiFont(18.0f, true));
+            g.setFont(uiFont(15.0f, true));
             g.drawText(juce::String(slot) + " / " + juce::String(slots),
-                       juce::Rectangle<float>(r.getRight() - 82.0f, 184.0f, 46.0f, 24.0f), juce::Justification::centred, false);
+                       juce::Rectangle<float>(r.getRight() - 92.0f, header.getCentreY() - 12.0f, 60.0f, 24.0f),
+                       juce::Justification::centred, false);
         }
 
         for (const auto& control : section.controls)
         {
             const auto alpha = on ? 1.0f : 0.4f;
             const auto half = control.slider != nullptr ? control.size * 0.5f : 22.0f;
+            const auto cell = section.bounds.getWidth() / static_cast<float>(section.columns) - 6.0f;
             g.setColour(textMain.withAlpha(alpha));
-            g.setFont(uiFont(15.0f, false, 0.03f));
-            g.drawFittedText(control.label, juce::Rectangle<float>(control.centre.x - 76.0f, control.centre.y - half - 30.0f,
-                                                                  152.0f, 22.0f).toNearestInt(),
-                             juce::Justification::centred, 1, 0.85f);
+            g.setFont(uiFont(12.5f, false, 0.03f));
+            g.drawFittedText(control.label, juce::Rectangle<float>(control.centre.x - cell * 0.5f, control.centre.y - half - 22.0f,
+                                                                  cell, 18.0f).toNearestInt(),
+                             juce::Justification::centred, 1, 0.75f);
             if (control.slider != nullptr)
             {
-                g.setFont(uiFont(19.0f));
-                g.drawText(valueText(control.id),
-                           juce::Rectangle<float>(control.centre.x - 76.0f, control.centre.y + half + 2.0f, 152.0f, 26.0f),
-                           juce::Justification::centred, false);
+                g.setFont(uiFont(15.5f));
+                g.drawFittedText(valueText(control.id),
+                                 juce::Rectangle<float>(control.centre.x - cell * 0.5f, control.centre.y + half + 1.0f, cell, 22.0f).toNearestInt(),
+                                 juce::Justification::centred, 1, 0.8f);
             }
         }
     }
@@ -861,7 +888,7 @@ private:
 
     void drawOutput(juce::Graphics& g)
     {
-        const auto r = juce::Rectangle<float>(1396.0f, contentTop, 123.0f, contentHeight);
+        const auto r = juce::Rectangle<float>(1396.0f, meterTop, 123.0f, meterHeight);
         g.setColour(juce::Colour(0xff10131a));
         g.fillRoundedRectangle(r, 10.0f);
         g.setColour(juce::Colour(0xff1f242d));
@@ -930,6 +957,7 @@ private:
 
     PluginProcessor& processor;
     Look look;
+    std::unique_ptr<DigitalDisplay> display;
     std::vector<Section> sections;
     ChevronButton prev, next;
     ClickArea presetArea;

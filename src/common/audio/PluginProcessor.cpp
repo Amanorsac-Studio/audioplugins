@@ -71,6 +71,7 @@ void PluginProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     dsp.prepare(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
     frontEnd.prepare(sampleRate, samplesPerBlock);
+    analysis.sampleRate.store(sampleRate);
     entitlement.reset(sampleRate, 0.05);
     entitlement.setCurrentAndTargetValue(licensing::LicenseClient::getInstance().isLicensed() ? 1.0f : 0.0f);
 }
@@ -113,9 +114,14 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
         inputPeaks[static_cast<size_t>(channel)].store(
             channel < buffer.getNumChannels() ? buffer.getMagnitude(channel, 0, buffer.getNumSamples()) : 0.0f);
     const auto mainChannels = juce::jmin(2, getMainBusNumOutputChannels(), buffer.getNumChannels());
+    const auto tap = spec.isDigital() && analysisWanted.load(std::memory_order_relaxed) && mainChannels > 0;
+    const auto tapRight = [&] { return mainChannels > 1 ? buffer.getReadPointer(1) : nullptr; };
+    if (tap) analysis.pushPre(buffer.getReadPointer(0), tapRight(), buffer.getNumSamples());
     frontEnd.processFront(buffer, state, mainChannels);
     dsp.process(buffer, state, spec.id);
     frontEnd.processBack(buffer, state, mainChannels);
+    // Taken before the licence ramp, so the display shows what the engine does.
+    if (tap) analysis.pushPost(buffer.getReadPointer(0), tapRight(), buffer.getNumSamples());
 
     // An unlicensed bundle produces no output. The flag is atomic and the
     // ramp is smooth, so this never allocates, blocks or clicks on the audio

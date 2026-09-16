@@ -1,5 +1,6 @@
 #pragma once
 
+#include "common/audio/AnalysisTap.h"
 #include "common/dsp/AnchorDSP.h"
 #include "common/dsp/AnalogFrontEnd.h"
 #include "common/licensing/LicenseClient.h"
@@ -59,6 +60,13 @@ public:
     }
     /** Gain reduction in dB (<= 0) for the compressor products, 0 elsewhere. */
     [[nodiscard]] float getGainReductionDb() const noexcept { return dsp.gainReductionDb(); }
+    /** What a dynamic band is doing right now, for the digital displays. */
+    [[nodiscard]] float getBandActivityDb(int index) const noexcept { return dsp.bandActivityDb(index); }
+    /** Audio before and after the engine, for the analysers. */
+    AnalysisTap analysis;
+    /** Set by the window while it is open, so a closed plug-in skips the copy. */
+    std::atomic<bool> analysisWanted { false };
+
     [[nodiscard]] float getOutputPeak(int channel) const noexcept
     {
         return outputPeaks[static_cast<size_t>(juce::jlimit(0, 1, channel))].load();
