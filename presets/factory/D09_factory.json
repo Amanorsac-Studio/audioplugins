@@ -1,0 +1,277 @@
+{
+  "plugin_id": "D09",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Guitars",
+    "Keys",
+    "Strings & Horns",
+    "Mix Bus",
+    "Creative"
+  ],
+  "presets": [
+    {
+      "name": "Vocal Plate",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "pre_delay": 30,
+        "decay": 1.8,
+        "size": 45,
+        "density": 75,
+        "diffusion": 70,
+        "early_late": 20,
+        "low_damp": 0.9,
+        "high_damp": 0.7,
+        "width": 120,
+        "mix": 22,
+        "duck": 35
+      }
+    },
+    {
+      "name": "Vocal Hall",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "pre_delay": 45,
+        "decay": 3.2,
+        "size": 80,
+        "density": 60,
+        "diffusion": 65,
+        "early_late": -10,
+        "low_damp": 0.8,
+        "high_damp": 0.5,
+        "width": 130,
+        "mix": 26,
+        "duck": 40
+      }
+    },
+    {
+      "name": "Tight Room",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Space",
+        "Intensity": "Low"
+      },
+      "values": {
+        "pre_delay": 8,
+        "decay": 0.7,
+        "size": 25,
+        "density": 80,
+        "diffusion": 75,
+        "early_late": 60,
+        "low_damp": 1,
+        "high_damp": 0.9,
+        "width": 100,
+        "mix": 18,
+        "duck": 45
+      }
+    },
+    {
+      "name": "Snare Chamber",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "pre_delay": 18,
+        "decay": 1.4,
+        "size": 40,
+        "density": 70,
+        "diffusion": 80,
+        "early_late": 10,
+        "low_damp": 0.9,
+        "high_damp": 0.7,
+        "width": 110,
+        "mix": 24,
+        "duck": 30
+      }
+    },
+    {
+      "name": "Guitar Spring",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Character",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "pre_delay": 5,
+        "decay": 1.6,
+        "size": 30,
+        "density": 45,
+        "diffusion": 40,
+        "early_late": 40,
+        "low_damp": 1.2,
+        "high_damp": 0.8,
+        "width": 90,
+        "mix": 28
+      }
+    },
+    {
+      "name": "Acoustic Room",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic",
+        "Intent": "Space",
+        "Intensity": "Low"
+      },
+      "values": {
+        "pre_delay": 15,
+        "decay": 1.2,
+        "size": 35,
+        "density": 65,
+        "diffusion": 70,
+        "early_late": 35,
+        "low_damp": 1,
+        "high_damp": 0.8,
+        "width": 110,
+        "mix": 16
+      }
+    },
+    {
+      "name": "Piano Concert",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "pre_delay": 25,
+        "decay": 2.6,
+        "size": 75,
+        "density": 60,
+        "diffusion": 65,
+        "early_late": -20,
+        "low_damp": 0.8,
+        "high_damp": 0.6,
+        "width": 130,
+        "mix": 20
+      }
+    },
+    {
+      "name": "Strings Cathedral",
+      "category": "Strings & Horns",
+      "tags": {
+        "Source": "Strings",
+        "Intent": "Space",
+        "Intensity": "High"
+      },
+      "values": {
+        "pre_delay": 60,
+        "decay": 6.5,
+        "size": 95,
+        "density": 55,
+        "diffusion": 60,
+        "early_late": -40,
+        "low_damp": 0.7,
+        "high_damp": 0.5,
+        "width": 150,
+        "mix": 32,
+        "mod_depth": 25
+      }
+    },
+    {
+      "name": "Mix Bus Depth",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Depth",
+        "Intensity": "Low"
+      },
+      "values": {
+        "pre_delay": 20,
+        "decay": 1.4,
+        "size": 50,
+        "density": 70,
+        "diffusion": 70,
+        "early_late": 30,
+        "low_damp": 1,
+        "high_damp": 0.7,
+        "width": 110,
+        "mix": 10,
+        "duck": 50
+      }
+    },
+    {
+      "name": "Infinite Pad",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Texture",
+        "Intensity": "High"
+      },
+      "values": {
+        "pre_delay": 80,
+        "decay": 20,
+        "size": 100,
+        "density": 50,
+        "diffusion": 55,
+        "early_late": -70,
+        "low_damp": 0.6,
+        "high_damp": 0.4,
+        "mod_rate": 0.2,
+        "mod_depth": 45,
+        "width": 160,
+        "mix": 55
+      }
+    },
+    {
+      "name": "Reverse Bloom",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Texture",
+        "Intensity": "High"
+      },
+      "values": {
+        "pre_delay": 120,
+        "decay": 4.5,
+        "size": 85,
+        "density": 40,
+        "diffusion": 45,
+        "early_late": -90,
+        "low_damp": 0.7,
+        "high_damp": 0.5,
+        "mod_rate": 0.6,
+        "mod_depth": 35,
+        "width": 150,
+        "mix": 45
+      }
+    },
+    {
+      "name": "Freeze Hold",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Texture",
+        "Intensity": "High"
+      },
+      "values": {
+        "pre_delay": 0,
+        "decay": 30,
+        "size": 100,
+        "density": 60,
+        "diffusion": 60,
+        "freeze": true,
+        "width": 140,
+        "mix": 50
+      }
+    }
+  ]
+}

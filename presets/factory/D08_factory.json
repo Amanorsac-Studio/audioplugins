@@ -1,0 +1,339 @@
+{
+  "plugin_id": "D08",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Vocals",
+    "Guitars",
+    "Creative",
+    "Drums",
+    "Keys",
+    "Bass"
+  ],
+  "presets": [
+    {
+      "name": "Vocal Quarter",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Space",
+        "Intensity": "Low"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 500,
+        "feedback": 28,
+        "mix": 18,
+        "duck": 40,
+        "mod_rate": 0.3,
+        "mod_depth": 2,
+        "tap.01.time": 500,
+        "tap.01.level": -4,
+        "tap.01.pan": -30,
+        "tap.01.filter": 6000,
+        "tap.01.enabled": true,
+        "tap.02.time": 750,
+        "tap.02.level": -10,
+        "tap.02.pan": 30,
+        "tap.02.filter": 4500,
+        "tap.02.enabled": true
+      }
+    },
+    {
+      "name": "Slapback Vocal",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Character",
+        "Intensity": "Low"
+      },
+      "values": {
+        "tempo_sync": false,
+        "time": 110,
+        "feedback": 5,
+        "mix": 22,
+        "duck": 20,
+        "mod_depth": 0,
+        "tap.01.time": 110,
+        "tap.01.level": -3,
+        "tap.01.pan": 0,
+        "tap.01.filter": 5000,
+        "tap.01.enabled": true
+      }
+    },
+    {
+      "name": "Ping Pong Eighths",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Vocal",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 250,
+        "feedback": 40,
+        "mix": 25,
+        "duck": 35,
+        "tap.01.time": 250,
+        "tap.01.level": -4,
+        "tap.01.pan": -80,
+        "tap.01.filter": 7000,
+        "tap.01.enabled": true,
+        "tap.02.time": 500,
+        "tap.02.level": -7,
+        "tap.02.pan": 80,
+        "tap.02.filter": 5500,
+        "tap.02.enabled": true,
+        "tap.03.time": 750,
+        "tap.03.level": -12,
+        "tap.03.pan": -60,
+        "tap.03.filter": 4000,
+        "tap.03.enabled": true
+      }
+    },
+    {
+      "name": "Guitar Dotted",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 375,
+        "feedback": 45,
+        "mix": 30,
+        "duck": 15,
+        "mod_rate": 0.25,
+        "mod_depth": 4,
+        "tap.01.time": 375,
+        "tap.01.level": -3,
+        "tap.01.pan": -50,
+        "tap.01.filter": 4500,
+        "tap.01.enabled": true,
+        "tap.02.time": 750,
+        "tap.02.level": -9,
+        "tap.02.pan": 50,
+        "tap.02.filter": 3500,
+        "tap.02.enabled": true
+      }
+    },
+    {
+      "name": "Ambient Wash",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Space",
+        "Intensity": "High"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 1000,
+        "feedback": 70,
+        "mix": 45,
+        "duck": 10,
+        "mod_rate": 0.15,
+        "mod_depth": 12,
+        "tap.01.time": 1000,
+        "tap.01.level": -3,
+        "tap.01.pan": -70,
+        "tap.01.filter": 3000,
+        "tap.01.enabled": true,
+        "tap.02.time": 1500,
+        "tap.02.level": -6,
+        "tap.02.pan": 70,
+        "tap.02.filter": 2500,
+        "tap.02.enabled": true,
+        "tap.03.time": 2000,
+        "tap.03.level": -10,
+        "tap.03.pan": 0,
+        "tap.03.filter": 2000,
+        "tap.03.enabled": true
+      }
+    },
+    {
+      "name": "Dub Throw",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Character",
+        "Intensity": "High"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 500,
+        "feedback": 82,
+        "mix": 40,
+        "duck": 25,
+        "mod_rate": 0.5,
+        "mod_depth": 8,
+        "tap.01.time": 500,
+        "tap.01.level": -2,
+        "tap.01.pan": -60,
+        "tap.01.filter": 2200,
+        "tap.01.enabled": true,
+        "tap.02.time": 1000,
+        "tap.02.level": -8,
+        "tap.02.pan": 60,
+        "tap.02.filter": 1800,
+        "tap.02.enabled": true
+      }
+    },
+    {
+      "name": "Snare Throw",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 375,
+        "feedback": 30,
+        "mix": 20,
+        "duck": 55,
+        "tap.01.time": 375,
+        "tap.01.level": -5,
+        "tap.01.pan": 40,
+        "tap.01.filter": 5000,
+        "tap.01.enabled": true
+      }
+    },
+    {
+      "name": "Drum Room Taps",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Space",
+        "Intensity": "Low"
+      },
+      "values": {
+        "tempo_sync": false,
+        "time": 60,
+        "feedback": 12,
+        "mix": 15,
+        "duck": 45,
+        "tap.01.time": 45,
+        "tap.01.level": -8,
+        "tap.01.pan": -40,
+        "tap.01.filter": 6000,
+        "tap.01.enabled": true,
+        "tap.02.time": 75,
+        "tap.02.level": -11,
+        "tap.02.pan": 40,
+        "tap.02.filter": 5000,
+        "tap.02.enabled": true
+      }
+    },
+    {
+      "name": "Keys Rhythm",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Movement",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 250,
+        "feedback": 35,
+        "mix": 28,
+        "duck": 20,
+        "mod_rate": 0.4,
+        "mod_depth": 5,
+        "tap.01.time": 250,
+        "tap.01.level": -5,
+        "tap.01.pan": -55,
+        "tap.01.filter": 6000,
+        "tap.01.enabled": true,
+        "tap.02.time": 375,
+        "tap.02.level": -8,
+        "tap.02.pan": 55,
+        "tap.02.filter": 5000,
+        "tap.02.enabled": true,
+        "tap.03.time": 625,
+        "tap.03.level": -13,
+        "tap.03.pan": 0,
+        "tap.03.filter": 4000,
+        "tap.03.enabled": true
+      }
+    },
+    {
+      "name": "Bass Short Double",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Weight",
+        "Intensity": "Low"
+      },
+      "values": {
+        "tempo_sync": false,
+        "time": 28,
+        "feedback": 0,
+        "mix": 12,
+        "duck": 60,
+        "mod_depth": 0,
+        "tap.01.time": 28,
+        "tap.01.level": -8,
+        "tap.01.pan": 0,
+        "tap.01.filter": 1200,
+        "tap.01.enabled": true
+      }
+    },
+    {
+      "name": "Tape Echo Drift",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Character",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "tempo_sync": false,
+        "time": 320,
+        "feedback": 55,
+        "mix": 30,
+        "duck": 20,
+        "mod_rate": 0.8,
+        "mod_depth": 16,
+        "tap.01.time": 320,
+        "tap.01.level": -4,
+        "tap.01.pan": 0,
+        "tap.01.filter": 3200,
+        "tap.01.enabled": true
+      }
+    },
+    {
+      "name": "Freeze Pad",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Texture",
+        "Intensity": "High"
+      },
+      "values": {
+        "tempo_sync": true,
+        "time": 750,
+        "feedback": 90,
+        "mix": 50,
+        "freeze": true,
+        "mod_rate": 0.2,
+        "mod_depth": 10,
+        "tap.01.time": 750,
+        "tap.01.level": -3,
+        "tap.01.pan": -70,
+        "tap.01.filter": 2600,
+        "tap.01.enabled": true,
+        "tap.02.time": 1125,
+        "tap.02.level": -7,
+        "tap.02.pan": 70,
+        "tap.02.filter": 2200,
+        "tap.02.enabled": true
+      }
+    }
+  ]
+}

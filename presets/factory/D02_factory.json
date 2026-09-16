@@ -1,0 +1,339 @@
+{
+  "plugin_id": "D02",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Mix Bus",
+    "Master",
+    "Creative",
+    "Utility"
+  ],
+  "presets": [
+    {
+      "name": "Vocal Sibilance Tame",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Control",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 3,
+        "adaptive": true,
+        "band.01.frequency": 7200,
+        "band.01.q": 3.5,
+        "band.01.threshold": -28,
+        "band.01.range": -6,
+        "band.01.ratio": 4,
+        "band.01.attack": 1,
+        "band.01.release": 90,
+        "band.01.direction": "down",
+        "band.02.frequency": 320,
+        "band.02.q": 1.4,
+        "band.02.threshold": -22,
+        "band.02.range": -3,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 20,
+        "band.02.release": 220,
+        "band.02.direction": "down",
+        "band.03.frequency": 3000,
+        "band.03.q": 1.2,
+        "band.03.threshold": -18,
+        "band.03.range": 2,
+        "band.03.ratio": 2,
+        "band.03.attack": 30,
+        "band.03.release": 250,
+        "band.03.direction": "up"
+      }
+    },
+    {
+      "name": "Boxy Voice Fix",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Voice",
+        "Intent": "Repair",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 2,
+        "band.01.frequency": 420,
+        "band.01.q": 2,
+        "band.01.threshold": -26,
+        "band.01.range": -5,
+        "band.01.ratio": 3,
+        "band.01.attack": 15,
+        "band.01.release": 180,
+        "band.01.direction": "down",
+        "band.02.frequency": 900,
+        "band.02.q": 1.8,
+        "band.02.threshold": -24,
+        "band.02.range": -3,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 20,
+        "band.02.release": 200,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Kick Boom Control",
+      "category": "Drums",
+      "tags": {
+        "Source": "Kick",
+        "Intent": "Control",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 2,
+        "band.01.frequency": 70,
+        "band.01.q": 1.6,
+        "band.01.threshold": -20,
+        "band.01.range": -6,
+        "band.01.ratio": 4,
+        "band.01.attack": 5,
+        "band.01.release": 120,
+        "band.01.direction": "down",
+        "band.02.frequency": 3500,
+        "band.02.q": 1.2,
+        "band.02.threshold": -24,
+        "band.02.range": 3,
+        "band.02.ratio": 2,
+        "band.02.attack": 2,
+        "band.02.release": 80,
+        "band.02.direction": "up"
+      }
+    },
+    {
+      "name": "Cymbal Harshness",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Smooth",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 2,
+        "band.01.frequency": 6500,
+        "band.01.q": 2.4,
+        "band.01.threshold": -26,
+        "band.01.range": -5,
+        "band.01.ratio": 3,
+        "band.01.attack": 3,
+        "band.01.release": 140,
+        "band.01.direction": "down",
+        "band.02.frequency": 11000,
+        "band.02.q": 1.6,
+        "band.02.threshold": -30,
+        "band.02.range": -3,
+        "band.02.ratio": 2,
+        "band.02.attack": 5,
+        "band.02.release": 160,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Bass Note Evener",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Balance",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 2,
+        "adaptive": true,
+        "band.01.frequency": 95,
+        "band.01.q": 2.2,
+        "band.01.threshold": -22,
+        "band.01.range": -5,
+        "band.01.ratio": 4,
+        "band.01.attack": 10,
+        "band.01.release": 150,
+        "band.01.direction": "down",
+        "band.02.frequency": 190,
+        "band.02.q": 2,
+        "band.02.threshold": -24,
+        "band.02.range": -4,
+        "band.02.ratio": 3,
+        "band.02.attack": 12,
+        "band.02.release": 160,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Guitar Pick Tame",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic",
+        "Intent": "Smooth",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 1,
+        "band.01.frequency": 2800,
+        "band.01.q": 2,
+        "band.01.threshold": -24,
+        "band.01.range": -4,
+        "band.01.ratio": 3,
+        "band.01.attack": 4,
+        "band.01.release": 120,
+        "band.01.direction": "down"
+      }
+    },
+    {
+      "name": "Amp Fizz Control",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Smooth",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 2,
+        "band.01.frequency": 4200,
+        "band.01.q": 1.8,
+        "band.01.threshold": -22,
+        "band.01.range": -5,
+        "band.01.ratio": 3,
+        "band.01.attack": 6,
+        "band.01.release": 130,
+        "band.01.direction": "down",
+        "band.02.frequency": 240,
+        "band.02.q": 1.4,
+        "band.02.threshold": -20,
+        "band.02.range": -3,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 18,
+        "band.02.release": 200,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Piano Resonance",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Repair",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 2,
+        "band.01.frequency": 260,
+        "band.01.q": 3,
+        "band.01.threshold": -26,
+        "band.01.range": -4,
+        "band.01.ratio": 3,
+        "band.01.attack": 15,
+        "band.01.release": 180,
+        "band.01.direction": "down",
+        "band.02.frequency": 1500,
+        "band.02.q": 2.4,
+        "band.02.threshold": -28,
+        "band.02.range": -3,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 12,
+        "band.02.release": 170,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Mix Bus Tighten",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Control",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 2,
+        "adaptive": true,
+        "band.01.frequency": 150,
+        "band.01.q": 1.2,
+        "band.01.threshold": -18,
+        "band.01.range": -2.5,
+        "band.01.ratio": 2,
+        "band.01.attack": 25,
+        "band.01.release": 250,
+        "band.01.direction": "down",
+        "band.02.frequency": 5200,
+        "band.02.q": 1,
+        "band.02.threshold": -20,
+        "band.02.range": -2,
+        "band.02.ratio": 2,
+        "band.02.attack": 10,
+        "band.02.release": 200,
+        "band.02.direction": "down"
+      }
+    },
+    {
+      "name": "Master Mud Sweep",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Clarity",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 1,
+        "adaptive": true,
+        "band.01.frequency": 320,
+        "band.01.q": 1.4,
+        "band.01.threshold": -16,
+        "band.01.range": -2,
+        "band.01.ratio": 2,
+        "band.01.attack": 30,
+        "band.01.release": 300,
+        "band.01.direction": "down"
+      }
+    },
+    {
+      "name": "Duck The Lows",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Space",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 1,
+        "external_sc": true,
+        "band.01.frequency": 120,
+        "band.01.q": 1,
+        "band.01.threshold": -30,
+        "band.01.range": -10,
+        "band.01.ratio": 6,
+        "band.01.attack": 2,
+        "band.01.release": 120,
+        "band.01.direction": "down"
+      }
+    },
+    {
+      "name": "Listen And Learn",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Setup",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 1,
+        "auto_learn": true,
+        "delta": true,
+        "band.01.frequency": 1000,
+        "band.01.q": 2,
+        "band.01.threshold": -24,
+        "band.01.range": -4,
+        "band.01.ratio": 3,
+        "band.01.attack": 15,
+        "band.01.release": 200,
+        "band.01.direction": "down",
+        "band.01.listen": true
+      }
+    }
+  ]
+}

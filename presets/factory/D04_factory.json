@@ -1,0 +1,231 @@
+{
+  "plugin_id": "D04",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Master",
+    "Mix Bus",
+    "Drums",
+    "Bass",
+    "Vocals",
+    "Utility",
+    "Creative"
+  ],
+  "presets": [
+    {
+      "name": "Transparent Master",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Loudness",
+        "Intensity": "Low"
+      },
+      "values": {
+        "threshold": -6,
+        "ceiling": -1,
+        "lookahead": 2,
+        "release": 250,
+        "release_mode": "adaptive",
+        "style": "transparent",
+        "transient_preserve": 60,
+        "oversampling": "8x",
+        "true_peak": true,
+        "target_lufs": -14
+      }
+    },
+    {
+      "name": "Streaming Safe",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Delivery",
+        "Intensity": "Low"
+      },
+      "values": {
+        "threshold": -5,
+        "ceiling": -1,
+        "release": 220,
+        "style": "balanced",
+        "transient_preserve": 50,
+        "target_lufs": -14,
+        "true_peak": true,
+        "oversampling": "8x"
+      }
+    },
+    {
+      "name": "Loud And Proud",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Loudness",
+        "Intensity": "High"
+      },
+      "values": {
+        "threshold": -12,
+        "ceiling": -0.3,
+        "lookahead": 3,
+        "release": 120,
+        "release_mode": "manual",
+        "style": "dense",
+        "transient_preserve": 25,
+        "target_lufs": -7,
+        "oversampling": "16x"
+      }
+    },
+    {
+      "name": "Club Master",
+      "category": "Master",
+      "tags": {
+        "Source": "Electronic",
+        "Intent": "Loudness",
+        "Intensity": "High"
+      },
+      "values": {
+        "threshold": -10,
+        "ceiling": -0.5,
+        "release": 90,
+        "style": "punch",
+        "transient_preserve": 45,
+        "target_lufs": -8
+      }
+    },
+    {
+      "name": "Mix Bus Safety",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Safety",
+        "Intensity": "Low"
+      },
+      "values": {
+        "threshold": -2,
+        "ceiling": -1.5,
+        "lookahead": 1,
+        "release": 300,
+        "style": "transparent",
+        "transient_preserve": 75
+      }
+    },
+    {
+      "name": "Drum Bus Ceiling",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Control",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "threshold": -8,
+        "ceiling": -1,
+        "lookahead": 0.5,
+        "release": 80,
+        "style": "punch",
+        "transient_preserve": 70
+      }
+    },
+    {
+      "name": "Bass Peak Hold",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Control",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "threshold": -9,
+        "ceiling": -1,
+        "release": 150,
+        "style": "balanced",
+        "transient_preserve": 35,
+        "stereo_link": 100
+      }
+    },
+    {
+      "name": "Vocal Catch",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Safety",
+        "Intensity": "Low"
+      },
+      "values": {
+        "threshold": -6,
+        "ceiling": -1.5,
+        "lookahead": 1.5,
+        "release": 200,
+        "style": "transparent",
+        "transient_preserve": 55
+      }
+    },
+    {
+      "name": "Broadcast Leveller",
+      "category": "Utility",
+      "tags": {
+        "Source": "Speech",
+        "Intent": "Delivery",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "threshold": -10,
+        "ceiling": -2,
+        "release": 260,
+        "style": "balanced",
+        "transient_preserve": 40,
+        "target_lufs": -16
+      }
+    },
+    {
+      "name": "Transient Keeper",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Punch",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "threshold": -10,
+        "ceiling": -1,
+        "lookahead": 5,
+        "release": 60,
+        "style": "punch",
+        "transient_preserve": 100
+      }
+    },
+    {
+      "name": "Brick Wall",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Safety",
+        "Intensity": "High"
+      },
+      "values": {
+        "threshold": -3,
+        "ceiling": -0.1,
+        "lookahead": 8,
+        "release": 40,
+        "release_mode": "manual",
+        "style": "transparent",
+        "transient_preserve": 0,
+        "oversampling": "16x",
+        "true_peak": true
+      }
+    },
+    {
+      "name": "Gain Reduction Listen",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Setup",
+        "Intensity": "Low"
+      },
+      "values": {
+        "threshold": -14,
+        "ceiling": -1,
+        "delta": true,
+        "style": "balanced"
+      }
+    }
+  ]
+}

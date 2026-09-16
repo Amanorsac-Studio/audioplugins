@@ -128,6 +128,8 @@ function(amanorsac_add_plugin plugin_id)
         src/common/state/PluginSpec.h
         src/common/ui/PluginEditor.cpp
         src/common/ui/PluginEditor.h
+        src/common/ui/DigitalChassis.cpp
+        src/common/ui/DigitalChassis.h
         src/common/ui/AnalogChassis.h
         src/common/ui/HeritageEditor.cpp
         src/common/ui/HeritageEditor.h
@@ -383,7 +385,24 @@ foreach(plugin_id IN LISTS AMANORSAC_PLUGIN_IDS)
 endforeach()
 
 if(BUILD_TESTING)
-  foreach(render_id IN ITEMS A01 A02 A03 A04 A05 A06 A07 A08 A09 A10)
+  # Every digital product proves its own factory bank loads and behaves.
+  foreach(digital_id IN ITEMS D01 D02 D03 D04 D05 D06 D07 D08 D09 D10)
+    add_executable(Amanorsac${digital_id}PresetCheck tests/digital/DigitalPresetCheck.cpp)
+    target_include_directories(Amanorsac${digital_id}PresetCheck PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src"
+        "${juce_SOURCE_DIR}/modules"
+        "${CMAKE_CURRENT_BINARY_DIR}/generated/${digital_id}")
+    target_compile_definitions(Amanorsac${digital_id}PresetCheck PRIVATE
+        JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1
+        JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
+    target_link_libraries(Amanorsac${digital_id}PresetCheck PRIVATE
+        Amanorsac${digital_id}
+        juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
+    add_test(NAME Amanorsac.${digital_id}.Presets COMMAND Amanorsac${digital_id}PresetCheck)
+  endforeach()
+
+  foreach(render_id IN ITEMS A01 A02 A03 A04 A05 A06 A07 A08 A09 A10
+                             D01 D02 D03 D04 D05 D06 D07 D08 D09 D10)
     add_executable(Amanorsac${render_id}EditorRender tests/ui/EditorRender.cpp)
     target_include_directories(Amanorsac${render_id}EditorRender PRIVATE
         "${CMAKE_CURRENT_SOURCE_DIR}/src"

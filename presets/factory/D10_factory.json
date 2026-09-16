@@ -1,0 +1,261 @@
+{
+  "plugin_id": "D10",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Mix Bus",
+    "Master",
+    "Bass",
+    "Drums",
+    "Guitars",
+    "Keys",
+    "Vocals",
+    "Utility",
+    "Creative"
+  ],
+  "presets": [
+    {
+      "name": "Natural Spread",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Width",
+        "Intensity": "Low"
+      },
+      "values": {
+        "global_width": 115,
+        "bass_mono": 120,
+        "focus": 50,
+        "safe_width": true,
+        "xover.01.frequency": 150,
+        "xover.02.frequency": 800,
+        "xover.03.frequency": 4000,
+        "band.01.width": 70,
+        "band.02.width": 110,
+        "band.03.width": 120,
+        "band.04.width": 125
+      }
+    },
+    {
+      "name": "Wide Master",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Width",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "global_width": 125,
+        "bass_mono": 110,
+        "focus": 60,
+        "safe_width": true,
+        "xover.01.frequency": 140,
+        "xover.02.frequency": 900,
+        "xover.03.frequency": 5000,
+        "band.01.width": 60,
+        "band.02.width": 115,
+        "band.03.width": 130,
+        "band.04.width": 140
+      }
+    },
+    {
+      "name": "Mono Bass Lock",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Focus",
+        "Intensity": "High"
+      },
+      "values": {
+        "global_width": 100,
+        "bass_mono": 250,
+        "focus": 70,
+        "safe_width": true,
+        "xover.01.frequency": 250,
+        "xover.02.frequency": 1200,
+        "xover.03.frequency": 6000,
+        "band.01.width": 0,
+        "band.02.width": 100,
+        "band.03.width": 100,
+        "band.04.width": 100
+      }
+    },
+    {
+      "name": "Drum Overhead Wide",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Width",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "global_width": 130,
+        "bass_mono": 180,
+        "focus": 55,
+        "xover.01.frequency": 200,
+        "xover.02.frequency": 1500,
+        "xover.03.frequency": 7000,
+        "band.01.width": 50,
+        "band.02.width": 120,
+        "band.03.width": 140,
+        "band.04.width": 150
+      }
+    },
+    {
+      "name": "Guitar Double Spread",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Guitars",
+        "Intent": "Width",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "global_width": 140,
+        "bass_mono": 150,
+        "focus": 50,
+        "xover.01.frequency": 160,
+        "xover.02.frequency": 1000,
+        "xover.03.frequency": 5000,
+        "band.01.width": 60,
+        "band.02.width": 130,
+        "band.03.width": 150,
+        "band.04.width": 155
+      }
+    },
+    {
+      "name": "Keys Stereo Open",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Width",
+        "Intensity": "Low"
+      },
+      "values": {
+        "global_width": 120,
+        "bass_mono": 130,
+        "focus": 45,
+        "xover.01.frequency": 150,
+        "xover.02.frequency": 900,
+        "xover.03.frequency": 4500,
+        "band.01.width": 70,
+        "band.02.width": 115,
+        "band.03.width": 125,
+        "band.04.width": 135
+      }
+    },
+    {
+      "name": "Vocal Centre Hold",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Focus",
+        "Intensity": "Low"
+      },
+      "values": {
+        "global_width": 95,
+        "bass_mono": 200,
+        "focus": 80,
+        "safe_width": true,
+        "xover.01.frequency": 200,
+        "xover.02.frequency": 1200,
+        "xover.03.frequency": 6000,
+        "band.01.width": 40,
+        "band.02.width": 85,
+        "band.03.width": 95,
+        "band.04.width": 110
+      }
+    },
+    {
+      "name": "Air Only Wide",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Air",
+        "Intensity": "Low"
+      },
+      "values": {
+        "global_width": 105,
+        "bass_mono": 120,
+        "focus": 65,
+        "safe_width": true,
+        "xover.01.frequency": 120,
+        "xover.02.frequency": 2000,
+        "xover.03.frequency": 8000,
+        "band.01.width": 70,
+        "band.02.width": 100,
+        "band.03.width": 110,
+        "band.04.width": 145
+      }
+    },
+    {
+      "name": "Narrow And Tight",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Focus",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "global_width": 70,
+        "bass_mono": 300,
+        "focus": 75,
+        "band.01.width": 0,
+        "band.02.width": 70,
+        "band.03.width": 75,
+        "band.04.width": 80
+      }
+    },
+    {
+      "name": "Tilt Left",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Position",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "global_width": 110,
+        "rotation": -18,
+        "ms_balance": -15,
+        "bass_mono": 140
+      }
+    },
+    {
+      "name": "Super Wide FX",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Width",
+        "Intensity": "High"
+      },
+      "values": {
+        "global_width": 200,
+        "bass_mono": 200,
+        "focus": 30,
+        "safe_width": false,
+        "xover.01.frequency": 180,
+        "xover.02.frequency": 900,
+        "xover.03.frequency": 4000,
+        "band.01.width": 40,
+        "band.02.width": 180,
+        "band.03.width": 210,
+        "band.04.width": 230
+      }
+    },
+    {
+      "name": "Mono Check",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Setup",
+        "Intensity": "Low"
+      },
+      "values": {
+        "mono_check": true,
+        "global_width": 100,
+        "safe_width": true
+      }
+    }
+  ]
+}

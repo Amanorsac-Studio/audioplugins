@@ -1,0 +1,396 @@
+{
+  "plugin_id": "D03",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Mix Bus",
+    "Master",
+    "Vocals",
+    "Drums",
+    "Bass",
+    "Guitars",
+    "Keys",
+    "Utility",
+    "Creative"
+  ],
+  "presets": [
+    {
+      "name": "Mix Bus Control",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Glue",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 4,
+        "xover.01.frequency": 120,
+        "xover.02.frequency": 800,
+        "xover.03.frequency": 5000,
+        "global_link": 80,
+        "global_mix": 100,
+        "band.01.threshold": -22,
+        "band.01.ratio": 2,
+        "band.01.attack": 30,
+        "band.01.release": 220,
+        "band.01.range": -4,
+        "band.01.makeup": 1,
+        "band.02.threshold": -20,
+        "band.02.ratio": 2,
+        "band.02.attack": 25,
+        "band.02.release": 200,
+        "band.02.range": -3,
+        "band.02.makeup": 0.5,
+        "band.03.threshold": -20,
+        "band.03.ratio": 2,
+        "band.03.attack": 15,
+        "band.03.release": 180,
+        "band.03.range": -3,
+        "band.03.makeup": 0.5,
+        "band.04.threshold": -24,
+        "band.04.ratio": 2.5,
+        "band.04.attack": 5,
+        "band.04.release": 150,
+        "band.04.range": -3,
+        "band.04.makeup": 1
+      }
+    },
+    {
+      "name": "Master Tighten",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Control",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 4,
+        "xover.01.frequency": 100,
+        "xover.02.frequency": 700,
+        "xover.03.frequency": 6000,
+        "global_link": 100,
+        "band.01.threshold": -18,
+        "band.01.ratio": 3,
+        "band.01.attack": 20,
+        "band.01.release": 180,
+        "band.01.range": -5,
+        "band.01.makeup": 1.5,
+        "band.02.threshold": -16,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 20,
+        "band.02.release": 160,
+        "band.02.range": -4,
+        "band.02.makeup": 1,
+        "band.03.threshold": -16,
+        "band.03.ratio": 2.5,
+        "band.03.attack": 12,
+        "band.03.release": 140,
+        "band.03.range": -4,
+        "band.03.makeup": 1,
+        "band.04.threshold": -20,
+        "band.04.ratio": 3,
+        "band.04.attack": 4,
+        "band.04.release": 120,
+        "band.04.range": -4,
+        "band.04.makeup": 1.5
+      }
+    },
+    {
+      "name": "Vocal Evener",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Control",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 3,
+        "xover.01.frequency": 300,
+        "xover.02.frequency": 4000,
+        "global_link": 60,
+        "band.01.threshold": -26,
+        "band.01.ratio": 3,
+        "band.01.attack": 25,
+        "band.01.release": 200,
+        "band.01.range": -6,
+        "band.01.makeup": 2,
+        "band.02.threshold": -22,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 15,
+        "band.02.release": 160,
+        "band.02.range": -5,
+        "band.02.makeup": 1.5,
+        "band.03.threshold": -28,
+        "band.03.ratio": 4,
+        "band.03.attack": 2,
+        "band.03.release": 100,
+        "band.03.range": -6,
+        "band.03.makeup": 2
+      }
+    },
+    {
+      "name": "Drum Bus Punch",
+      "category": "Drums",
+      "tags": {
+        "Source": "Drum Bus",
+        "Intent": "Punch",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 3,
+        "xover.01.frequency": 160,
+        "xover.02.frequency": 3000,
+        "global_link": 50,
+        "band.01.threshold": -20,
+        "band.01.ratio": 4,
+        "band.01.attack": 15,
+        "band.01.release": 120,
+        "band.01.range": -6,
+        "band.01.makeup": 2.5,
+        "band.02.threshold": -18,
+        "band.02.ratio": 3,
+        "band.02.attack": 25,
+        "band.02.release": 100,
+        "band.02.range": -5,
+        "band.02.makeup": 2,
+        "band.03.threshold": -22,
+        "band.03.ratio": 3,
+        "band.03.attack": 8,
+        "band.03.release": 90,
+        "band.03.range": -4,
+        "band.03.makeup": 1.5
+      }
+    },
+    {
+      "name": "Kick And Bass Split",
+      "category": "Bass",
+      "tags": {
+        "Source": "Bass",
+        "Intent": "Focus",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 2,
+        "xover.01.frequency": 180,
+        "global_link": 40,
+        "band.01.threshold": -20,
+        "band.01.ratio": 4,
+        "band.01.attack": 10,
+        "band.01.release": 140,
+        "band.01.range": -6,
+        "band.01.makeup": 2,
+        "band.02.threshold": -22,
+        "band.02.ratio": 2.5,
+        "band.02.attack": 20,
+        "band.02.release": 160,
+        "band.02.range": -4,
+        "band.02.makeup": 1
+      }
+    },
+    {
+      "name": "Guitar Bus Smooth",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Guitar Bus",
+        "Intent": "Smooth",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 3,
+        "xover.01.frequency": 200,
+        "xover.02.frequency": 2500,
+        "band.01.threshold": -24,
+        "band.01.ratio": 2,
+        "band.01.attack": 30,
+        "band.01.release": 220,
+        "band.01.range": -3,
+        "band.01.makeup": 1,
+        "band.02.threshold": -22,
+        "band.02.ratio": 2,
+        "band.02.attack": 25,
+        "band.02.release": 200,
+        "band.02.range": -3,
+        "band.02.makeup": 1,
+        "band.03.threshold": -26,
+        "band.03.ratio": 2.5,
+        "band.03.attack": 10,
+        "band.03.release": 150,
+        "band.03.range": -4,
+        "band.03.makeup": 1.5
+      }
+    },
+    {
+      "name": "Keys Level Hold",
+      "category": "Keys",
+      "tags": {
+        "Source": "Keys",
+        "Intent": "Control",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 2,
+        "xover.01.frequency": 500,
+        "band.01.threshold": -24,
+        "band.01.ratio": 2,
+        "band.01.attack": 35,
+        "band.01.release": 250,
+        "band.01.range": -3,
+        "band.01.makeup": 1,
+        "band.02.threshold": -22,
+        "band.02.ratio": 2,
+        "band.02.attack": 25,
+        "band.02.release": 220,
+        "band.02.range": -3,
+        "band.02.makeup": 1
+      }
+    },
+    {
+      "name": "Low End Tamer",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Repair",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 2,
+        "xover.01.frequency": 140,
+        "global_link": 100,
+        "band.01.threshold": -28,
+        "band.01.ratio": 6,
+        "band.01.attack": 8,
+        "band.01.release": 140,
+        "band.01.range": -10,
+        "band.01.makeup": 2,
+        "band.02.threshold": 0,
+        "band.02.ratio": 1,
+        "band.02.attack": 20,
+        "band.02.release": 200,
+        "band.02.range": 0,
+        "band.02.makeup": 0
+      }
+    },
+    {
+      "name": "Upward Air",
+      "category": "Creative",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Air",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "band_count": 3,
+        "xover.01.frequency": 250,
+        "xover.02.frequency": 7000,
+        "band.01.threshold": -30,
+        "band.01.ratio": 2,
+        "band.01.mode": "compress",
+        "band.01.range": -2,
+        "band.01.attack": 30,
+        "band.01.release": 250,
+        "band.02.threshold": -30,
+        "band.02.ratio": 2,
+        "band.02.mode": "compress",
+        "band.02.range": -2,
+        "band.02.attack": 25,
+        "band.02.release": 220,
+        "band.03.threshold": -34,
+        "band.03.ratio": 2,
+        "band.03.mode": "expand_up",
+        "band.03.range": 4,
+        "band.03.attack": 15,
+        "band.03.release": 200
+      }
+    },
+    {
+      "name": "Podcast Leveller",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Speech",
+        "Intent": "Consistency",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 3,
+        "xover.01.frequency": 220,
+        "xover.02.frequency": 5000,
+        "global_link": 70,
+        "band.01.threshold": -30,
+        "band.01.ratio": 4,
+        "band.01.attack": 20,
+        "band.01.release": 180,
+        "band.01.range": -8,
+        "band.01.makeup": 3,
+        "band.02.threshold": -28,
+        "band.02.ratio": 3.5,
+        "band.02.attack": 12,
+        "band.02.release": 150,
+        "band.02.range": -7,
+        "band.02.makeup": 3,
+        "band.03.threshold": -30,
+        "band.03.ratio": 4,
+        "band.03.attack": 3,
+        "band.03.release": 110,
+        "band.03.range": -6,
+        "band.03.makeup": 2.5
+      }
+    },
+    {
+      "name": "Parallel Squeeze",
+      "category": "Creative",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Density",
+        "Intensity": "High"
+      },
+      "values": {
+        "band_count": 4,
+        "xover.01.frequency": 120,
+        "xover.02.frequency": 900,
+        "xover.03.frequency": 6000,
+        "global_mix": 45,
+        "band.01.threshold": -34,
+        "band.01.ratio": 8,
+        "band.01.attack": 5,
+        "band.01.release": 90,
+        "band.01.range": -12,
+        "band.01.makeup": 4,
+        "band.02.threshold": -34,
+        "band.02.ratio": 8,
+        "band.02.attack": 5,
+        "band.02.release": 90,
+        "band.02.range": -12,
+        "band.02.makeup": 4,
+        "band.03.threshold": -34,
+        "band.03.ratio": 8,
+        "band.03.attack": 4,
+        "band.03.release": 80,
+        "band.03.range": -12,
+        "band.03.makeup": 4,
+        "band.04.threshold": -34,
+        "band.04.ratio": 8,
+        "band.04.attack": 2,
+        "band.04.release": 70,
+        "band.04.range": -12,
+        "band.04.makeup": 4
+      }
+    },
+    {
+      "name": "Band Check",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Setup",
+        "Intensity": "Low"
+      },
+      "values": {
+        "band_count": 4,
+        "xover.01.frequency": 120,
+        "xover.02.frequency": 800,
+        "xover.03.frequency": 5000,
+        "band.01.solo": true
+      }
+    }
+  ]
+}

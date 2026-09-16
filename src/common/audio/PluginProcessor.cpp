@@ -4,6 +4,7 @@
 #include "common/ui/AnalogProductEditor.h"
 #include "common/ui/IronPreEditor.h"
 #include "common/ui/AnalogPageEditor.h"
+#include "common/ui/DigitalChassis.h"
 #include "common/ui/FaceplateEditor.h"
 #include "common/ui/PrismEditor.h"
 #include "common/licensing/LicenseClient.h"
@@ -138,8 +139,9 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
 
 juce::AudioProcessorEditor* PluginProcessor::createEditor()
 {
-    if (spec.id == "D01")
-        return new PrismEditor(*this);
+    // Every digital product wears the same chassis, laid out from its contract.
+    if (spec.isDigital())
+        return new DigitalChassis(*this);
     // Every analog product is drawn by the shared analog chassis. Its layout is
     // derived from the product parameter contract, so only controls the engine
     // actually implements are placed.

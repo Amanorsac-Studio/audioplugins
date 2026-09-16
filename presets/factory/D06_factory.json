@@ -1,0 +1,241 @@
+{
+  "plugin_id": "D06",
+  "bank": "Amanorsac Digital",
+  "author": "Amanorsac Studio",
+  "note": "Factory bank. Starting points, not destinations.",
+  "categories": [
+    "Vocals",
+    "Guitars",
+    "Keys",
+    "Drums",
+    "Utility",
+    "Mix Bus",
+    "Master",
+    "Creative"
+  ],
+  "presets": [
+    {
+      "name": "Vocal Resonance",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Lead Vocal",
+        "Intent": "Repair",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 45,
+        "selectivity": 65,
+        "speed": 55,
+        "sensitivity": 55,
+        "smooth": 40,
+        "low_freq": 150,
+        "high_freq": 9000,
+        "transient_keep": 70
+      }
+    },
+    {
+      "name": "Harsh Voice Fix",
+      "category": "Vocals",
+      "tags": {
+        "Source": "Voice",
+        "Intent": "Smooth",
+        "Intensity": "High"
+      },
+      "values": {
+        "depth": 65,
+        "selectivity": 75,
+        "speed": 70,
+        "sensitivity": 65,
+        "smooth": 30,
+        "low_freq": 1500,
+        "high_freq": 12000,
+        "transient_keep": 55
+      }
+    },
+    {
+      "name": "Acoustic Boom",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Acoustic",
+        "Intent": "Repair",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 55,
+        "selectivity": 80,
+        "speed": 45,
+        "sensitivity": 60,
+        "smooth": 45,
+        "low_freq": 80,
+        "high_freq": 600,
+        "transient_keep": 75
+      }
+    },
+    {
+      "name": "Amp Honk",
+      "category": "Guitars",
+      "tags": {
+        "Source": "Electric Guitar",
+        "Intent": "Repair",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 50,
+        "selectivity": 70,
+        "speed": 50,
+        "sensitivity": 55,
+        "smooth": 40,
+        "low_freq": 400,
+        "high_freq": 3000,
+        "transient_keep": 65
+      }
+    },
+    {
+      "name": "Piano Ring",
+      "category": "Keys",
+      "tags": {
+        "Source": "Piano",
+        "Intent": "Repair",
+        "Intensity": "Low"
+      },
+      "values": {
+        "depth": 35,
+        "selectivity": 85,
+        "speed": 40,
+        "sensitivity": 50,
+        "smooth": 55,
+        "low_freq": 150,
+        "high_freq": 4000,
+        "transient_keep": 80
+      }
+    },
+    {
+      "name": "Cymbal Ring",
+      "category": "Drums",
+      "tags": {
+        "Source": "Overheads",
+        "Intent": "Smooth",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 50,
+        "selectivity": 70,
+        "speed": 65,
+        "sensitivity": 60,
+        "smooth": 35,
+        "low_freq": 3000,
+        "high_freq": 16000,
+        "transient_keep": 60
+      }
+    },
+    {
+      "name": "Snare Ping",
+      "category": "Drums",
+      "tags": {
+        "Source": "Snare",
+        "Intent": "Repair",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 55,
+        "selectivity": 90,
+        "speed": 60,
+        "sensitivity": 60,
+        "smooth": 30,
+        "low_freq": 200,
+        "high_freq": 2500,
+        "transient_keep": 85
+      }
+    },
+    {
+      "name": "Room Rumble",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Repair",
+        "Intensity": "High"
+      },
+      "values": {
+        "depth": 70,
+        "selectivity": 75,
+        "speed": 35,
+        "sensitivity": 70,
+        "smooth": 50,
+        "low_freq": 40,
+        "high_freq": 400,
+        "transient_keep": 60
+      }
+    },
+    {
+      "name": "Mix Bus Smooth",
+      "category": "Mix Bus",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Smooth",
+        "Intensity": "Low"
+      },
+      "values": {
+        "depth": 25,
+        "selectivity": 55,
+        "speed": 40,
+        "sensitivity": 45,
+        "smooth": 60,
+        "low_freq": 100,
+        "high_freq": 14000,
+        "transient_keep": 85
+      }
+    },
+    {
+      "name": "Master Gentle",
+      "category": "Master",
+      "tags": {
+        "Source": "Master",
+        "Intent": "Polish",
+        "Intensity": "Low"
+      },
+      "values": {
+        "depth": 18,
+        "selectivity": 50,
+        "speed": 35,
+        "sensitivity": 40,
+        "smooth": 70,
+        "low_freq": 60,
+        "high_freq": 16000,
+        "transient_keep": 90
+      }
+    },
+    {
+      "name": "Side Only Clean",
+      "category": "Creative",
+      "tags": {
+        "Source": "Mix",
+        "Intent": "Space",
+        "Intensity": "Medium"
+      },
+      "values": {
+        "depth": 45,
+        "selectivity": 65,
+        "speed": 50,
+        "sensitivity": 55,
+        "smooth": 45,
+        "stereo_mode": "side",
+        "transient_keep": 70
+      }
+    },
+    {
+      "name": "Hear What It Removes",
+      "category": "Utility",
+      "tags": {
+        "Source": "Any",
+        "Intent": "Setup",
+        "Intensity": "Low"
+      },
+      "values": {
+        "depth": 50,
+        "selectivity": 70,
+        "delta": true,
+        "learn": true
+      }
+    }
+  ]
+}
