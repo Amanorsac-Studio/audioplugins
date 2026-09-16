@@ -571,3 +571,28 @@ target_compile_definitions(AmanorsacPerformLiveHostLoad PRIVATE JUCE_PLUGINHOST_
     JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_USE_CAMERA=0)
 target_link_libraries(AmanorsacPerformLiveHostLoad PRIVATE juce::juce_audio_processors juce::juce_gui_basics
     juce::juce_recommended_config_flags)
+
+# ---------------------------------------------------------------- VOCAL RACK
+# A zero-latency four-module vocal chain: dynamics, tone, space and fx.
+juce_add_plugin(AmanorsacVocalRack
+    COMPANY_NAME "Amanorsac Studio" BUNDLE_ID "studio.amanorsac.vocalrack"
+    PLUGIN_MANUFACTURER_CODE Amns PLUGIN_CODE Vrk1 PRODUCT_NAME "VOCAL RACK"
+    DESCRIPTION "Amanorsac Studio vocal rack" FORMATS ${plugin_formats}
+    COPY_PLUGIN_AFTER_BUILD FALSE IS_SYNTH FALSE NEEDS_MIDI_INPUT FALSE NEEDS_MIDI_OUTPUT FALSE
+    IS_MIDI_EFFECT FALSE EDITOR_WANTS_KEYBOARD_FOCUS TRUE VST3_CATEGORIES Fx
+    MICROPHONE_PERMISSION_ENABLED TRUE MICROPHONE_PERMISSION_TEXT "VOCAL RACK processes your microphone.")
+target_sources(AmanorsacVocalRack PRIVATE
+    src/vocalrack/VocalRackProcessor.cpp src/vocalrack/VocalRackProcessor.h
+    src/vocalrack/VocalRackEditor.cpp src/vocalrack/VocalRackEditor.h)
+target_include_directories(AmanorsacVocalRack PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_compile_definitions(AmanorsacVocalRack PRIVATE JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
+target_link_libraries(AmanorsacVocalRack PRIVATE juce::juce_audio_utils juce::juce_dsp
+    PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
+
+add_executable(AmanorsacVocalRackCheck tests/vocalrack/VocalRackCheck.cpp)
+target_include_directories(AmanorsacVocalRackCheck PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_compile_definitions(AmanorsacVocalRackCheck PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1
+    JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
+target_link_libraries(AmanorsacVocalRackCheck PRIVATE AmanorsacVocalRack juce::juce_audio_utils juce::juce_dsp
+    juce::juce_recommended_config_flags)
+add_test(NAME Amanorsac.VocalRack COMMAND AmanorsacVocalRackCheck)

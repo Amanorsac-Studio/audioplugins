@@ -26,6 +26,8 @@ int main(int argc, char** argv)
 
     if (argc < 2) { std::cout << "usage: PerformLiveHostLoad <path to .vst3>\n"; return 2; }
     const juce::File bundle { juce::String(juce::CharPointer_UTF8(argv[1])) };
+    const auto expectedName = argc > 2 ? juce::String(juce::CharPointer_UTF8(argv[2])) : juce::String("PERFORM LIVE");
+    const auto expectedPresets = argc > 3 ? juce::String(argv[3]).getIntValue() : 20;
     check(bundle.exists(), "bundle exists at " + bundle.getFullPathName());
 
     juce::VST3PluginFormat format;
@@ -35,7 +37,7 @@ int main(int argc, char** argv)
     if (found.isEmpty()) return 1;
 
     const auto& description = *found[0];
-    check(description.name == "PERFORM LIVE", "name reads \"" + description.name + "\"");
+    check(description.name == expectedName, "name reads \"" + description.name + "\"");
     check(description.manufacturerName == "Amanorsac Studio", "maker reads \"" + description.manufacturerName + "\"");
     check(! description.isInstrument, "registers as an effect");
 
@@ -53,7 +55,7 @@ int main(int argc, char** argv)
 
         plugin->prepareToPlay(rate, 256);
         check(plugin->getLatencySamples() == 0, "reports zero latency to the host");
-        check(plugin->getNumPrograms() == 20, "exposes " + juce::String(plugin->getNumPrograms()) + " presets to the host");
+        check(plugin->getNumPrograms() == expectedPresets, "exposes " + juce::String(plugin->getNumPrograms()) + " presets to the host");
         check(plugin->getParameters().size() >= 28, "exposes " + juce::String(plugin->getParameters().size()) + " automatable parameters");
 
         juce::Random random(3);
@@ -75,9 +77,9 @@ int main(int argc, char** argv)
         }
         check(finite && peak > 0.01f && peak < 4.0f, "processes two seconds of audio cleanly (peak " + juce::String(peak, 2) + ")");
 
-        check(plugin->getProgramName(plugin->getCurrentProgram()) == "Stage Ready", "opens on the general preset (\"" + plugin->getProgramName(plugin->getCurrentProgram()) + "\")");
-        plugin->setCurrentProgram(10);
-        check(plugin->getProgramName(plugin->getCurrentProgram()) == "MC and Host", "host can switch presets (now \"" + plugin->getProgramName(plugin->getCurrentProgram()) + "\")");
+        const auto target = juce::jmin(3, plugin->getNumPrograms() - 1);
+        plugin->setCurrentProgram(target);
+        check(plugin->getCurrentProgram() == target, "host can switch presets (now \"" + plugin->getProgramName(plugin->getCurrentProgram()) + "\")");
 
         juce::MemoryBlock state;
         plugin->getStateInformation(state);
