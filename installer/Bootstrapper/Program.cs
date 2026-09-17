@@ -79,7 +79,9 @@ internal static class Program
             var standaloneSource = Path.Combine(temporaryRoot, "Standalone");
             var bundles = Directory.GetDirectories(vst3Source, "*.vst3", SearchOption.TopDirectoryOnly);
             var apps = Directory.GetFiles(standaloneSource, "*.exe", SearchOption.TopDirectoryOnly);
-            if (bundles.Length != 21 || apps.Length != 21)
+            // The build records how many plug-ins it packaged; anything else is a
+            // damaged or partial download.
+            if (bundles.Length != BuildInfo.PluginCount || apps.Length != BuildInfo.PluginCount)
                 throw new InvalidDataException($"Payload validation failed: {bundles.Length} VST3 bundles and {apps.Length} Standalone apps.");
 
             Directory.CreateDirectory(vst3Root);
