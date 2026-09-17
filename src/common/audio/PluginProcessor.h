@@ -3,6 +3,7 @@
 #include "common/audio/AnalysisTap.h"
 #include "common/dsp/AnchorDSP.h"
 #include "common/dsp/AnalogFrontEnd.h"
+#include "common/licensing/Entitlement.h"
 #include "common/licensing/LicenseClient.h"
 #include "common/state/PluginSpec.h"
 #include "common/presets/PresetManager.h"

@@ -1,6 +1,7 @@
 #include "AnalogPageEditor.h"
 
 #include "ActivationView.h"
+#include "common/licensing/Entitlement.h"
 
 #include "AnalogChassis.h"
 
@@ -1107,7 +1108,11 @@ AnalogPageEditor::AnalogPageEditor(juce::AudioProcessor& owner, ProductHost host
     // opens asks for the key, and every other one is already unlocked.
     gate = std::make_unique<ActivationView>(owner.getName(), [this] { if (gate != nullptr) gate->setVisible(false); });
     addAndMakeVisible(*gate);
+   #if AMANORSAC_LICENSING_ENABLED
     gate->setVisible(! licensing::LicenseClient::getInstance().isLicensed());
+   #else
+    gate->setVisible(false);   // test build: enforcement is off
+   #endif
     setResizable(true, true);
     const auto ratio = static_cast<double>(surface->getWidth()) / surface->getHeight();
     setResizeLimits(960, juce::roundToInt(960 / ratio), 1920, juce::roundToInt(1920 / ratio));

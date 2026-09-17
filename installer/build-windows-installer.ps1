@@ -19,7 +19,8 @@ param(
     [string]$ProductName = "Amanorsac Analog Bundle",
     [string]$Stage = "",
     [string]$BuildDir = "build/win-x64",
-    [string[]]$Targets = @("A01","A02","A03","A04","A05","A06","A07","A08","A09","A10")
+    [string[]]$Targets = @("A01","A02","A03","A04","A05","A06","A07","A08","A09","A10"),
+    [switch]$AllowUnarmed
 )
 
 $ErrorActionPreference = "Stop"
@@ -45,6 +46,13 @@ if (-not $Stage) {
     }
 }
 
+# A customer installer must come from a build with licence enforcement armed.
+$armedFile = Join-Path $BuildDir "licensing-armed.txt"
+$armed = if (Test-Path $armedFile) { (Get-Content $armedFile -Raw).Trim() } else { "unknown" }
+if ($armed -ne "1" -and -not $AllowUnarmed) {
+    throw "This build has licence enforcement OFF (licensing-armed.txt = $armed). Reconfigure with -DAMANORSAC_LICENSING=ON, or pass -AllowUnarmed for an internal build."
+}
+if ($AllowUnarmed -and $armed -ne "1") { Write-Warning "Packaging an INTERNAL installer: the plug-ins do not require a licence." }
 $bundleCount = (Get-ChildItem (Join-Path $stageDir "VST3") -Filter *.vst3 -Directory -ErrorAction SilentlyContinue).Count
 $appCount = (Get-ChildItem (Join-Path $stageDir "Standalone") -Filter *.exe -ErrorAction SilentlyContinue).Count
 Write-Host "Payload: $bundleCount VST3 bundles, $appCount standalone apps"

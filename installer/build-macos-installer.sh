@@ -19,6 +19,15 @@ VERSION="${1:?usage: build-macos-installer.sh <version>}"
 PRODUCT_NAME="${PRODUCT_NAME:-Amanorsac Analog Bundle}"
 IDENTIFIER="${IDENTIFIER:-studio.amanorsac.analogbundle}"
 BUILD_DIR="${BUILD_DIR:-build}"
+# A customer installer must come from a build with licence enforcement armed.
+armed_file="${BUILD_DIR}/licensing-armed.txt"
+armed=$(cat "${armed_file}" 2>/dev/null || echo unknown)
+if [[ "${armed}" != "1" && "${ALLOW_UNARMED:-0}" != "1" ]]; then
+    echo "This build has licence enforcement OFF (licensing-armed.txt = ${armed})." >&2
+    echo "Reconfigure with -DAMANORSAC_LICENSING=ON, or set ALLOW_UNARMED=1 for an internal build." >&2
+    exit 1
+fi
+
 TARGETS=(A01 A02 A03 A04 A05 A06 A07 A08 A09 A10)
 
 cd "$(dirname "$0")/.."

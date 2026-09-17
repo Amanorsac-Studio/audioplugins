@@ -1,6 +1,7 @@
 #include "HeritageEditor.h"
 
 #include "ActivationView.h"
+#include "common/licensing/Entitlement.h"
 
 #include "AnalogChassis.h"
 
@@ -516,7 +517,11 @@ HeritageEditor::HeritageEditor(juce::AudioProcessor& owner, ProductHost host)
     // opens asks for the key, and every other one is already unlocked.
     gate = std::make_unique<ActivationView>(owner.getName(), [this] { if (gate != nullptr) gate->setVisible(false); });
     addAndMakeVisible(*gate);
+   #if AMANORSAC_LICENSING_ENABLED
     gate->setVisible(! licensing::LicenseClient::getInstance().isLicensed());
+   #else
+    gate->setVisible(false);   // test build: enforcement is off
+   #endif
     setResizable(true, true);
     setResizeLimits(1024, static_cast<int>(1024.0f * stageHeight / stageWidth),
                     1920, static_cast<int>(1920.0f * stageHeight / stageWidth));

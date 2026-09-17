@@ -6,6 +6,7 @@
 #include "common/audio/PluginProcessor.h"
 #include "common/presets/PresetManager.h"
 #include "common/licensing/LicenseClient.h"
+#include "common/licensing/Entitlement.h"
 
 #include <cmath>
 #include <iostream>
@@ -79,8 +80,11 @@ int main()
 
     // Without a licence the engine deliberately outputs nothing, so audio can
     // only be judged on a machine that has one. Say which case this run is.
-    const auto licensed = licensing::LicenseClient::getInstance().isLicensed();
-    std::cout << "  note  this machine is " << (licensed ? "licensed: output is checked for level"
+    // Audio is expected unless this build enforces the licence and the machine
+    // has none; then silence is the correct behaviour.
+    const auto enforcing = AMANORSAC_LICENSING_ENABLED != 0;
+    const auto licensed = ! enforcing || licensing::LicenseClient::getInstance().isLicensed();
+    std::cout << "  note  " << (licensed ? (enforcing ? "licensed: output is checked for level" : "test build, enforcement off: output is checked for level")
                                                          : "not licensed: output is silent by design, levels not checked") << "\n";
 
     const auto& items = manager->presets();

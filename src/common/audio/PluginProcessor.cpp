@@ -73,7 +73,11 @@ void PluginProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     frontEnd.prepare(sampleRate, samplesPerBlock);
     analysis.sampleRate.store(sampleRate);
     entitlement.reset(sampleRate, 0.05);
+   #if AMANORSAC_LICENSING_ENABLED
     entitlement.setCurrentAndTargetValue(licensing::LicenseClient::getInstance().isLicensed() ? 1.0f : 0.0f);
+   #else
+    entitlement.setCurrentAndTargetValue(1.0f);
+   #endif
 }
 
 void PluginProcessor::releaseResources()
@@ -126,6 +130,7 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
     // An unlicensed bundle produces no output. The flag is atomic and the
     // ramp is smooth, so this never allocates, blocks or clicks on the audio
     // thread whatever the licence state is doing elsewhere.
+   #if AMANORSAC_LICENSING_ENABLED
     {
         entitlement.setTargetValue(licensing::LicenseClient::getInstance().isLicensed() ? 1.0f : 0.0f);
         if (entitlement.isSmoothing() || entitlement.getTargetValue() < 0.5f)
@@ -137,6 +142,7 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
                 if (channel == buffer.getNumChannels() - 1) entitlement = ramp;
             }
     }
+   #endif
 
     for (int channel = 0; channel < 2; ++channel)
         outputPeaks[static_cast<size_t>(channel)].store(

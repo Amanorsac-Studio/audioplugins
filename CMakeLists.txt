@@ -18,6 +18,18 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(JUCE)
 
+# Licence enforcement is off for local test builds and on for anything
+# packaged for customers. The packaging scripts refuse an unarmed build, and
+# the C++ default is ON, so a forgotten switch cannot ship unlocked.
+option(AMANORSAC_LICENSING "Arm licence enforcement in the built plug-ins" OFF)
+if(AMANORSAC_LICENSING)
+    set(amanorsac_licensing_value 1)
+else()
+    set(amanorsac_licensing_value 0)
+    message(STATUS "Amanorsac: licence enforcement OFF (test build). Configure with -DAMANORSAC_LICENSING=ON to arm it.")
+endif()
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/licensing-armed.txt" "${amanorsac_licensing_value}\n")
+
 set(AMANORSAC_PLUGIN_IDS
     D01 D02 D03 D04 D05 D06 D07 D08 D09 D10
     A01 A02 A03 A04 A05 A06 A07 A08 A09 A10
@@ -165,8 +177,7 @@ function(amanorsac_add_plugin plugin_id)
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
         JUCE_REPORT_APP_USAGE=0
-        # Flip to 1 at release to arm licence enforcement.
-        AMANORSAC_LICENSING_ENABLED=0
+        AMANORSAC_LICENSING_ENABLED=${amanorsac_licensing_value}
     )
 
     target_link_libraries(${target} PRIVATE
