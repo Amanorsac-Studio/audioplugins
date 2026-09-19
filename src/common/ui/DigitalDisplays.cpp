@@ -167,6 +167,9 @@ public:
         for (auto& v : level) v = juce::jmax(-100.0f, v - 1.2f);
     }
 
+    /** How quickly the picture follows the sound: below 1 is calmer, above 1 livelier. */
+    float speed = 1.0f;
+
     [[nodiscard]] float at(double frequency, double rate) const
     {
         const auto bin = frequency * size / rate;
@@ -186,7 +189,7 @@ private:
         {
             const auto db = juce::Decibels::gainToDecibels(data[static_cast<size_t>(b)] * 4.0f / size, -100.0f);
             auto& v = level[static_cast<size_t>(b)];
-            v += (db > v ? 0.7f : 0.22f) * (db - v);
+            v += juce::jmin(1.0f, (db > v ? 0.7f : 0.22f) * speed) * (db - v);
         }
     }
 
@@ -407,8 +410,8 @@ public:
         paintFrame(g);
         const auto r = plot();
         paintFrequencyGrid(g, r);
-        paintDbGrid(g, r, dbRange(), -dbRange(), flux ? 6.0f : 6.0f, true);
-        paintSpectra(g, r, blue);
+        paintDbGrid(g, r, dbRange(), -dbRange(), 6.0f, true);
+        if (! exists("analyzer") || raw("analyzer", 1.0f) > 0.5f) paintSpectra(g, r, blue);
 
         // Each active band as its own soft shape, the selected one strongest.
         for (int s = 1; s <= slots; ++s)
@@ -541,6 +544,15 @@ public:
         set(slotId("band", slot, verticalField()), db);
         endAll();
         select(slot);
+    }
+
+protected:
+    void animate() override
+    {
+        // ANALYZER SPEED: slow, medium or fast.
+        static constexpr float speeds[] { 0.45f, 1.0f, 1.9f };
+        const auto speed = exists("analyzer_speed") ? speeds[juce::jlimit(0, 2, juce::roundToInt(raw("analyzer_speed", 1.0f)))] : 1.0f;
+        before.speed = after.speed = speed;
     }
 
 private:

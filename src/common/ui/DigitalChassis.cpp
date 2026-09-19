@@ -58,7 +58,7 @@ std::vector<SectionPlan> planFor(const juce::String& product)
         return { { "BAND", blue, { "band.type", "band.frequency", "band.gain", "band.q", "band.slope", "band.stereo_mode", "band.solo", "band.delta" } },
                  { "DYNAMICS", green, { "band.dynamic_mode", "band.dynamic_range", "band.threshold", "band.attack", "band.release" } },
                  { "COLOUR", orange, { "color_mode", "color_drive", "color_amount" } },
-                 { "GLOBAL", purple, { "input_gain", "output_gain", "auto_gain", "processing_quality", "oversampling", "analyzer", "analyzer_speed" } } };
+                 { "GLOBAL", purple, { "input_gain", "output_gain", "auto_gain", "analyzer", "analyzer_speed" } } };
     if (product == "D02")
         return { { "BAND", blue, { "band.frequency", "band.q", "band.stereo_mode", "band.listen" } },
                  { "DYNAMICS", green, { "band.threshold", "band.range", "band.ratio", "band.attack", "band.release", "band.direction" } },
@@ -99,6 +99,14 @@ std::vector<SectionPlan> planFor(const juce::String& product)
         return { { "WIDTH", blue, { "global_width", "band.width", "xover.frequency", "focus" } },
                  { "POSITION", green, { "rotation", "ms_balance", "bass_mono" } },
                  { "SAFETY", purple, { "safe_width", "mono_check", "correlation_alarm", "output_gain" } } };
+    return {};
+}
+
+/** Contract entries the engine does not act on yet. They stay host parameters
+    so sessions keep loading, but a control that does nothing is not shown. */
+juce::StringArray notYetImplemented(const juce::String& product)
+{
+    if (product == "D01") return { "processing_quality", "oversampling" };
     return {};
 }
 
@@ -478,7 +486,7 @@ private:
     void buildSections()
     {
         auto plan = planFor(processor.spec.id);
-        juce::StringArray placed;
+        juce::StringArray placed = notYetImplemented(processor.spec.id);
         for (const auto& entry : plan)
         {
             Section section;

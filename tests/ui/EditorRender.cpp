@@ -26,6 +26,19 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    // Optional: argv[2] is the width to render at, argv[3] a factory preset to show.
+    if (argc > 3)
+    {
+        const auto wanted = juce::String::fromUTF8(argv[3]);
+        const auto& list = processor.presetManager->presets();
+        for (int i = 0; i < static_cast<int>(list.size()); ++i)
+            if (list[static_cast<size_t>(i)].name == wanted) processor.presetManager->load(i);
+    }
+    if (argc > 2)
+    {
+        const auto width = juce::String(argv[2]).getIntValue();
+        if (width > 0) editor->setSize(width, juce::roundToInt(width * static_cast<double>(editor->getHeight()) / editor->getWidth()));
+    }
     editor->resized();
 
     // A digital window shows live analysis, so play something through it
