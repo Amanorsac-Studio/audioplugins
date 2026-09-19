@@ -5,15 +5,24 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>Amanorsac_Studio_Mixing_Suite_0.1.2_Windows</AssemblyName>
-    <ApplicationIcon />
+    <AssemblyName>AmanorsacInstaller</AssemblyName>
+    <!-- The icon on the installer file itself (standard P19), generated from the logo by the build script. -->
+    <ApplicationIcon Condition="Exists('$(ProductIcon)')">$(ProductIcon)</ApplicationIcon>
+    <!-- Runs as the buyer; only the install step asks for elevation, and says why. -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(PayloadZip)" LogicalName="payload.zip" Condition="Exists('$(PayloadZip)')" />
+    <EmbeddedResource Include="$(ReadMe)" LogicalName="README.txt" Condition="Exists('$(ReadMe)')" />
+    <EmbeddedResource Include="$(ProductIcon)" LogicalName="product.ico" Condition="Exists('$(ProductIcon)')" />
     <EmbeddedResource Include="..\uninstall.ps1" LogicalName="uninstall.ps1" />
-    <EmbeddedResource Include="..\..\README.md" LogicalName="README.md" />
+    <EmbeddedResource Include="..\..\assets\brand\AmanorsacLogo.png" LogicalName="logo.png" />
+    <!-- Drop Inter .ttf files into installer/assets/fonts and they ship inside the installer (standard P18). -->
+    <EmbeddedResource Include="..\assets\fonts\*.ttf" />
   </ItemGroup>
 </Project>

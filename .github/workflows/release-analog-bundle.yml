@@ -60,6 +60,13 @@ jobs:
         shell: pwsh
         run: ./installer/build-windows-installer.ps1 -Version "${{ steps.v.outputs.version }}" -BuildDir build
 
+      # Proves the packaged installer itself, in a throwaway folder: every
+      # component lands, the optional second folder works, the VST3-only choice
+      # installs no applications, and uninstall removes only its own files.
+      - name: Installer checks
+        shell: pwsh
+        run: ./tests/installer/Test-Installer.ps1 -ProductName "Amanorsac Analog Bundle" -Targets A01,A02,A03,A04,A05,A06,A07,A08,A09,A10 -Version "${{ steps.v.outputs.version }}" -BuildDir build -SkipBuild
+
       # Windows signing is still outstanding: there is no Authenticode
       # certificate in the organisation secrets, so this installer is unsigned
       # and SmartScreen will warn. That is company P0 number 3 in the launch audit.

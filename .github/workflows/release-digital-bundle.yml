@@ -71,6 +71,13 @@ jobs:
         shell: pwsh
         run: ./installer/build-windows-installer.ps1 -Version "${{ steps.v.outputs.version }}" -BuildDir build -ProductName "Amanorsac Digital Bundle" -Targets D01,D02,D03,D04,D05,D06,D07,D08,D09,D10
 
+      # Proves the packaged installer itself, in a throwaway folder: every
+      # component lands, the optional second folder works, the VST3-only choice
+      # installs no applications, and uninstall removes only its own files.
+      - name: Installer checks
+        shell: pwsh
+        run: ./tests/installer/Test-Installer.ps1 -ProductName "Amanorsac Digital Bundle" -Targets D01,D02,D03,D04,D05,D06,D07,D08,D09,D10 -Version "${{ steps.v.outputs.version }}" -BuildDir build -SkipBuild
+
       # Windows signing is still outstanding: there is no Authenticode
       # certificate in the organisation secrets, so this installer is unsigned
       # and SmartScreen will warn. That is company P0 number 3 in the launch audit.

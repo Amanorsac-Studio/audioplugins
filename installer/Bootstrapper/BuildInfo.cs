@@ -3,7 +3,10 @@ namespace AmanorsacInstaller;
 
 internal static class BuildInfo
 {
-    public const string ProductName = "Amanorsac Analog Bundle";
+    public const string ProductName = "Amanorsac Digital Bundle";
     public const string Version = "1.0.0";
     public const int PluginCount = 10;
+    public const string Accent = "#2F8BFF";
+    public const bool Licensed = true;
+    public const string OneLine = "Ten precision processors that show you exactly what they are doing to your sound.";
 }
