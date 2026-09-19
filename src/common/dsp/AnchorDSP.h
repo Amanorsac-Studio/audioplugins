@@ -31,6 +31,9 @@ public:
         parameter tree (the rack: "A01.", "A02.", ...). Empty for a plugin. */
     void setParameterPrefix(juce::String prefix) { parameterPrefix = std::move(prefix); }
 
+    /** The host tempo, for the tempo-synced delay. Called once per block. */
+    void setHostTempo(double bpm) noexcept { hostBpm = bpm; }
+
 private:
     std::array<std::atomic<float>, 24> bandActivity {};
 
@@ -127,6 +130,24 @@ private:
     std::array<std::array<Biquad, 8>, maxChannels> orbitTapFilters;
     std::array<EnvelopeFollower, maxChannels> orbitDuckEnvelopes;
     double orbitPhase = 0.0;
+    std::array<Biquad, maxChannels> orbitMainFilter;
+    float orbitBaseSmooth = 0.0f;
+    std::array<float, 8> orbitTapSmooth {};
+    float orbitBaseVelocity = 0.0f;
+    std::array<float, 8> orbitTapVelocity {};
+    double hostBpm = 120.0;
+
+    // SPACEVERB: its own network, so the analog plate is untouched.
+    static constexpr size_t spaceLineCount = 8;
+    std::array<std::vector<float>, spaceLineCount> spaceLines;
+    std::array<size_t, spaceLineCount> spacePositions {};
+    std::array<float, spaceLineCount> spaceDampState {}, spaceLowState {};
+    std::array<std::array<std::vector<float>, 4>, 2> spaceDiffusers;
+    std::array<std::array<size_t, 4>, 2> spaceDiffuserPositions {};
+    std::array<std::vector<float>, 2> spacePre;
+    std::array<size_t, 2> spacePrePosition {};
+    double spacePhase = 0.0;
+    float spaceSizeSmooth = 0.0f, spaceOutScale = 1.0f;
     std::array<std::vector<float>, maxChannels> tapeDelay;
     std::array<size_t, maxChannels> tapeWritePosition {};
     double tapeWowPhase = 0.0;

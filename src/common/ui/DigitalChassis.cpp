@@ -1,6 +1,8 @@
 #include "DigitalChassis.h"
 
 #include "DigitalDisplays.h"
+#include "ActivationView.h"
+#include "common/licensing/Entitlement.h"
 #include "common/audio/PluginProcessor.h"
 #include "common/presets/PresetManager.h"
 
@@ -973,6 +975,14 @@ DigitalChassis::DigitalChassis(PluginProcessor& owner)
     : AudioProcessorEditor(owner), surface(std::make_unique<Surface>(owner))
 {
     addAndMakeVisible(*surface);
+    // One activation page for the whole bundle, over the window until licensed.
+    gate = std::make_unique<ActivationView>(owner.getName(), [this] { if (gate != nullptr) gate->setVisible(false); });
+    addAndMakeVisible(*gate);
+   #if AMANORSAC_LICENSING_ENABLED
+    gate->setVisible(! licensing::LicenseClient::getInstance().isLicensed());
+   #else
+    gate->setVisible(false);   // test build: enforcement is off
+   #endif
     setResizable(true, true);
     setResizeLimits(768, 512, 1920, 1280);
     if (auto* limits = getConstrainer()) limits->setFixedAspectRatio(canvasWidth / canvasHeight);
@@ -987,6 +997,7 @@ void DigitalChassis::paint(juce::Graphics& g) { g.fillAll(juce::Colour(0xff0a0c1
 void DigitalChassis::resized()
 {
     surface->setTransform(juce::AffineTransform::scale(static_cast<float>(getWidth()) / canvasWidth));
+    if (gate != nullptr) gate->setBounds(getLocalBounds());
 }
 
 void DigitalChassis::timerCallback() { surface->tick(); }

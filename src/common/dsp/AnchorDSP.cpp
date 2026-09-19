@@ -198,9 +198,12 @@ void AnchorDSP::prepare(double newSampleRate, int maximumBlockSize, int channels
     const auto limiterCapacity = static_cast<size_t>(std::ceil(newSampleRate * 0.021))
                                  + static_cast<size_t>(juce::jmax(1, maximumBlockSize)) + 2;
     for (auto& delay : limiterDelay) delay.assign(limiterCapacity, 0.0f);
-    const auto orbitCapacity = static_cast<size_t>(std::ceil(newSampleRate * 6.05))
+    const auto orbitCapacity = static_cast<size_t>(std::ceil(newSampleRate * 6.12))
                                + static_cast<size_t>(juce::jmax(1, maximumBlockSize)) + 2;
     for (auto& delay : orbitDelay) delay.assign(orbitCapacity, 0.0f);
+    for (auto& line : spaceLines) line.assign(static_cast<size_t>(std::ceil(newSampleRate * 0.12)) + 4, 0.0f);
+    for (auto& side : spaceDiffusers) for (auto& line : side) line.assign(static_cast<size_t>(std::ceil(newSampleRate * 0.03)) + 4, 0.0f);
+    for (auto& line : spacePre) line.assign(static_cast<size_t>(std::ceil(newSampleRate * 0.6)) + 4, 0.0f);
     for (auto& band : fluxEnvelopes)
         for (auto& envelope : band)
             envelope.prepare(newSampleRate);
@@ -312,6 +315,16 @@ void AnchorDSP::reset()
     resonanceProfile.fill(0.0f); resonanceProfileValid = false;
     for (auto& delay : orbitDelay) std::fill(delay.begin(), delay.end(), 0.0f);
     orbitPosition.fill(0); orbitPhase = 0.0;
+    for (auto& filter : orbitMainFilter) filter.reset();
+    orbitBaseSmooth = 0.0f; orbitTapSmooth.fill(0.0f);
+    orbitBaseVelocity = 0.0f; orbitTapVelocity.fill(0.0f);
+    for (auto& line : spaceLines) std::fill(line.begin(), line.end(), 0.0f);
+    for (auto& side : spaceDiffusers) for (auto& line : side) std::fill(line.begin(), line.end(), 0.0f);
+    for (auto& line : spacePre) std::fill(line.begin(), line.end(), 0.0f);
+    spacePositions.fill(0); spacePrePosition.fill(0);
+    for (auto& side : spaceDiffuserPositions) side.fill(0);
+    spaceDampState.fill(0.0f); spaceLowState.fill(0.0f);
+    spacePhase = 0.0; spaceSizeSmooth = 0.0f;
     for (auto& channel : orbitTapFilters) for (auto& filter : channel) filter.reset();
     for (auto& envelope : orbitDuckEnvelopes) envelope.reset();
     for (auto& position : tapeWritePosition) position = 0;
@@ -1753,59 +1766,64 @@ void AnchorDSP::processFrequencyShaper(juce::AudioBuffer<float>& buffer,
 
 void AnchorDSP::processOrbit(juce::AudioBuffer<float>& buffer,const juce::AudioProcessorValueTreeState& state)
 {
+    // Signal flow: input -> delay line. The main echo is read at TIME and is
+    // the only thing fed back, so TIME and FEEDBACK behave the way every
+    // delay does. The eight taps are extra reads of the same line, each with
+    // its own time, level, pan and filter, so they repeat with the loop.
     const auto samples = buffer.getNumSamples();
     const auto channels = juce::jmin<int>(buffer.getNumChannels(), static_cast<int>(maxChannels));
-    for (int channel = 0; channel < channels; ++channel)
-    {
-        juce::FloatVectorOperations::copy(dryBuffer.data() + channel * samples,
-                                          buffer.getReadPointer(channel), samples);
-        orbitDuckEnvelopes[static_cast<size_t>(channel)].setAttackRelease(5.0f, 120.0f);
-        for (int tap = 0; tap < 8; ++tap)
-        {
-            const auto prefix = "tap." + juce::String(tap + 1).paddedLeft('0', 2);
-            orbitTapFilters[static_cast<size_t>(channel)][static_cast<size_t>(tap)].setLowPass(
-                sampleRate, juce::jlimit(20.0f, static_cast<float>(sampleRate * 0.45),
-                                         value(state, prefix + ".filter", 8000.0f)));
-        }
-    }
+    if (samples <= 0 || channels <= 0) return;
 
     const auto feedback = juce::jlimit(0.0f, 0.98f, value(state, "feedback", 35.0f) * 0.01f);
     const auto mix = juce::jlimit(0.0f, 1.0f, value(state, "mix", 25.0f) * 0.01f);
     const auto duck = juce::jlimit(0.0f, 1.0f, value(state, "duck", 25.0f) * 0.01f);
     const auto freeze = value(state, "freeze") > 0.5f;
-    auto baseTime = value(state, "time", 375.0f);
-    if (value(state, "tempo_sync", 1.0f) > 0.5f)
-        baseTime = juce::jmax(31.25f, std::round(baseTime / 31.25f) * 31.25f);
+    const auto sync = value(state, "tempo_sync", 1.0f) > 0.5f;
     const auto modRate = value(state, "mod_rate", 0.35f);
-    const auto modDepth = value(state, "mod_depth", 3.0f);
+    const auto modDepth = freeze ? 0.0f : value(state, "mod_depth", 3.0f);
     const auto dryGain = std::cos(mix * juce::MathConstants<float>::halfPi);
     const auto wetGain = std::sin(mix * juce::MathConstants<float>::halfPi);
 
+    // Tempo sync snaps every time to the host's sixteenth-note grid.
+    const auto grid = static_cast<float>(60000.0 / juce::jlimit(20.0, 400.0, hostBpm) / 4.0);
+    const auto snap = [sync, grid](float ms) { return sync ? juce::jmax(grid, std::round(ms / grid) * grid) : ms; };
+    const auto toSamples = static_cast<float>(sampleRate * 0.001);
+    const auto baseTarget = juce::jlimit(1.0f, 6000.0f, snap(value(state, "time", 375.0f))) * toSamples;
+
     std::array<bool, 8> tapEnabled {};
-    std::array<float, 8> tapTimes {};
-    std::array<float, 8> tapLevels {};
-    std::array<float, 8> tapPanLeft {};
-    std::array<float, 8> tapPanRight {};
-    std::array<float, 8> tapPhaseSine {};
-    std::array<float, 8> tapPhaseCosine {};
-    std::array<float, maxChannels> gainSums {};
+    std::array<float, 8> tapTarget {}, tapLevels {}, tapPanLeft {}, tapPanRight {}, tapPhaseSine {}, tapPhaseCosine {};
+    float gainSum = 1.0f;   // the main echo
     for (int tap = 0; tap < 8; ++tap)
     {
+        const auto index = static_cast<size_t>(tap);
         const auto prefix = "tap." + juce::String(tap + 1).paddedLeft('0', 2);
-        tapEnabled[static_cast<size_t>(tap)] = value(state, prefix + ".enabled", 1.0f) >= 0.5f;
-        tapTimes[static_cast<size_t>(tap)] = value(state, prefix + ".time", 250.0f)
-                                                + baseTime * (static_cast<float>(tap) / 8.0f);
-        tapLevels[static_cast<size_t>(tap)] = gainFromDb(value(state, prefix + ".level", -6.0f));
+        tapEnabled[index] = value(state, prefix + ".enabled", tap == 0 ? 1.0f : 0.0f) >= 0.5f;
+        tapTarget[index] = juce::jlimit(1.0f, 6000.0f, snap(value(state, prefix + ".time", 250.0f))) * toSamples;
+        tapLevels[index] = gainFromDb(value(state, prefix + ".level", -6.0f));
         const auto pan = juce::jlimit(-1.0f, 1.0f, value(state, prefix + ".pan") * 0.01f);
-        tapPanLeft[static_cast<size_t>(tap)] = std::sqrt((1.0f - pan) * 0.5f);
-        tapPanRight[static_cast<size_t>(tap)] = std::sqrt((1.0f + pan) * 0.5f);
-        tapPhaseSine[static_cast<size_t>(tap)] = static_cast<float>(std::sin(static_cast<double>(tap)));
-        tapPhaseCosine[static_cast<size_t>(tap)] = static_cast<float>(std::cos(static_cast<double>(tap)));
-        if (tapEnabled[static_cast<size_t>(tap)])
-        {
-            gainSums[0] += tapLevels[static_cast<size_t>(tap)] * tapPanLeft[static_cast<size_t>(tap)];
-            gainSums[1] += tapLevels[static_cast<size_t>(tap)] * tapPanRight[static_cast<size_t>(tap)];
-        }
+        tapPanLeft[index] = std::sqrt((1.0f - pan) * 0.5f) * 1.41421356f;
+        tapPanRight[index] = std::sqrt((1.0f + pan) * 0.5f) * 1.41421356f;
+        tapPhaseSine[index] = static_cast<float>(std::sin(static_cast<double>(tap) * 0.9));
+        tapPhaseCosine[index] = static_cast<float>(std::cos(static_cast<double>(tap) * 0.9));
+        if (tapEnabled[index]) gainSum += tapLevels[index];
+        for (int channel = 0; channel < channels; ++channel)
+            orbitTapFilters[static_cast<size_t>(channel)][index].setLowPass(
+                sampleRate, juce::jlimit(20.0f, static_cast<float>(sampleRate * 0.45), value(state, prefix + ".filter", 8000.0f)));
+    }
+    const auto wetNormalise = 1.0f / juce::jmax(1.0f, gainSum * 0.7f);
+
+    for (int channel = 0; channel < channels; ++channel)
+    {
+        orbitDuckEnvelopes[static_cast<size_t>(channel)].setAttackRelease(5.0f, 120.0f);
+        // The loop darkens a little on every repeat, like tape and bucket-brigade echoes.
+        orbitMainFilter[static_cast<size_t>(channel)].setLowPass(sampleRate, static_cast<float>(juce::jmin(9000.0, sampleRate * 0.45)));
+    }
+
+    // First block after a reset: start on the target rather than sweeping to it.
+    if (orbitBaseSmooth <= 0.0f)
+    {
+        orbitBaseSmooth = baseTarget;
+        orbitTapSmooth = tapTarget;
     }
 
     const auto phaseStep = juce::MathConstants<double>::twoPi * modRate / sampleRate;
@@ -1813,42 +1831,68 @@ void AnchorDSP::processOrbit(juce::AudioBuffer<float>& buffer,const juce::AudioP
     auto phaseCosine = static_cast<float>(std::cos(orbitPhase));
     const auto stepSine = static_cast<float>(std::sin(phaseStep));
     const auto stepCosine = static_cast<float>(std::cos(phaseStep));
+    const auto modSamples = modDepth * toSamples;
+    // Time changes glide, which bends pitch like a real echo instead of clicking.
+    const auto glide = static_cast<float>(1.0 - std::exp(-1.0 / (0.08 * sampleRate)));
+    const auto ease = static_cast<float>(1.0 - std::exp(-1.0 / (0.012 * sampleRate)));
+
+    // Linear-interpolated read `delaySamples` behind the write position.
+    const auto readAt = [](const std::vector<float>& line, size_t writePosition, float delaySamples)
+    {
+        const auto size = line.size();
+        const auto limited = juce::jlimit(1.0f, static_cast<float>(size) - 3.0f, delaySamples);
+        const auto whole = static_cast<size_t>(limited);
+        const auto fraction = limited - static_cast<float>(whole);
+        const auto first = (writePosition + size - whole) % size;
+        const auto second = (first + size - 1) % size;
+        return line[first] + fraction * (line[second] - line[first]);
+    };
 
     for (int sample = 0; sample < samples; ++sample)
     {
+        // Never faster than 0.7 samples per sample: pitch bends between roughly
+        // a third and one and two thirds, as a tape echo does, and never tears.
+        // The speed itself eases in and out: starting a bend at full speed puts
+        // a kink in the waveform, which is heard as a tick.
+        const auto slew = [glide, ease](float& current, float& velocity, float target)
+        {
+            velocity += ease * (juce::jlimit(-0.7f, 0.7f, glide * (target - current)) - velocity);
+            current += velocity;
+        };
+        slew(orbitBaseSmooth, orbitBaseVelocity, baseTarget);
+        for (size_t tap = 0; tap < 8; ++tap)
+            slew(orbitTapSmooth[tap], orbitTapVelocity[tap], tapTarget[tap]);
+
         for (int channel = 0; channel < channels; ++channel)
         {
-            auto& delay = orbitDelay[static_cast<size_t>(channel)];
-            float wet = 0.0f;
-            for (int tap = 0; tap < 8; ++tap)
-            {
-                const auto tapIndex = static_cast<size_t>(tap);
-                if (!tapEnabled[tapIndex])
-                    continue;
-                const auto modulation = phaseSine * tapPhaseCosine[tapIndex]
-                                      + phaseCosine * tapPhaseSine[tapIndex];
-                const auto delayMs = tapTimes[tapIndex] + modDepth * modulation;
-                const auto delaySamples = juce::jlimit<size_t>(
-                    1, delay.size() - 1,
-                    static_cast<size_t>(std::lround(juce::jmax(0.02f, delayMs) * 0.001 * sampleRate)));
-                const auto read = (orbitPosition[static_cast<size_t>(channel)] + delay.size()
-                                   - delaySamples) % delay.size();
-                const auto panGain = channel == 0 ? tapPanLeft[tapIndex] : tapPanRight[tapIndex];
-                wet += orbitTapFilters[static_cast<size_t>(channel)][static_cast<size_t>(tap)]
-                           .process(delay[read]) * tapLevels[tapIndex] * panGain;
-            }
-
-            wet /= juce::jmax(1.0f, gainSums[static_cast<size_t>(channel)]);
+            const auto channelIndex = static_cast<size_t>(channel);
+            auto& delay = orbitDelay[channelIndex];
+            const auto position = orbitPosition[channelIndex];
             const auto input = buffer.getSample(channel, sample);
-            const auto envelope = orbitDuckEnvelopes[static_cast<size_t>(channel)].processSample(input);
-            wet *= juce::jlimit(0.0f, 1.0f, 1.0f - duck * envelope * 2.0f);
-            const auto stableWet = std::tanh(wet);
-            delay[orbitPosition[static_cast<size_t>(channel)]] = (freeze ? 0.0f : input)
-                + stableWet * (freeze ? 0.999f : feedback);
-            const auto output = dryGain * input + wetGain * stableWet;
+
+            const auto raw = readAt(delay, position, orbitBaseSmooth + modSamples * phaseSine);
+            const auto mainEcho = orbitMainFilter[channelIndex].process(raw);
+
+            float wet = mainEcho;
+            for (size_t tap = 0; tap < 8; ++tap)
+            {
+                if (! tapEnabled[tap]) continue;
+                const auto modulation = phaseSine * tapPhaseCosine[tap] + phaseCosine * tapPhaseSine[tap];
+                const auto tapped = readAt(delay, position, orbitTapSmooth[tap] + modSamples * modulation);
+                wet += orbitTapFilters[channelIndex][tap].process(tapped) * tapLevels[tap]
+                     * (channels == 1 ? 1.0f : (channel == 0 ? tapPanLeft[tap] : tapPanRight[tap]));
+            }
+            wet *= wetNormalise;
+
+            // Frozen: the loop recirculates untouched and takes no new input.
+            const auto limited = std::tanh(mainEcho * 0.8f) * 1.25f;
+            delay[position] = freeze ? raw : input + feedback * limited;
+            orbitPosition[channelIndex] = (position + 1) % delay.size();
+
+            const auto envelope = orbitDuckEnvelopes[channelIndex].processSample(input);
+            wet *= juce::jlimit(0.1f, 1.0f, 1.0f - duck * envelope * 2.0f);
+            const auto output = dryGain * input + wetGain * wet;
             buffer.setSample(channel, sample, std::isfinite(output) ? output : input);
-            orbitPosition[static_cast<size_t>(channel)] =
-                (orbitPosition[static_cast<size_t>(channel)] + 1) % delay.size();
         }
         const auto nextSine = phaseSine * stepCosine + phaseCosine * stepSine;
         phaseCosine = phaseCosine * stepCosine - phaseSine * stepSine;
@@ -1860,77 +1904,179 @@ void AnchorDSP::processOrbit(juce::AudioBuffer<float>& buffer,const juce::AudioP
 void AnchorDSP::processSpaceReverb(juce::AudioBuffer<float>& buffer,
                                    const juce::AudioProcessorValueTreeState& state)
 {
-    const auto samples=buffer.getNumSamples();
-    const auto channels=juce::jmin<int>(buffer.getNumChannels(),static_cast<int>(maxChannels));
-    const auto pre=static_cast<size_t>(std::lround(value(state,"pre_delay",25)*.001*sampleRate));
-    const auto decay=value(state,"decay",2.4f);
-    const auto size=.55f+value(state,"size",70)*.007f;
-    const auto damping=juce::jlimit(.02f,.95f,value(state,"high_damp",.6f)*.65f);
-    const auto density=value(state,"density",65)*.01f;
-    const auto diffusion=value(state,"diffusion",60)*.01f;
-    const auto lateMix=juce::jlimit(0.0f,1.0f,(value(state,"early_late")+100.0f)*.005f);
-    const auto modulationRate=value(state,"mod_rate",.35f);
-    const auto modulationDepth=value(state,"mod_depth",20)*.0008f;
-    const auto duck=value(state,"duck",20)*.01f;
-    const auto freeze=value(state,"freeze")>.5f;
-    const std::array<double,4>times{.031,.037,.043,.053};
+    // A true stereo reverb: pre-delay -> early reflections and four all-pass
+    // diffusers per side -> an eight-line feedback network mixed by a Hadamard
+    // matrix. Each line's gain is set from its own length, so DECAY is the
+    // real time the tail takes to fall 60 dB.
+    const auto samples = buffer.getNumSamples();
+    const auto channels = juce::jmin<int>(buffer.getNumChannels(), static_cast<int>(maxChannels));
+    if (samples <= 0 || channels <= 0) return;
 
-    for(int c=0;c<channels;++c)
+    const auto preSamples = static_cast<float>(value(state, "pre_delay", 25.0f) * 0.001 * sampleRate);
+    const auto decay = juce::jlimit(0.1f, 40.0f, value(state, "decay", 2.4f));
+    const auto sizeTarget = 0.5f + juce::jlimit(0.0f, 1.0f, value(state, "size", 70.0f) * 0.01f) * 0.9f;
+    const auto density = juce::jlimit(0.0f, 1.0f, value(state, "density", 65.0f) * 0.01f);
+    const auto diffusion = 0.35f + juce::jlimit(0.0f, 1.0f, value(state, "diffusion", 60.0f) * 0.01f) * 0.4f;
+    const auto lateMix = juce::jlimit(0.0f, 1.0f, (value(state, "early_late") + 100.0f) * 0.005f);
+    const auto lowDamp = juce::jlimit(0.1f, 2.0f, value(state, "low_damp", 0.8f));
+    const auto highDamp = juce::jlimit(0.1f, 2.0f, value(state, "high_damp", 0.6f));
+    const auto modRate = value(state, "mod_rate", 0.35f);
+    const auto freeze = value(state, "freeze") > 0.5f;
+    const auto modSamples = freeze ? 0.0f : static_cast<float>(value(state, "mod_depth", 20.0f) * 0.01 * 0.0015 * sampleRate);
+    const auto duck = juce::jlimit(0.0f, 1.0f, value(state, "duck", 20.0f) * 0.01f);
+    const auto width = value(state, "width", 120.0f) * 0.01f;
+    const auto mix = juce::jlimit(0.0f, 1.0f, value(state, "mix", 25.0f) * 0.01f);
+
+    static constexpr std::array<double, spaceLineCount> lineSeconds { 0.0297, 0.0371, 0.0411, 0.0437, 0.0533, 0.0599, 0.0677, 0.0731 };
+    static constexpr std::array<std::array<double, 4>, 2> diffuserSeconds {{ { 0.00477, 0.00359, 0.01273, 0.00931 },
+                                                                            { 0.00503, 0.00391, 0.01337, 0.00887 } }};
+    static constexpr std::array<double, 6> earlySeconds { 0.0071, 0.0113, 0.0179, 0.0233, 0.0311, 0.0413 };
+    static constexpr std::array<float, 6> earlyGains { 0.80f, 0.68f, 0.55f, 0.46f, 0.37f, 0.30f };
+    static constexpr std::array<float, spaceLineCount> signLeft { 1, -1, 1, -1, 1, -1, 1, -1 };
+    static constexpr std::array<float, spaceLineCount> signRight { 1, 1, -1, -1, 1, 1, -1, -1 };
+    constexpr float inputGain = 0.3f;
+
+    // High damping: a one-pole low-pass in every line. Low damping below 1
+    // drains the lows inside the loop; above 1 lifts them at the output, which
+    // cannot destabilise the network.
+    const auto dampCutoff = juce::jmin(2500.0 * std::pow(2.0, (highDamp - 0.1) / 1.9 * 3.8), sampleRate * 0.45);
+    const auto dampCoefficient = freeze ? 1.0f : static_cast<float>(1.0 - std::exp(-juce::MathConstants<double>::twoPi * dampCutoff / sampleRate));
+    const auto lowCoefficient = static_cast<float>(1.0 - std::exp(-juce::MathConstants<double>::twoPi * 200.0 / sampleRate));
+    const auto lowDrain = freeze ? 0.0f : juce::jlimit(0.0f, 0.9f, 1.0f - lowDamp) * 0.3f;
+    for (int c = 0; c < channels; ++c)
+        plateToneFilters[static_cast<size_t>(c)][0].setLowShelf(sampleRate, 180.0f, lowDamp > 1.0f ? 1.0f + (lowDamp - 1.0f) * 0.6f : 1.0f);
+    orbitDuckEnvelopes[0].setAttackRelease(5.0f, 180.0f);
+
+    if (spaceSizeSmooth <= 0.0f) spaceSizeSmooth = sizeTarget;
+    const auto sizeGlide = static_cast<float>(1.0 - std::exp(-1.0 / (0.15 * sampleRate)));
+
+    // Louder for short rooms, quieter for long halls, so MIX means the same
+    // thing at any decay. Held while frozen, when the loop gain is 1.
+    if (! freeze)
     {
-        juce::FloatVectorOperations::copy(dryBuffer.data()+c*samples,buffer.getReadPointer(c),samples);
-        orbitDuckEnvelopes[static_cast<size_t>(c)].setAttackRelease(5.0f,180.0f);
-        plateToneFilters[static_cast<size_t>(c)][0].setLowShelf(sampleRate,180.0f,
-            juce::jlimit(.35f,2.0f,value(state,"low_damp",.8f)));
-        auto&pd=platePreDelay[static_cast<size_t>(c)];
-        auto&pp=platePreDelayPosition[static_cast<size_t>(c)];
-        auto*out=buffer.getWritePointer(c);
-        for(int i=0;i<samples;++i)
+        const auto reference = std::pow(10.0, -3.0 * 0.0507 * sizeTarget / decay);
+        spaceOutScale = static_cast<float>(3.7 * std::pow(juce::jmax(1.0e-4, 1.0 - reference * reference), 0.35));
+    }
+
+    const auto readAt = [](const std::vector<float>& line, size_t writePosition, float delaySamples)
+    {
+        const auto size = line.size();
+        const auto limited = juce::jlimit(1.0f, static_cast<float>(size) - 3.0f, delaySamples);
+        const auto whole = static_cast<size_t>(limited);
+        const auto fraction = limited - static_cast<float>(whole);
+        const auto first = (writePosition + size - whole) % size;
+        const auto second = (first + size - 1) % size;
+        return line[first] + fraction * (line[second] - line[first]);
+    };
+
+    const auto phaseStep = juce::MathConstants<double>::twoPi * modRate / sampleRate;
+    auto* left = buffer.getWritePointer(0);
+    auto* right = channels > 1 ? buffer.getWritePointer(1) : nullptr;
+
+    for (int i = 0; i < samples; ++i)
+    {
+        spaceSizeSmooth += sizeGlide * (sizeTarget - spaceSizeSmooth);
+        const auto size = spaceSizeSmooth;
+        const std::array<float, 2> dry { left[i], right != nullptr ? right[i] : left[i] };
+
+        // ---- pre-delay and early reflections, crossing sides like a real room
+        std::array<float, 2> delayed {}, early {};
+        for (size_t c = 0; c < 2; ++c)
         {
-            pd[pp]=out[i];
-            const auto readPre=(pp+pd.size()-juce::jmin(pre,pd.size()-1))%pd.size();
-            const auto early=pd[readPre];
-            const auto input=freeze?0.0f:early;
-            pp=(pp+1)%pd.size();
-            std::array<float,4>taps{};
-            std::array<float,4>damped{};
-            for(size_t lineIndex=0;lineIndex<4;++lineIndex)
+            spacePre[c][spacePrePosition[c]] = dry[c];
+            delayed[c] = readAt(spacePre[c], spacePrePosition[c], juce::jmax(1.0f, preSamples));
+        }
+        for (size_t k = 0; k < earlySeconds.size(); ++k)
+        {
+            const auto offset = preSamples + static_cast<float>(earlySeconds[k] * size * sampleRate);
+            const auto source = k % 2;
+            early[0] += earlyGains[k] * readAt(spacePre[source], spacePrePosition[source], offset);
+            early[1] += earlyGains[k] * readAt(spacePre[1 - source], spacePrePosition[1 - source], offset);
+        }
+        for (size_t c = 0; c < 2; ++c) spacePrePosition[c] = (spacePrePosition[c] + 1) % spacePre[c].size();
+
+        // ---- diffusion: DENSITY blends two stages into four
+        std::array<float, 2> diffused {};
+        for (size_t c = 0; c < 2; ++c)
+        {
+            auto x = freeze ? 0.0f : delayed[c];
+            float afterTwo = 0.0f;
+            for (size_t stage = 0; stage < 4; ++stage)
             {
-                auto&line=plateLines[static_cast<size_t>(c)][lineIndex];
-                auto&position=platePositions[static_cast<size_t>(c)][lineIndex];
-                const auto mod=1.0+modulationDepth*std::sin(orbitPhase+static_cast<double>(lineIndex));
-                const auto length=juce::jlimit<size_t>(2,line.size()-1,static_cast<size_t>(times[lineIndex]*size*mod*sampleRate));
-                const auto read=(position+line.size()-length)%line.size();
-                taps[lineIndex]=line[read];
-                plateDampingState[static_cast<size_t>(c)][lineIndex]+=damping*(taps[lineIndex]-plateDampingState[static_cast<size_t>(c)][lineIndex]);
-                damped[lineIndex]=plateDampingState[static_cast<size_t>(c)][lineIndex];
+                auto& line = spaceDiffusers[c][stage];
+                auto& position = spaceDiffuserPositions[c][stage];
+                const auto length = static_cast<float>(diffuserSeconds[c][stage] * (0.6 + 0.6 * (size - 0.5) / 0.9) * sampleRate);
+                const auto stored = readAt(line, position, length);
+                const auto y = stored - diffusion * x;
+                line[position] = x + diffusion * y;
+                position = (position + 1) % line.size();
+                x = y;
+                if (stage == 1) afterTwo = x;
             }
-            const std::array<float,4>scattered{
-                (damped[0]+damped[1]+damped[2]+damped[3])*.5f,
-                (damped[0]-damped[1]+damped[2]-damped[3])*.5f,
-                (damped[0]+damped[1]-damped[2]-damped[3])*.5f,
-                (damped[0]-damped[1]-damped[2]+damped[3])*.5f};
-            for(size_t lineIndex=0;lineIndex<4;++lineIndex)
-            {
-                auto&line=plateLines[static_cast<size_t>(c)][lineIndex];
-                auto&position=platePositions[static_cast<size_t>(c)][lineIndex];
-                const auto feedback=freeze?.9995f:static_cast<float>(std::pow(.001,times[lineIndex]*size/decay));
-                const auto diffusionGain=.72f+diffusion*.26f;
-                line[position]=input*(.1f+density*.2f)+std::tanh(scattered[lineIndex]*diffusionGain)*feedback;
-                position=(position+1)%line.size();
-            }
-            auto late=std::tanh((taps[0]+taps[1]-taps[2]+taps[3])*.32f)*.85f;
-            late=plateToneFilters[static_cast<size_t>(c)][0].process(late);
-            const auto envelope=orbitDuckEnvelopes[static_cast<size_t>(c)].processSample(dryBuffer[static_cast<size_t>(c)*samples+i]);
-            const auto wet=juce::jmap(lateMix,early*.35f,late)*(1.0f-juce::jlimit(0.0f,.9f,duck*envelope));
-            out[i]=wet;
-            orbitPhase+=juce::MathConstants<double>::twoPi*modulationRate/(sampleRate*channels);
+            diffused[c] = afterTwo + density * (x - afterTwo);
+        }
+
+        // ---- the network
+        std::array<float, spaceLineCount> mixed {};
+        float lateLeft = 0.0f, lateRight = 0.0f;
+        for (size_t line = 0; line < spaceLineCount; ++line)
+        {
+            const auto seconds = lineSeconds[line] * size;
+            const auto modulation = static_cast<float>(std::sin(spacePhase + static_cast<double>(line) * 0.785398));
+            const auto length = static_cast<float>(seconds * sampleRate) + modSamples * modulation;
+            auto tap = readAt(spaceLines[line], spacePositions[line], freeze ? std::round(length) : length);
+
+            spaceDampState[line] += dampCoefficient * (tap - spaceDampState[line]);
+            tap = spaceDampState[line];
+            spaceLowState[line] += lowCoefficient * (tap - spaceLowState[line]);
+            tap -= lowDrain * spaceLowState[line];
+
+            lateLeft += signLeft[line] * tap;
+            lateRight += signRight[line] * tap;
+            mixed[line] = tap * (freeze ? 1.0f : static_cast<float>(std::pow(10.0, -3.0 * seconds / decay)));
+        }
+
+        // Fast Walsh-Hadamard transform: every line feeds every other, energy preserved.
+        for (size_t span = 1; span < spaceLineCount; span <<= 1)
+            for (size_t start = 0; start < spaceLineCount; start += span << 1)
+                for (size_t k = start; k < start + span; ++k)
+                {
+                    const auto a = mixed[k], b = mixed[k + span];
+                    mixed[k] = a + b;
+                    mixed[k + span] = a - b;
+                }
+        for (size_t line = 0; line < spaceLineCount; ++line)
+        {
+            const auto write = diffused[line % 2] * inputGain + mixed[line] * 0.35355339f;
+            spaceLines[line][spacePositions[line]] = juce::jlimit(-8.0f, 8.0f, write);
+            spacePositions[line] = (spacePositions[line] + 1) % spaceLines[line].size();
+        }
+        spacePhase += phaseStep;
+
+        // ---- output
+        const auto scale = spaceOutScale * 0.35355339f;
+        std::array<float, 2> wet { juce::jmap(lateMix, early[0] * 0.45f, lateLeft * scale),
+                                   juce::jmap(lateMix, early[1] * 0.45f, lateRight * scale) };
+        const auto middle = (wet[0] + wet[1]) * 0.5f, side = (wet[0] - wet[1]) * 0.5f * width;
+        wet = { middle + side, middle - side };
+
+        const auto envelope = orbitDuckEnvelopes[0].processSample(juce::jmax(std::abs(dry[0]), std::abs(dry[1])));
+        const auto ducking = 1.0f - juce::jlimit(0.0f, 0.9f, duck * envelope * 2.5f);
+
+        if (right != nullptr)
+        {
+            const auto wetLeft = plateToneFilters[0][0].process(wet[0]) * ducking;
+            const auto wetRight = plateToneFilters[1][0].process(wet[1]) * ducking;
+            left[i] = dry[0] + mix * (wetLeft - dry[0]);
+            right[i] = dry[1] + mix * (wetRight - dry[1]);
+        }
+        else
+        {
+            const auto wetMono = plateToneFilters[0][0].process(middle) * ducking;
+            left[i] = dry[0] + mix * (wetMono - dry[0]);
         }
     }
-    orbitPhase=std::fmod(orbitPhase,juce::MathConstants<double>::twoPi);
-    const auto width=value(state,"width",120)*.01f;
-    if(channels==2)for(int i=0;i<samples;++i){const auto l=buffer.getSample(0,i),r=buffer.getSample(1,i),m=(l+r)*.5f,s=(l-r)*.5f*width;buffer.setSample(0,i,m+s);buffer.setSample(1,i,m-s);}
-    const auto mix=value(state,"mix",25)*.01f;
-    for(int c=0;c<channels;++c){auto*out=buffer.getWritePointer(c);const auto*dry=dryBuffer.data()+c*samples;for(int i=0;i<samples;++i)out[i]=dry[i]+mix*(out[i]-dry[i]);}
+    spacePhase = std::fmod(spacePhase, juce::MathConstants<double>::twoPi);
 }
 
 void AnchorDSP::processImager(juce::AudioBuffer<float>& buffer,const juce::AudioProcessorValueTreeState& state)

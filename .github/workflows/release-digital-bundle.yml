@@ -1,0 +1,258 @@
+name: Amanorsac Digital Bundle
+
+# Builds the ten digital plug-ins and packages an installer for each platform.
+# macOS cannot be cross-built from Windows, so the mac job runs on a real
+# macOS runner. Signing and notarisation follow the macOS Code Signing and
+# Notarisation Standard; the certificates come from organisation secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Bundle version, e.g. 1.0.0"
+        required: true
+        default: "1.0.0"
+  push:
+    tags:
+      - "digital-v*"
+
+# Three quick pushes must not leave three full builds running at once.
+concurrency:
+  group: digital-bundle-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUNDLE_IDS: "D01 D02 D03 D04 D05 D06 D07 D08 D09 D10"
+  PRODUCT_NAME: "Amanorsac Digital Bundle"
+  IDENTIFIER: "studio.amanorsac.digitalbundle"
+
+jobs:
+  # ------------------------------------------------------------------ Windows
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: v
+        shell: bash
+        run: |
+          v="${{ github.event.inputs.version }}"
+          [ -n "$v" ] || v="${GITHUB_REF_NAME#digital-v}"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DBUILD_TESTING=ON -DAMANORSAC_LICENSING=ON
+
+      - name: Build plug-ins
+        shell: bash
+        run: |
+          targets=""
+          for id in $BUNDLE_IDS; do targets="$targets --target Amanorsac${id}_VST3 Amanorsac${id}_Standalone"; done
+          cmake --build build --config Release $targets --parallel 4
+
+      # The release gate. The shipped build enforces the licence and so mutes
+      # itself on a runner, which would make every measurement meaningless. The
+      # engines are therefore measured in a second, unarmed build of the same
+      # source: every preset of every product, plus timing, decay and click
+      # measurements for the delay and the reverb.
+      - name: Digital engine checks
+        shell: bash
+        run: |
+          cmake -S . -B build-test -G "Visual Studio 17 2022" -A x64 -DBUILD_TESTING=ON
+          targets=""
+          for id in $BUNDLE_IDS; do targets="$targets --target Amanorsac${id}PresetCheck"; done
+          cmake --build build-test --config Release $targets --target AmanorsacD08TimeEffectsCheck --target AmanorsacD09TimeEffectsCheck --parallel 4
+          for id in $BUNDLE_IDS; do ./build-test/Release/Amanorsac${id}PresetCheck.exe; done
+          ./build-test/Release/AmanorsacD08TimeEffectsCheck.exe
+          ./build-test/Release/AmanorsacD09TimeEffectsCheck.exe
+
+      - name: Package installer
+        shell: pwsh
+        run: ./installer/build-windows-installer.ps1 -Version "${{ steps.v.outputs.version }}" -BuildDir build -ProductName "Amanorsac Digital Bundle" -Targets D01,D02,D03,D04,D05,D06,D07,D08,D09,D10
+
+      # Windows signing is still outstanding: there is no Authenticode
+      # certificate in the organisation secrets, so this installer is unsigned
+      # and SmartScreen will warn. That is company P0 number 3 in the launch audit.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digital-bundle-windows
+          path: |
+            dist/*.exe
+            dist/*.sha256
+          if-no-files-found: error
+
+  # -------------------------------------------------------------------- macOS
+  # macOS runners bill about six times a Windows minute. This repository is
+  # public so Actions are free, but the job is still gated to a deliberate
+  # trigger rather than every push.
+  macos:
+    if: github.event_name == 'workflow_dispatch' || github.ref_type == 'tag'
+    runs-on: macos-14
+    env:
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      MAC_CERT_P12: ${{ secrets.MAC_CERT_P12 }}
+      MAC_CERT_PASSWORD: ${{ secrets.MAC_CERT_PASSWORD }}
+      MAC_INSTALLER_P12: ${{ secrets.MAC_INSTALLER_P12 }}
+      MAC_INSTALLER_PASSWORD: ${{ secrets.MAC_INSTALLER_PASSWORD }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: v
+        run: |
+          v="${{ github.event.inputs.version }}"
+          [ -n "$v" ] || v="${GITHUB_REF_NAME#digital-v}"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+
+      # A secret that resolves empty means the organisation secret is not
+      # visible to this repository. Fail here rather than silently shipping
+      # an unsigned build that Gatekeeper will refuse.
+      - name: Check signing secrets are visible
+        run: |
+          missing=""
+          for name in APPLE_TEAM_ID MAC_CERT_P12 MAC_CERT_PASSWORD MAC_INSTALLER_P12 \
+                      MAC_INSTALLER_PASSWORD ASC_KEY_P8 ASC_KEY_ID ASC_ISSUER_ID; do
+            eval "value=\${$name}"
+            [ -n "$value" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "Missing or empty secrets:$missing" >&2
+            echo "Organisation secret visibility must be All repositories, or this public repo sees nothing." >&2
+            exit 1
+          fi
+          echo "All eight signing secrets are present."
+
+      - name: Import signing certificates
+        run: |
+          KEYCHAIN=build.keychain
+          KEYCHAIN_PASSWORD=$(uuidgen)
+          echo "KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD" >> "$GITHUB_ENV"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          # keep the Apple roots reachable or the chain cannot be built
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          security default-keychain -s "$KEYCHAIN"
+
+          printf '%s' "$MAC_CERT_P12"      | tr -d '[:space:]' | base64 --decode > app.p12
+          printf '%s' "$MAC_INSTALLER_P12" | tr -d '[:space:]' | base64 --decode > installer.p12
+
+          # pasting into the secrets form carries a trailing newline
+          trim () { printf '%s' "$1" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'; }
+
+          security import app.p12       -k "$KEYCHAIN" -P "$(trim "$MAC_CERT_PASSWORD")"      -T /usr/bin/codesign -T /usr/bin/productsign
+          security import installer.p12 -k "$KEYCHAIN" -P "$(trim "$MAC_INSTALLER_PASSWORD")" -T /usr/bin/codesign -T /usr/bin/productsign
+          rm -f app.p12 installer.p12
+
+          # without this codesign blocks on a GUI prompt and the job hangs
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN" >/dev/null
+
+          security find-identity -v
+
+      # Xcode signs during the build so JUCE's hardened-runtime entitlements
+      # are applied. CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO is required: without
+      # it Xcode adds get-task-allow and Apple returns Invalid with no reason.
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Xcode \
+            -DBUILD_TESTING=ON \
+            -DAMANORSAC_LICENSING=ON \
+            -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
+            -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_STYLE=Manual \
+            -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY="Developer ID Application" \
+            -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            -DCMAKE_XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS="--timestamp" \
+            -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO
+
+      - name: Build plug-ins
+        run: |
+          targets=""
+          for id in $BUNDLE_IDS; do
+            targets="$targets --target Amanorsac${id}_VST3 Amanorsac${id}_AU Amanorsac${id}_Standalone"
+          done
+          cmake --build build --config Release $targets --parallel 3
+
+      # The release gate. The shipped build enforces the licence and so mutes
+      # itself on a runner, which would make every measurement meaningless. The
+      # engines are therefore measured in a second, unarmed build of the same
+      # source: every preset of every product, plus timing, decay and click
+      # measurements for the delay and the reverb.
+      - name: Digital engine checks
+        shell: bash
+        run: |
+          cmake -S . -B build-test -G Xcode -DCMAKE_OSX_ARCHITECTURES=arm64 -DBUILD_TESTING=ON
+          targets=""
+          for id in $BUNDLE_IDS; do targets="$targets --target Amanorsac${id}PresetCheck"; done
+          cmake --build build-test --config Release $targets --target AmanorsacD08TimeEffectsCheck --target AmanorsacD09TimeEffectsCheck --parallel 4
+          for id in $BUNDLE_IDS; do ./build-test/Release/Amanorsac${id}PresetCheck; done
+          ./build-test/Release/AmanorsacD08TimeEffectsCheck
+          ./build-test/Release/AmanorsacD09TimeEffectsCheck
+
+      # Prove the signature locally before spending a round trip to Apple.
+      - name: Verify signatures
+        run: |
+          fail=0
+          for bundle in build/Amanorsac*_artefacts/Release/VST3/*.vst3 \
+                        build/Amanorsac*_artefacts/Release/AU/*.component \
+                        build/Amanorsac*_artefacts/Release/Standalone/*.app; do
+            [ -e "$bundle" ] || continue
+            echo "--- $bundle"
+            codesign --verify --deep --strict --verbose=2 "$bundle" || fail=1
+            codesign --display --verbose=2 "$bundle" 2>&1 | grep -q "flags=.*runtime" \
+              || { echo "no hardened runtime: $bundle"; fail=1; }
+            codesign --display --verbose=4 "$bundle" 2>&1 | grep -q "^Timestamp=" \
+              || { echo "no secure timestamp: $bundle"; fail=1; }
+            if codesign --display --entitlements - --xml "$bundle" 2>/dev/null | grep -q "get-task-allow"; then
+              echo "get-task-allow present, Apple will reject: $bundle"; fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Package installer
+        env:
+          TARGET_IDS: ${{ env.BUNDLE_IDS }}
+        run: ./installer/build-macos-installer.sh "${{ steps.v.outputs.version }}"
+
+      - name: Notarise and staple
+        run: |
+          PKG=$(ls dist/*.pkg | head -1)
+          printf '%s' "$ASC_KEY_P8" | tr -d '[:space:]' | base64 --decode > asc.p8 2>/dev/null \
+            || printf '%s' "$ASC_KEY_P8" > asc.p8
+
+          # notarytool --wait exits 0 even when Apple says Invalid, so the
+          # status is read from the JSON rather than trusted to the exit code.
+          RESULT=$(xcrun notarytool submit "$PKG" --key asc.p8 --key-id "$ASC_KEY_ID" \
+                     --issuer "$ASC_ISSUER_ID" --wait --timeout 45m --output-format json)
+          echo "$RESULT"
+          STATUS=$(printf '%s' "$RESULT" | python3 -c 'import sys,json;print(json.load(sys.stdin).get("status",""))')
+          ID=$(printf '%s' "$RESULT" | python3 -c 'import sys,json;print(json.load(sys.stdin).get("id",""))')
+          if [ "$STATUS" != "Accepted" ]; then
+            echo "Notarisation status: $STATUS"
+            xcrun notarytool log "$ID" --key asc.p8 --key-id "$ASC_KEY_ID" --issuer "$ASC_ISSUER_ID" || true
+            rm -f asc.p8
+            exit 1
+          fi
+          rm -f asc.p8
+
+          xcrun stapler staple "$PKG"
+          xcrun stapler validate "$PKG"
+          # the verdict a customer's Mac will reach
+          spctl --assess -vv --type install "$PKG"
+          shasum -a 256 "$PKG" | sed 's|dist/||' > "$PKG.sha256"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digital-bundle-macos
+          path: |
+            dist/*.pkg
+            dist/*.sha256
+          if-no-files-found: error
+
+      - name: Clean up keychain
+        if: always()
+        run: security delete-keychain build.keychain || true

@@ -11,6 +11,9 @@ internal static class Program
     // package any Amanorsac product or bundle.
     private const string ProductName = BuildInfo.ProductName;
     private const string Version = BuildInfo.Version;
+    // One Add/Remove Programs entry per product, so two bundles never share one.
+    private static readonly string UninstallKeyName =
+        "Amanorsac_" + new string(ProductName.Where(char.IsLetterOrDigit).ToArray());
 
     [STAThread]
     private static void Main(string[] args)
@@ -98,6 +101,14 @@ internal static class Program
             ExtractResource("uninstall.ps1", Path.Combine(installRoot, "uninstall.ps1"));
             ExtractResource("README.md", Path.Combine(installRoot, "README.md"));
 
+            // Record exactly what this product installed. Several Amanorsac
+            // products share the VST3 and Start Menu folders, so the uninstaller
+            // removes only these names and never the whole folder.
+            var manifest = new List<string> { "product|" + ProductName };
+            manifest.AddRange(bundles.Select(bundle => "vst3|" + Path.GetFileName(bundle)));
+            manifest.AddRange(apps.Select(app => "app|" + Path.GetFileNameWithoutExtension(app)));
+            File.WriteAllLines(Path.Combine(installRoot, "installed.txt"), manifest);
+
             if (!noShortcuts)
             {
                 var startMenu = Path.Combine(appData, "Microsoft", "Windows", "Start Menu", "Programs", "Amanorsac Studio");
@@ -107,8 +118,8 @@ internal static class Program
 
             if (!noRegistry)
             {
-                var uninstallCommand = $"powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"{Path.Combine(installRoot, "uninstall.ps1")}\" -InstallRoot \"{installRoot}\" -Vst3Root \"{vst3Root}\"";
-                using var key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\AmanorsacStudioMixingSuite", true)
+                var uninstallCommand = $"powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"{Path.Combine(installRoot, "uninstall.ps1")}\" -InstallRoot \"{installRoot}\" -Vst3Root \"{vst3Root}\" -ProductName \"{ProductName}\"";
+                using var key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\" + UninstallKeyName, true)
                                 ?? throw new InvalidOperationException("Could not create uninstall registration.");
                 key.SetValue("DisplayName", ProductName);
                 key.SetValue("DisplayVersion", Version);

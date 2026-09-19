@@ -4,7 +4,7 @@
 #
 # This script CANNOT be run on Windows. It needs macOS, Xcode command line
 # tools and a Release build produced by the Xcode generator. It runs on the
-# macos job in .github/workflows/release-analog-bundle.yml, which is how this
+# macos job of the release workflows in .github/workflows, which is how this
 # repository produces a mac installer.
 #
 # The package is NOT signed and NOT notarised. Gatekeeper will refuse to open
@@ -28,7 +28,8 @@ if [[ "${armed}" != "1" && "${ALLOW_UNARMED:-0}" != "1" ]]; then
     exit 1
 fi
 
-TARGETS=(A01 A02 A03 A04 A05 A06 A07 A08 A09 A10)
+# Which plug-ins this bundle holds. TARGET_IDS overrides the analog default.
+read -r -a TARGETS <<< "${TARGET_IDS:-A01 A02 A03 A04 A05 A06 A07 A08 A09 A10}"
 
 cd "$(dirname "$0")/.."
 ROOT="$PWD"

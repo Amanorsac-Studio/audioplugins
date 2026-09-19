@@ -35,6 +35,7 @@ private:
 
     class Surface;
     std::unique_ptr<Surface> surface;
+    std::unique_ptr<class ActivationView> gate;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DigitalChassis)
 };

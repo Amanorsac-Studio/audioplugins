@@ -178,6 +178,8 @@ function(amanorsac_add_plugin plugin_id)
         JUCE_VST3_CAN_REPLACE_VST2=0
         JUCE_REPORT_APP_USAGE=0
         AMANORSAC_LICENSING_ENABLED=${amanorsac_licensing_value}
+        # Each bundle has its own licence store: activating one must not unlock the other.
+        AMANORSAC_LICENSE_BUNDLE="Amanorsac ${SERIES}"
     )
 
     target_link_libraries(${target} PRIVATE
@@ -415,6 +417,23 @@ if(BUILD_TESTING)
     add_test(NAME Amanorsac.${digital_id}.Presets COMMAND Amanorsac${digital_id}PresetCheck)
   endforeach()
 
+  # The delay and the reverb are measured, not just run.
+  foreach(time_id IN ITEMS D08 D09)
+    add_executable(Amanorsac${time_id}TimeEffectsCheck tests/digital/TimeEffectsCheck.cpp)
+    target_include_directories(Amanorsac${time_id}TimeEffectsCheck PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/src"
+        "${juce_SOURCE_DIR}/modules"
+        "${CMAKE_CURRENT_BINARY_DIR}/generated/${time_id}")
+    target_compile_definitions(Amanorsac${time_id}TimeEffectsCheck PRIVATE
+        JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1
+        JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0
+        AMANORSAC_LICENSING_ENABLED=${amanorsac_licensing_value})
+    target_link_libraries(Amanorsac${time_id}TimeEffectsCheck PRIVATE
+        Amanorsac${time_id}
+        juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
+    add_test(NAME Amanorsac.${time_id}.TimeEffects COMMAND Amanorsac${time_id}TimeEffectsCheck)
+  endforeach()
+
   foreach(render_id IN ITEMS A01 A02 A03 A04 A05 A06 A07 A08 A09 A10
                              D01 D02 D03 D04 D05 D06 D07 D08 D09 D10)
     add_executable(Amanorsac${render_id}EditorRender tests/ui/EditorRender.cpp)
@@ -489,6 +508,7 @@ target_sources(AmanorsacR01 PRIVATE
     src/common/ui/ProductHost.h
     src/common/ui/HeritageEditor.cpp src/common/ui/HeritageEditor.h
     src/common/ui/AnalogPageEditor.cpp src/common/ui/AnalogPageEditor.h
+    src/common/licensing/LicenseClient.cpp src/common/licensing/LicenseCrypto.cpp src/common/licensing/LicenseStore.cpp
     src/common/state/PluginSpec.cpp src/common/state/PluginSpec.h src/common/ui/Theme.h)
 target_include_directories(AmanorsacR01 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src" "${rack_generated_dir}")
 target_compile_definitions(AmanorsacR01 PRIVATE JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_REPORT_APP_USAGE=0)
@@ -496,6 +516,7 @@ target_link_libraries(AmanorsacR01 PRIVATE AmanorsacR01Assets juce::juce_audio_u
     PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
 
 add_executable(AmanorsacR01RackTests tests/rack/RackTests.cpp
+    src/common/licensing/LicenseClient.cpp src/common/licensing/LicenseCrypto.cpp src/common/licensing/LicenseStore.cpp
     src/rack/RackProcessor.cpp src/rack/RackProcessor.h src/rack/RackEditor.cpp src/rack/RackEditor.h
     src/common/dsp/AnchorDSP.cpp src/common/dsp/AnchorDSP.h src/common/dsp/DynamicsPrimitives.h
     src/common/dsp/AnalogFrontEnd.cpp src/common/dsp/AnalogFrontEnd.h

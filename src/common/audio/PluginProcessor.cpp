@@ -122,6 +122,9 @@ void PluginProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiB
     const auto tapRight = [&] { return mainChannels > 1 ? buffer.getReadPointer(1) : nullptr; };
     if (tap) analysis.pushPre(buffer.getReadPointer(0), tapRight(), buffer.getNumSamples());
     frontEnd.processFront(buffer, state, mainChannels);
+    if (auto* head = getPlayHead())
+        if (const auto position = head->getPosition())
+            if (const auto bpm = position->getBpm()) dsp.setHostTempo(*bpm);
     dsp.process(buffer, state, spec.id);
     frontEnd.processBack(buffer, state, mainChannels);
     // Taken before the licence ramp, so the display shows what the engine does.

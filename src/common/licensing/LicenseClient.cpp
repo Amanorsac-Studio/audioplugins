@@ -4,8 +4,13 @@ namespace amanorsac::licensing
 {
 namespace
 {
-// The bundle folder every plug-in shares, so one activation covers all ten.
-constexpr const char* bundleName = "Amanorsac Analog";
+// The folder every plug-in of one bundle shares, so one activation covers all
+// ten of them. The build names the bundle; analog is the default so existing
+// analog activations keep working.
+#ifndef AMANORSAC_LICENSE_BUNDLE
+ #define AMANORSAC_LICENSE_BUNDLE "Amanorsac Analog"
+#endif
+constexpr const char* bundleName = AMANORSAC_LICENSE_BUNDLE;
 
 constexpr int heartbeatMinutes = 60;
 constexpr juce::int64 fortyEightHours = 48LL * 60 * 60 * 1000;
