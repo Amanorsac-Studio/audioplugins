@@ -20,7 +20,11 @@ class LicenseStore
 {
 public:
     /** The bundle name is the folder name, shared by every plug-in in it. */
-    explicit LicenseStore(juce::String bundleName);
+    /** `legacyName` is a name an earlier build stored the licence under. If the
+        new folder is empty and the old one is not, the device id, key and proof
+        are carried across, so a rename never costs a buyer their activation
+        or a second seat. */
+    explicit LicenseStore(juce::String bundleName, juce::String legacyName = {});
 
     [[nodiscard]] juce::File directory() const;
 
@@ -49,6 +53,8 @@ public:
 private:
     [[nodiscard]] juce::String read(const juce::File&) const;
     void write(const juce::File&, const juce::String&) const;
+
+    void migrateFrom(const juce::String& legacyName);
 
     juce::String bundle;
     juce::String entropy;   // ties an encrypted blob to this product

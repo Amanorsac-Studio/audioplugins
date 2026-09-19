@@ -179,7 +179,8 @@ function(amanorsac_add_plugin plugin_id)
         JUCE_REPORT_APP_USAGE=0
         AMANORSAC_LICENSING_ENABLED=${amanorsac_licensing_value}
         # Each bundle has its own licence store: activating one must not unlock the other.
-        AMANORSAC_LICENSE_BUNDLE="Amanorsac ${SERIES}"
+        AMANORSAC_LICENSE_BUNDLE="AMB ${SERIES}"
+        AMANORSAC_LICENSE_LEGACY="Amanorsac ${SERIES}"
     )
 
     target_link_libraries(${target} PRIVATE

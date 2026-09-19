@@ -3,7 +3,7 @@ namespace AmanorsacInstaller;
 
 internal static class BuildInfo
 {
-    public const string ProductName = "Amanorsac Digital Bundle";
+    public const string ProductName = "AMB Digital";
     public const string Version = "1.0.0";
     public const int PluginCount = 10;
     public const string Accent = "#2F8BFF";

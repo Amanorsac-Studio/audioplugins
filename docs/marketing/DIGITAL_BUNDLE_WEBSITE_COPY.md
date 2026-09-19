@@ -1,4 +1,4 @@
-# Amanorsac Digital — website copy pack
+# AMB Digital — website copy pack
 
 Everything the site build needs for the digital line: positioning, per-product
 copy, feature lists, specifications and the asset manifest. Written to be
@@ -14,7 +14,7 @@ Nothing in here claims a feature the products do not have.
 ## 1. The bundle
 
 ### Name
-**Amanorsac Digital** — ten precision processors.
+**AMB Digital** — ten precision processors.
 
 ### One line
 Ten precision tools that show you exactly what they are doing to your sound.
@@ -26,7 +26,7 @@ bands, the echoes, the space. Grab what you see and move it. What you hear is
 what you drew.
 
 ### Long paragraph (about / product page, ~90 words)
-Amanorsac Digital is ten separate plug-ins built around one idea: you should
+AMB Digital is ten separate plug-ins built around one idea: you should
 never have to guess. The equalisers draw their curves over the real spectrum,
 before and after. The dynamics show each band working as the music plays. The
 de-esser and resonance tools draw the change they make, measured from the

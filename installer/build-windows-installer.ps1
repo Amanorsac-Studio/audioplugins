@@ -15,13 +15,13 @@
 
     Usage:
         ./installer/build-windows-installer.ps1 -Version 1.0.0
-        ./installer/build-windows-installer.ps1 -Version 1.0.0 -ProductName "Amanorsac Digital Bundle" `
+        ./installer/build-windows-installer.ps1 -Version 1.0.0 -ProductName "AMB Digital" `
             -Targets D01,D02,D03,D04,D05,D06,D07,D08,D09,D10
 #>
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)][string]$Version,
-    [string]$ProductName = "Amanorsac Analog Bundle",
+    [string]$ProductName = "AMB Analog",
     [string]$Stage = "",
     [string]$BuildDir = "build/win-x64",
     [string[]]$Targets = @("A01","A02","A03","A04","A05","A06","A07","A08","A09","A10"),

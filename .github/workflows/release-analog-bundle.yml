@@ -1,4 +1,4 @@
-name: Amanorsac Analog Bundle
+name: AMB Analog
 
 # Builds the ten analog plug-ins and packages an installer for each platform.
 # macOS cannot be cross-built from Windows, so the mac job runs on a real
@@ -65,7 +65,7 @@ jobs:
       # installs no applications, and uninstall removes only its own files.
       - name: Installer checks
         shell: pwsh
-        run: ./tests/installer/Test-Installer.ps1 -ProductName "Amanorsac Analog Bundle" -Targets A01,A02,A03,A04,A05,A06,A07,A08,A09,A10 -Version "${{ steps.v.outputs.version }}" -BuildDir build -SkipBuild
+        run: ./tests/installer/Test-Installer.ps1 -ProductName "AMB Analog" -Targets A01,A02,A03,A04,A05,A06,A07,A08,A09,A10 -Version "${{ steps.v.outputs.version }}" -BuildDir build -SkipBuild
 
       # Windows signing is still outstanding: there is no Authenticode
       # certificate in the organisation secrets, so this installer is unsigned

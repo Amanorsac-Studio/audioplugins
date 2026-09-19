@@ -1,4 +1,4 @@
-# Amanorsac Analog Bundle — website copy pack
+# AMB Analog — website copy pack
 
 Everything the site build needs: positioning, per-product copy, feature lists,
 specifications and the asset manifest. Written to be lifted straight into page
@@ -13,7 +13,7 @@ templates. Nothing in here claims a feature the products do not have.
 ## 1. The bundle
 
 ### Name
-**Amanorsac Analog** — ten analog processors.
+**AMB Analog** — ten analog processors.
 
 ### One line
 Ten analog machines, built from the ground up, that behave like the desk you wish you owned.
@@ -25,7 +25,7 @@ plate that put a record in a room. Every control does something. Nothing is
 decoration.
 
 ### Long paragraph (about / product page, ~90 words)
-Amanorsac Analog is ten separate plug-ins, not one plug-in with ten skins. Each
+AMB Analog is ten separate plug-ins, not one plug-in with ten skins. Each
 has its own engine, its own faceplate and its own factory bank, and each was
 measured before it shipped: every parameter proven audible, every output proven
 finite from 44.1 to 192 kHz, silence proven silent, bypass proven to return

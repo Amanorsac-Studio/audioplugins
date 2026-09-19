@@ -17,9 +17,32 @@ constexpr const char* keyFile = "license-key.dat";
 constexpr const char* proofFile = "license-proof.dat";
 }
 
-LicenseStore::LicenseStore(juce::String bundleName)
+LicenseStore::LicenseStore(juce::String bundleName, juce::String legacyName)
     : bundle(std::move(bundleName)), entropy(bundle + "/license/v1")
 {
+    if (legacyName.isNotEmpty() && legacyName != bundle) migrateFrom(legacyName);
+}
+
+void LicenseStore::migrateFrom(const juce::String& legacyName)
+{
+    // Only into an untouched folder: once this name has its own device id,
+    // the old folder is history and is never read again.
+    if (directory().getChildFile(deviceFile).existsAsFile()) return;
+
+    LicenseStore legacy(legacyName);
+    const auto oldDevice = legacy.directory().getChildFile(deviceFile);
+    if (! oldDevice.existsAsFile()) return;
+
+    // The same device id keeps the same seat on the server. The key and proof
+    // are sealed with the old name, so they are opened with it and re-sealed
+    // with the new one. The old folder is left alone, so an older build that
+    // is still installed keeps working.
+    directory().createDirectory();
+    oldDevice.copyFileTo(directory().getChildFile(deviceFile));
+    const auto key = legacy.loadKey();
+    const auto proof = legacy.loadProof();
+    if (key.isNotEmpty()) storeKey(key);
+    if (proof.isNotEmpty()) storeProof(proof);
 }
 
 juce::File LicenseStore::directory() const

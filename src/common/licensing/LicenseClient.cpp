@@ -8,9 +8,14 @@ namespace
 // ten of them. The build names the bundle; analog is the default so existing
 // analog activations keep working.
 #ifndef AMANORSAC_LICENSE_BUNDLE
- #define AMANORSAC_LICENSE_BUNDLE "Amanorsac Analog"
+ #define AMANORSAC_LICENSE_BUNDLE "AMB Analog"
+#endif
+// The name earlier builds stored the licence under; migrated on first run.
+#ifndef AMANORSAC_LICENSE_LEGACY
+ #define AMANORSAC_LICENSE_LEGACY "Amanorsac Analog"
 #endif
 constexpr const char* bundleName = AMANORSAC_LICENSE_BUNDLE;
+constexpr const char* legacyBundleName = AMANORSAC_LICENSE_LEGACY;
 
 constexpr int heartbeatMinutes = 60;
 constexpr juce::int64 fortyEightHours = 48LL * 60 * 60 * 1000;
@@ -28,7 +33,7 @@ LicenseClient& LicenseClient::getInstance()
     return instance;
 }
 
-LicenseClient::LicenseClient() : store(bundleName) {}
+LicenseClient::LicenseClient() : store(bundleName, legacyBundleName) {}
 LicenseClient::~LicenseClient() { stopTimer(); }
 
 juce::String LicenseClient::baseUrl()

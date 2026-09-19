@@ -18,13 +18,13 @@
 # keychain; notarisation and stapling happen in the workflow afterwards.
 #
 # Usage: ./installer/build-macos-installer.sh 1.0.0
-#        PRODUCT_NAME="Amanorsac Digital Bundle" TARGET_IDS="D01 D02 ..." ./installer/build-macos-installer.sh 1.0.0
+#        PRODUCT_NAME="AMB Digital" TARGET_IDS="D01 D02 ..." ./installer/build-macos-installer.sh 1.0.0
 
 set -euo pipefail
 
 VERSION="${1:?usage: build-macos-installer.sh <version>}"
-PRODUCT_NAME="${PRODUCT_NAME:-Amanorsac Analog Bundle}"
-IDENTIFIER="${IDENTIFIER:-studio.amanorsac.analogbundle}"
+PRODUCT_NAME="${PRODUCT_NAME:-AMB Analog}"
+IDENTIFIER="${IDENTIFIER:-studio.amanorsac.ambanalog}"
 BUILD_DIR="${BUILD_DIR:-build}"
 LICENSED="${LICENSED:-1}"
 
